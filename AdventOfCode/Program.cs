@@ -62,7 +62,10 @@ namespace Aoc.AdventOfCode
             day3.LoadPuzzleInputFromFile(@"D:\AdventofCode\Input_Day3_Example2.txt");
             day3.LoadPuzzleInputFromFile(@"D:\AdventofCode\Input_Day3_1.txt");
             int result3 = day3.SolvePuzzle(2);
-            day3.pu
+
+
+            var day4 = new Day04();
+            var result4 = day4.SolvePuzzle();
         }
     }
 }

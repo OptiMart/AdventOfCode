@@ -25,12 +25,14 @@ namespace AoC.IntcodeComputer.Instructions
             // No Calculation
         }
 
-        protected override void DoLoadParameter(Memory memory)
+        protected override void DoLoadParameter(Memory memory, Stack<int> stack = null)
         {
+            input = stack.Pop();
         }
 
-        protected override void DoSaveResult(Memory memory)
+        protected override void DoSaveResult(Memory memory, Stack<int> stack = null)
         {
+            PutParameter(memory, 1, input);
         }
 
         #endregion

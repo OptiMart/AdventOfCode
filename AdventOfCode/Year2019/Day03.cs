@@ -20,7 +20,7 @@ namespace AoC.AdventOfCode.Year2019
         public Day03() : base(2019, 3)
         {
 
-            Solve += SolvePuzzle(1);
+            //Solve += SolvePuzzle(1);
         }
 
         #endregion

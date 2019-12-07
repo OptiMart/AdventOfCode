@@ -7,31 +7,32 @@ using System.Threading.Tasks;
 
 namespace AoC.IntcodeComputer
 {
-    public class IntcodeComputer
+    public class Computer
     {
         #region Data
         private readonly List<IInstructions> _instructions = new List<IInstructions>();
-        private readonly Stack<int> _stack;
-        private int _pointer = 0;
+        private int _position = 0;
 
         #endregion
 
         #region Constructor
-        public IntcodeComputer() : this(new Memory())
+        public Computer() : this(new Memory())
         { }
 
-        public IntcodeComputer(string memory) : this(new Memory(memory))
+        public Computer(string memory) : this(new Memory(memory))
         { }
 
-        public IntcodeComputer(Memory memory)
+        public Computer(Memory memory)
         {
             Memory = memory;
+            Stack = new Stack<int>();
         }
 
         #endregion
 
         #region Properties
         public Memory Memory { get; private set; }
+        public Stack<int> Stack { get; private set; }
 
         #endregion
 
@@ -39,6 +40,25 @@ namespace AoC.IntcodeComputer
         public void LoadMemory(string memory, char separator = ',')
         {
             Memory.LoadMemory(memory, separator);
+        }
+
+        public void LoadStack(string stack, char separator = ',')
+        {
+            Stack.Clear();
+            AddToStack(stack, separator);
+        }
+
+        public void AddToStack(string stack, char separator = ',')
+        {
+            var inArr = stack.Split(separator);
+
+            foreach (var item in inArr.Reverse())
+            {
+                if (!int.TryParse(item, out int val))
+                    throw new InvalidOperationException($"Fehlerhafter input string an Position: {item}");
+
+                Stack.Push(val);
+            }
         }
 
         public void LoadInstruction(IInstructions instruction)
@@ -73,7 +93,28 @@ namespace AoC.IntcodeComputer
             LoadInstruction(new OpOutput());
         }
 
+        public int StartExecution()
+        {
+            int result = -1;
+            try
+            {
+                do
+                {
+                    var op = _instructions.FirstOrDefault(x => x.CheckInstruction(Memory, _position));
 
+                    if (op is null)
+                        throw new InvalidOperationException($"Ungültige Operation an Position: {_position}");
+
+                    result = op.ExecuteInstruction(Memory, ref _position, Stack);
+                } while (result != 99);
+            }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException("Fehler bei der Ausführung", ex);
+            }
+
+            return result;
+        }
         #endregion
     }
 }

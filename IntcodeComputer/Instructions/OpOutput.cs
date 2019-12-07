@@ -8,19 +8,33 @@ namespace AoC.IntcodeComputer.Instructions
 {
     public class OpOutput : BaseInstruction
     {
+        #region Data
+        private int output;
+
+        #endregion
+
+        #region Constructor
+        public OpOutput() : base(4, 1)
+        { }
+
+        #endregion
+
+        #region Methods
         protected override void DoCalculation()
         {
-            throw new NotImplementedException();
+            // No Calculation
         }
 
-        protected override void DoLoadParameter(Memory memory)
+        protected override void DoLoadParameter(Memory memory, Stack<int> stack = null)
         {
-            throw new NotImplementedException();
+            output = GetParameterMode(1) == ParameterMode.Imidiate ? GetParameter(1) : memory.GetFromAddress(GetParameter(1));
         }
 
-        protected override void DoSaveResult(Memory memory)
+        protected override void DoSaveResult(Memory memory, Stack<int> stack = null)
         {
-            throw new NotImplementedException();
+            stack.Push(output);
         }
+
+        #endregion
     }
 }

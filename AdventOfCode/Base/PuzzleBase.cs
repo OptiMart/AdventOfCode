@@ -51,7 +51,10 @@ namespace AoC.AdventOfCode.Base
                 throw new FileNotFoundException($"Datei {input} konnte nicht gefunden werden");
         }
 
-        public abstract int SolvePuzzle(int part = 0);
+        public virtual int SolvePuzzle(int part = 0)
+        {
+            return 0;
+        }
 
         #endregion
 
