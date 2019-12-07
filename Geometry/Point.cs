@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace AoC.Geometry
 {
+    [DebuggerDisplay("({PointX}/{PointY})")]
     public class Point
     {
         #region Constructor
@@ -31,6 +33,7 @@ namespace AoC.Geometry
         #region Properties
         public int PointX { get; set; }
         public int PointY { get; set; }
+        public int ManhattanDistance => Math.Abs(PointX) + Math.Abs(PointY);
 
         #endregion
 

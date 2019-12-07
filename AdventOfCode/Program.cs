@@ -47,8 +47,9 @@ namespace Aoc.AdventOfCode
             }
 
             var day3 = new Day03();
+            day3.LoadPuzzleInputFromFile(@"D:\AdventofCode\Input_Day3_Example2.txt");
             day3.LoadPuzzleInputFromFile(@"D:\AdventofCode\Input_Day3_1.txt");
-            day3.SolvePuzzle();
+            int result3 = day3.SolvePuzzle();
 
         }
     }

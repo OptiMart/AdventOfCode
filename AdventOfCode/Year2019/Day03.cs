@@ -27,7 +27,8 @@ namespace AoC.AdventOfCode.Year2019
         {
             DigestInput();
             GetAllIntersections();
-            return 0;
+
+            return GetMinDistance();
         }
 
         private void DigestInput()
@@ -59,9 +60,11 @@ namespace AoC.AdventOfCode.Year2019
 
         private void GetAllIntersections()
         {
-            for (int i = 0; i < _lines.Count - 1; i++)
+            _crossings = new List<Point>();
+
+            for (int i = 0; i < _lines.Count; i++)
             {
-                for (int n = i + 1; n < _lines.Count - 1; n++)
+                for (int n = i + 1; n < _lines.Count; n++)
                 {
                     FindIntersections(_lines[i], _lines[n]);
                 }
@@ -72,11 +75,21 @@ namespace AoC.AdventOfCode.Year2019
         {
             foreach (var lineA in wireA)
             {
-                foreach (var lineB in wireB.Where(x => x.HasIntersection(lineA)))
+                foreach (var lineB in wireB)
                 {
+                    var inter = lineA.GetIntersection(lineB);
 
+                    if (inter != null && !(inter.PointX == 0 && inter.PointY == 0))
+                    {
+                        _crossings.Add(inter);
+                    }
                 }
             }
+        }
+
+        private int GetMinDistance()
+        {
+            return _crossings.Min(x => x.ManhattanDistance);
         }
 
         #endregion
