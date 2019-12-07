@@ -9,7 +9,8 @@ namespace AoC.AdventOfCode.Base
 {
     public abstract class PuzzleBase : IPuzzleInput
     {
-        Delegate DelSolver;
+        public delegate int DelSolvePuzzle(int part);
+        public DelSolvePuzzle Solve;
 
         #region Constructor
         protected PuzzleBase() : this(0, 0)
@@ -23,10 +24,14 @@ namespace AoC.AdventOfCode.Base
 
         #endregion
 
+        #region Properties
         public int Year { get; private set; }
         public int Day { get; private set; }
         public string PuzzleInput { get; set; }
 
+        #endregion
+
+        #region Methods
         public virtual void LoadAdditionalParameter(string[] args)
         {
             throw new NotImplementedException();
@@ -46,11 +51,9 @@ namespace AoC.AdventOfCode.Base
                 throw new FileNotFoundException($"Datei {input} konnte nicht gefunden werden");
         }
 
-        public virtual int SolvePuzzle(int part = 0)
-        {
-            return 0;
-        }
+        public abstract int SolvePuzzle(int part = 0);
 
-        public delegate int DelSolvePuzzle(int part);
+        #endregion
+
     }
 }

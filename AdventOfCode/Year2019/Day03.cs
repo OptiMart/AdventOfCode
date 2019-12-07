@@ -12,13 +12,16 @@ namespace AoC.AdventOfCode.Year2019
     {
         #region Data
         private List<LinkedList<Line>> _lines;
-        private List<Point> _crossings;
+        private List<Tuple<Point, int>> _crossings;
 
         #endregion
 
         #region Constructor
         public Day03() : base(2019, 3)
-        { }
+        {
+
+            Solve += SolvePuzzle(1);
+        }
 
         #endregion
 
@@ -28,7 +31,7 @@ namespace AoC.AdventOfCode.Year2019
             DigestInput();
             GetAllIntersections();
 
-            return GetMinDistance();
+            return part == 2 ? GetMinWireDistance() : GetMinManhattanDistance();
         }
 
         private void DigestInput()
@@ -54,13 +57,13 @@ namespace AoC.AdventOfCode.Year2019
         private void AddNewLine(LinkedList<Line> list, string vector)
         {
             Point start = list.Last?.Value.EndPoint ?? new Point();
-            Line add = new Line(start, vector);
+            Line add = new Line(start, vector, list.Last?.Value.TotalDistance ?? 0);
             list.AddLast(add);
         }
 
         private void GetAllIntersections()
         {
-            _crossings = new List<Point>();
+            _crossings = new List<Tuple<Point, int>>();
 
             for (int i = 0; i < _lines.Count; i++)
             {
@@ -77,19 +80,24 @@ namespace AoC.AdventOfCode.Year2019
             {
                 foreach (var lineB in wireB)
                 {
-                    var inter = lineA.GetIntersection(lineB);
+                    var intersection = lineA.GetIntersection(lineB);
 
-                    if (inter != null && !(inter.PointX == 0 && inter.PointY == 0))
+                    if (intersection != null && !(intersection.Item1.PointX == 0 && intersection.Item1.PointY == 0))
                     {
-                        _crossings.Add(inter);
+                        _crossings.Add(intersection);
                     }
                 }
             }
         }
 
-        private int GetMinDistance()
+        private int GetMinManhattanDistance()
         {
-            return _crossings.Min(x => x.ManhattanDistance);
+            return _crossings.Min(x => x.Item1.ManhattanDistance);
+        }
+
+        private int GetMinWireDistance()
+        {
+            return _crossings.Min(x => x.Item2);
         }
 
         #endregion
