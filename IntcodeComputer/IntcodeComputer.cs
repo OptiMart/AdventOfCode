@@ -91,6 +91,10 @@ namespace AoC.IntcodeComputer
             LoadInstruction(new OpMultiplication());
             LoadInstruction(new OpInput());
             LoadInstruction(new OpOutput());
+            LoadInstruction(new OpJumpTrue());
+            LoadInstruction(new OpJumpFalse());
+            LoadInstruction(new OpLessThan());
+            LoadInstruction(new OpEquals());
         }
 
         public int StartExecution()

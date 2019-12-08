@@ -64,8 +64,12 @@ namespace Aoc.AdventOfCode
             int result3 = day3.SolvePuzzle(2);
 
 
-            var day4 = new Day04();
-            var result4 = day4.SolvePuzzle();
+            var day5 = new Day05();
+            var result5 = day5.SolvePuzzle(2);
+
+            var day6 = new Day06();
+            day6.LoadPuzzleInputFromFile(@"D:\AdventofCode\Input_Day6_1.txt");
+            int result6 = day6.SolvePuzzle(2);
         }
     }
 }

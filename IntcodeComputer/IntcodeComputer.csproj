@@ -46,7 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Instructions\OpEquals.cs" />
     <Compile Include="Instructions\OpInput.cs" />
+    <Compile Include="Instructions\OpJumpFalse.cs" />
+    <Compile Include="Instructions\OpJumpTrue.cs" />
+    <Compile Include="Instructions\OpLessThan.cs" />
     <Compile Include="Instructions\OpMultiplication.cs" />
     <Compile Include="Instructions\OpAddition.cs" />
     <Compile Include="Instructions\Base\BaseInstruction.cs" />

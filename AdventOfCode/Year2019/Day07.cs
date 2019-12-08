@@ -7,7 +7,22 @@ using System.Threading.Tasks;
 
 namespace AoC.AdventOfCode.Year2019
 {
-    class Day07 : PuzzleBase
+    public class Day07 : PuzzleBase
     {
+        #region Constructor
+        public Day07() : base(2019, 7)
+        { }
+
+        #endregion
+
+        #region Methods
+        public override int SolvePuzzle(int part = 0)
+        {
+
+            return part == 2 ? 0 : 1;
+        }
+
+        #endregion
+
     }
 }

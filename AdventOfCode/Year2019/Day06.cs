@@ -7,7 +7,23 @@ using System.Threading.Tasks;
 
 namespace AoC.AdventOfCode.Year2019
 {
-    class Day06 : PuzzleBase
+    public class Day06 : PuzzleBase
     {
+        #region Constructor
+        public Day06() : base(2019, 6)
+        { }
+
+        #endregion
+
+        #region Methods
+        public override int SolvePuzzle(int part = 0)
+        {
+            OrbitMap.Map orbitMap = new OrbitMap.Map();
+            orbitMap.LoadOrbitalMap(PuzzleInput);
+
+            return part == 2 ? orbitMap.CalcSantaDistance() : orbitMap.CalcAllOrbits();
+        }
+
+        #endregion
     }
 }
