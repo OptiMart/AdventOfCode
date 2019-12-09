@@ -14,7 +14,6 @@ namespace AoC.AdventOfCode.Common.IntCodeComputer
     {
         #region Data
         private readonly List<IInstructions> _instructions = new List<IInstructions>();
-        private int _position = 0;
         private long _relBase = 0;
         private InstructionPointer _pointer = new InstructionPointer();
 
@@ -110,16 +109,6 @@ namespace AoC.AdventOfCode.Common.IntCodeComputer
             {
                 LoadInstruction((BaseInstruction)Activator.CreateInstance(item));
             }
-            //LoadInstruction(new OpTermination());
-            //LoadInstruction(new OpAddition());
-            //LoadInstruction(new OpMultiplication());
-            //LoadInstruction(new OpInput());
-            //LoadInstruction(new OpOutput());
-            //LoadInstruction(new OpJumpTrue());
-            //LoadInstruction(new OpJumpFalse());
-            //LoadInstruction(new OpLessThan());
-            //LoadInstruction(new OpEquals());
-            //LoadInstruction(new OpAdjustRelativeBase());
         }
 
         public int StartExecution()
@@ -140,7 +129,6 @@ namespace AoC.AdventOfCode.Common.IntCodeComputer
                         return 3;
                     }
 
-                    //LastExitCode = op.ExecuteInstruction(Memory, ref _position, InputStack, OutputStack);
                     LastExitCode = op.ExecuteInstruction(OpHelper);
                 }
             }

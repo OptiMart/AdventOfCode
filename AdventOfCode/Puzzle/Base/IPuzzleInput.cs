@@ -13,6 +13,6 @@ namespace AoC.AdventOfCode.Puzzle.Base
         void LoadPuzzleInput(string input);
         void LoadPuzzleInputFromFile(string input);
         void LoadAdditionalParameter(string[] args);
-        long SolvePuzzle(int part = 0);
+        long SolvePuzzle(int part = 0, bool loadInput = true);
     }
 }

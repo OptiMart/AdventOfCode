@@ -26,13 +26,25 @@ namespace AoC.AdventOfCode.Common.IntCodeComputer.Base
         #endregion
 
         #region Properties
-        public long[] Content => _content;
+        public long[] Content
+        {
+            get
+            {
+                if (_content is null)
+                    _content = new long[0];
+                
+                return _content;
+            }
+        }
         
         #endregion
 
         #region Methods
         public void LoadMemory(string inString, char separator = ',')
         {
+            if (string.IsNullOrEmpty(inString))
+                return;
+
             var inArr = inString.Split(new[] { separator }, StringSplitOptions.RemoveEmptyEntries);
             int count = inArr.Length;
 

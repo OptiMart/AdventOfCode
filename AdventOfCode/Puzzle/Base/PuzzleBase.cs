@@ -54,14 +54,15 @@ namespace AoC.AdventOfCode.Puzzle.Base
             return $@"D:\AdventofCode\Input_Day{Day}" + (part == 0 ? "" : "_{part}") + ".txt";
         }
 
-        public virtual long SolvePuzzle(int part = 0)
+        public virtual long SolvePuzzle(int part = 0, bool loadInput = true)
         {
             long[] result = new long[] { 0, 0, 0 };
             Stopwatch watch = new Stopwatch();
 
             try
             {
-                LoadPuzzleInputFromFile(GetInputPath());
+                if (loadInput)
+                    LoadPuzzleInputFromFile(GetInputPath());
             }
             catch (Exception)
             { 
@@ -72,33 +73,39 @@ namespace AoC.AdventOfCode.Puzzle.Base
             Console.WriteLine($"--- {Year} - Day {Day:D2} ---");
             DoPreparations();
 
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"Result Part 1:");
-            Console.ResetColor();
+            if (part == 0 || part == 1)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine($"Result Part 1:");
+                Console.ResetColor();
 
-            Console.ForegroundColor = ConsoleColor.White;
-            watch.Start();
-            result[1] = SolvePuzzlePartOne();
-            watch.Stop();
+                Console.ForegroundColor = ConsoleColor.White;
+                watch.Start();
+                result[1] = SolvePuzzlePartOne();
+                watch.Stop();
 
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine($"Calctime: {watch.ElapsedMilliseconds:G} ms");
-            Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine($"Calctime: {watch.ElapsedMilliseconds:G} ms");
+                Console.WriteLine();
+            }
 
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"Result Part 2:");
-            Console.ResetColor();
+            if (part == 0 || part == 2)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine($"Result Part 2:");
+                Console.ResetColor();
 
-            Console.ForegroundColor = ConsoleColor.White;
-            watch.Restart();
-            result[2] = SolvePuzzlePartTwo();
-            watch.Stop();
+                Console.ForegroundColor = ConsoleColor.White;
+                watch.Restart();
+                result[2] = SolvePuzzlePartTwo();
+                watch.Stop();
 
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine($"Calctime: {watch.ElapsedMilliseconds:G} ms");
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine($"Calctime: {watch.ElapsedMilliseconds:G} ms");
 
-            Console.ResetColor();
-            Console.WriteLine();
+                Console.ResetColor();
+                Console.WriteLine();
+            }
 
             return result[part];
         }
