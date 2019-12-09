@@ -10,7 +10,7 @@ namespace AoC.AdventOfCode.Year2019
     public class Day06 : PuzzleBase
     {
         #region Data
-        private OrbitMap.Map orbitMap;
+        private OrbitMap.OrbitMap orbitMap;
 
         #endregion
 
@@ -23,7 +23,7 @@ namespace AoC.AdventOfCode.Year2019
         #region Methods
         protected override void DoPreparations()
         {
-            orbitMap = new OrbitMap.Map();
+            orbitMap = new OrbitMap.OrbitMap();
             orbitMap.LoadOrbitalMap(PuzzleInput);
         }
 

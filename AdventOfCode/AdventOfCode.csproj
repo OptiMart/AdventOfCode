@@ -43,19 +43,44 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Base\IPuzzleInput.cs" />
-    <Compile Include="Base\PuzzleBase.cs" />
-    <Compile Include="Year2019\Day01.cs" />
+    <Compile Include="Common\Geometry\EnumOrientation.cs" />
+    <Compile Include="Common\Geometry\Line.cs" />
+    <Compile Include="Common\Geometry\Point.cs" />
+    <Compile Include="Common\Geometry\Wire.cs" />
+    <Compile Include="Common\IntCodeComputer\Base\InstructionPointer.cs" />
+    <Compile Include="Common\IntCodeComputer\Base\Memory.cs" />
+    <Compile Include="Common\IntCodeComputer\Base\OpHelper.cs" />
+    <Compile Include="Common\IntCodeComputer\Instructions\Base\BaseInstruction.cs" />
+    <Compile Include="Common\IntCodeComputer\Instructions\Base\IInstructions.cs" />
+    <Compile Include="Common\IntCodeComputer\Instructions\OpAddition.cs" />
+    <Compile Include="Common\IntCodeComputer\Instructions\OpAdjustRelativeBase.cs" />
+    <Compile Include="Common\IntCodeComputer\Instructions\OpEquals.cs" />
+    <Compile Include="Common\IntCodeComputer\Instructions\OpInput.cs" />
+    <Compile Include="Common\IntCodeComputer\Instructions\OpJumpFalse.cs" />
+    <Compile Include="Common\IntCodeComputer\Instructions\OpJumpTrue.cs" />
+    <Compile Include="Common\IntCodeComputer\Instructions\OpLessThan.cs" />
+    <Compile Include="Common\IntCodeComputer\Instructions\OpMultiplication.cs" />
+    <Compile Include="Common\IntCodeComputer\Instructions\OpOutput.cs" />
+    <Compile Include="Common\IntCodeComputer\Instructions\OpTermination.cs" />
+    <Compile Include="Common\IntCodeComputer\Computer.cs" />
+    <Compile Include="Common\ReflectiveEnumerator.cs" />
+    <Compile Include="Common\SpaceImage\Image.cs" />
+    <Compile Include="Common\SpaceImage\ImageLayer.cs" />
+    <Compile Include="Common\UniversalOrbitMap\OrbitMap.cs" />
+    <Compile Include="Common\UniversalOrbitMap\OrbitObject.cs" />
+    <Compile Include="Puzzle\Base\IPuzzleInput.cs" />
+    <Compile Include="Puzzle\Base\PuzzleBase.cs" />
+    <Compile Include="Puzzle\Year2019\Day01.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Year2019\Day02.cs" />
-    <Compile Include="Year2019\Day03.cs" />
-    <Compile Include="Year2019\Day04.cs" />
-    <Compile Include="Year2019\Day05.cs" />
-    <Compile Include="Year2019\Day06.cs" />
-    <Compile Include="Year2019\Day07.cs" />
-    <Compile Include="Year2019\Day09.cs" />
-    <Compile Include="Year2019\Day08.cs" />
+    <Compile Include="Puzzle\Year2019\Day02.cs" />
+    <Compile Include="Puzzle\Year2019\Day03.cs" />
+    <Compile Include="Puzzle\Year2019\Day04.cs" />
+    <Compile Include="Puzzle\Year2019\Day05.cs" />
+    <Compile Include="Puzzle\Year2019\Day06.cs" />
+    <Compile Include="Puzzle\Year2019\Day07.cs" />
+    <Compile Include="Puzzle\Year2019\Day09.cs" />
+    <Compile Include="Puzzle\Year2019\Day08.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -77,6 +102,12 @@
       <Project>{82dc16ae-456c-4a97-aab3-4bfe1012799e}</Project>
       <Name>OrbitMap</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Puzzle\Year2015\" />
+    <Folder Include="Puzzle\Year2016\" />
+    <Folder Include="Puzzle\Year2017\" />
+    <Folder Include="Puzzle\Year2018\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
