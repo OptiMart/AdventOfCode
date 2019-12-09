@@ -34,7 +34,7 @@ namespace AoC.AdventOfCode.Year2019
             LoadAdditionalParameter(new[] { "171309", "643603" });
         }
 
-        protected override int SolvePuzzlePartOne()
+        protected override long SolvePuzzlePartOne()
         {
             int res = 0;
 
@@ -49,7 +49,7 @@ namespace AoC.AdventOfCode.Year2019
 
         }
 
-        protected override int SolvePuzzlePartTwo()
+        protected override long SolvePuzzlePartTwo()
         {
             int res = 0;
 

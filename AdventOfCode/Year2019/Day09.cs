@@ -1,4 +1,5 @@
 ﻿using AoC.AdventOfCode.Base;
+using AoC.IntcodeComputer;
 using AoC.SpaceImage;
 using System;
 using System.Collections.Generic;
@@ -22,24 +23,30 @@ namespace AoC.AdventOfCode.Year2019
         #endregion
 
         #region Methods
-        protected override int SolvePuzzlePartOne()
+        protected override long SolvePuzzlePartOne()
         {
-            var layer = image.GetLayerFewestInt(0);
-            int res = layer.CountIntegers(1) * layer.CountIntegers(2);
+            var res = SolvePuzzleHelper(1);
             Console.WriteLine($"{res}");
             return res;
         }
 
-        protected override int SolvePuzzlePartTwo()
+        protected override long SolvePuzzlePartTwo()
         {
-            var result = image.AggregateAllLayers();
-            Console.Write(result.ToString().Replace('0', ' ').Replace('1', '#'));
-            return 0;
+            var res = SolvePuzzleHelper(2);
+            Console.WriteLine($"{res}");
+            return res;
         }
 
-        protected override void DoPreparations()
+        private long SolvePuzzleHelper(int input)
         {
-            image = new Image(25, 6, PuzzleInput);
+            Computer cpu = new Computer(PuzzleInput);
+            cpu.LoadDefaultInstructionSet();
+            cpu.InputStack.AddFirst(input);
+
+            cpu.StartExecution();
+
+            var res = cpu.OutputStack.Last();
+            return res;
         }
 
         #endregion

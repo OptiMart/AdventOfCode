@@ -16,12 +16,12 @@ namespace AoC.AdventOfCode.Year2019
         #endregion
 
         #region Methods
-        protected override int SolvePuzzlePartOne()
+        protected override long SolvePuzzlePartOne()
         {
             return base.SolvePuzzlePartOne();
         }
 
-        protected override int SolvePuzzlePartTwo()
+        protected override long SolvePuzzlePartTwo()
         {
             return base.SolvePuzzlePartTwo();
         }

@@ -22,7 +22,7 @@ namespace AoC.AdventOfCode.Year2019
         #endregion
 
         #region Methods
-        protected override int SolvePuzzlePartOne()
+        protected override long SolvePuzzlePartOne()
         {
             var layer = image.GetLayerFewestInt(0);
             int res = layer.CountIntegers(1) * layer.CountIntegers(2);
@@ -30,7 +30,7 @@ namespace AoC.AdventOfCode.Year2019
             return res;
         }
 
-        protected override int SolvePuzzlePartTwo()
+        protected override long SolvePuzzlePartTwo()
         {
             var result = image.AggregateAllLayers();
             Console.Write(result.ToString().Replace('0', ' ').Replace('1', '#'));

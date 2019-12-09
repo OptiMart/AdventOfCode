@@ -9,9 +9,9 @@ namespace AoC.IntcodeComputer.Instructions
     public class OpMultiplication : BaseInstruction
     {
         #region Data
-        private int op1;
-        private int op2;
-        private int result;
+        private long op1;
+        private long op2;
+        private long result;
 
         #endregion
         
@@ -27,15 +27,15 @@ namespace AoC.IntcodeComputer.Instructions
             result = op1 * op2;
         }
 
-        protected override void DoLoadParameter(Memory memory, LinkedList<int> stack = null)
+        protected override void DoLoadParameter(OpHelper opHelper)
         {
-            op1 = GetParameterMode(1) == ParameterMode.Imidiate ? GetParameter(1) : memory.GetFromAddress(GetParameter(1));
-            op2 = GetParameterMode(2) == ParameterMode.Imidiate ? GetParameter(2) : memory.GetFromAddress(GetParameter(2));
+            op1 = GetParameterValue(1, opHelper);
+            op2 = GetParameterValue(2, opHelper);
         }
 
-        protected override void DoSaveResult(Memory memory, LinkedList<int> stack = null)
+        protected override void DoSaveResult(OpHelper opHelper)
         {
-            PutParameter(memory, 3, result);
+            PutParameterValue(3, result, opHelper);
         }
 
         #endregion

@@ -17,21 +17,21 @@ namespace AoC.AdventOfCode.Year2019
         #endregion
 
         #region Methods
-        protected override int SolvePuzzlePartOne()
+        protected override long SolvePuzzlePartOne()
         {
-            int res = SolvePuzzleHelper(1);
+            var res = SolvePuzzleHelper(1);
             Console.WriteLine($"{res}");
             return res;
         }
 
-        protected override int SolvePuzzlePartTwo()
+        protected override long SolvePuzzlePartTwo()
         {
-            int res = SolvePuzzleHelper(5);
+            var res = SolvePuzzleHelper(5);
             Console.WriteLine($"{res}");
             return res;
         }
 
-        private int SolvePuzzleHelper(int input)
+        private long SolvePuzzleHelper(int input)
         {
             Computer cpu = new Computer(PuzzleInput);
 
@@ -40,7 +40,7 @@ namespace AoC.AdventOfCode.Year2019
 
             cpu.StartExecution();
 
-            int res = cpu.OutputStack.Last();
+            var res = cpu.OutputStack.Last();
             return res;
         }
 

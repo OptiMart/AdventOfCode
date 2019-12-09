@@ -39,27 +39,27 @@ namespace AoC.AdventOfCode.Year2019
             }
         }
 
-        protected override int SolvePuzzlePartOne()
+        protected override long SolvePuzzlePartOne()
         {
             LoadAdditionalParameter(new[] { "0,1,2,3,4" });
-            int res = GetMaxThrusterSignal();
+            var res = GetMaxThrusterSignal();
             Console.WriteLine($"{res}");
             return res;
         }
 
-        protected override int SolvePuzzlePartTwo()
+        protected override long SolvePuzzlePartTwo()
         {
             LoadAdditionalParameter(new[] { "5,6,7,8,9" });
-            int res = GetMaxThrusterSignal();
+            var res = GetMaxThrusterSignal();
             Console.WriteLine($"{res}");
             return res;
         }
 
-        private int GetMaxThrusterSignal()
+        private long GetMaxThrusterSignal()
         {
             //Dictionary<List<int>, int> resultSet = new Dictionary<List<int>, int>();
             //List<int> result = new List<int>();
-            int signalStrength = 0;
+            long signalStrength = 0;
 
             foreach (var settings in GetPermutations(_settings, _settings.Count))
             {
@@ -86,7 +86,7 @@ namespace AoC.AdventOfCode.Year2019
                     (t1, t2) => t1.Concat(new T[] { t2 }));
         }
 
-        private int GetThrusterSignal(IEnumerable<int> settings)
+        private long GetThrusterSignal(IEnumerable<int> settings)
         {
             LinkedList<Computer> amplifier = new LinkedList<Computer>();
 

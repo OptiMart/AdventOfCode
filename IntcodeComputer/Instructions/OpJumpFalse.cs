@@ -10,8 +10,8 @@ namespace AoC.IntcodeComputer.Instructions
     {
         #region Data
         private int newPos;
-        private int param1;
-        private int param2;
+        private long param1;
+        private long param2;
 
         #endregion
 
@@ -22,12 +22,12 @@ namespace AoC.IntcodeComputer.Instructions
         #endregion
 
         #region Methods
-        public override int ExecuteInstruction(Memory memory, ref int index, LinkedList<int> inStack = null, LinkedList<int> outStack = null)
+        public override int ExecuteInstruction(OpHelper opHelper)
         {
-            _ = base.ExecuteInstruction(memory, ref index, inStack, outStack);
+            _ = base.ExecuteInstruction(opHelper);
 
             if (newPos >= 0)
-                index = newPos;
+                opHelper.InstructionPointer.Position = newPos;
 
             return OPCode;
         }
@@ -35,18 +35,18 @@ namespace AoC.IntcodeComputer.Instructions
         protected override void DoCalculation()
         {
             if (param1 == 0)
-                newPos = param2;
+                newPos = (int)param2;
             else
                 newPos = -1;
         }
 
-        protected override void DoLoadParameter(Memory memory, LinkedList<int> stack = null)
+        protected override void DoLoadParameter(OpHelper opHelper)
         {
-            param1 = GetParameterMode(1) == ParameterMode.Imidiate ? GetParameter(1) : memory.GetFromAddress(GetParameter(1));
-            param2 = GetParameterMode(2) == ParameterMode.Imidiate ? GetParameter(2) : memory.GetFromAddress(GetParameter(2));
+            param1 = GetParameterValue(1, opHelper);
+            param2 = GetParameterValue(2, opHelper);
         }
 
-        protected override void DoSaveResult(Memory memory, LinkedList<int> stack = null)
+        protected override void DoSaveResult(OpHelper opHelper)
         {
             // Nothing to save
         }

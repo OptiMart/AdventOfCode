@@ -8,6 +8,11 @@ namespace AoC.IntcodeComputer
 {
     public class Memory
     {
+        #region Data
+        private long[] _content;
+
+        #endregion
+
         #region Constructor
         public Memory() : this(string.Empty)
         {
@@ -21,7 +26,7 @@ namespace AoC.IntcodeComputer
         #endregion
 
         #region Properties
-        public int[] Content { get; private set; }
+        public long[] Content => _content;
         
         #endregion
 
@@ -31,29 +36,49 @@ namespace AoC.IntcodeComputer
             var inArr = inString.Split(new[] { separator }, StringSplitOptions.RemoveEmptyEntries);
             int count = inArr.Length;
 
-            Content = new int[count];
+            _content = new long[count];
 
             for (int i = 0; i < count; i++)
             {
-                if(!int.TryParse(inArr[i], out Content[i]))
+                if(!long.TryParse(inArr[i], out Content[i]))
                     throw new InvalidOperationException($"Fehlerhafter input string an Position: {i}");
             }
         }
 
-        public int GetFromAddress(int index)
+        public long GetFromAddress(int index)
         {
-            if (index < 0 || index >= Content.Length)
+            if (index < 0)
                 throw new InvalidOperationException("Index außerhalb des Bereichs");
+            else if (index >= Content.Length)
+                ExpandMemory(index + 1);
 
             return Content[index];
         }
 
-        public void SaveAtAddress(int index, int value)
+        public void SaveAtAddress(int index, long value)
         {
-            if (index < 0 || index >= Content.Length)
+            if (index < 0)
                 throw new InvalidOperationException("Index außerhalb des Bereichs");
+            else if (index >= Content.Length)
+                ExpandMemory(index + 1);
 
             Content[index] = value;
+        }
+
+        public void SaveAtAddress(long index, long value)
+        {
+            if (index < 0 || index >= int.MaxValue)
+                throw new InvalidOperationException("Index außerhalb des Bereichs");
+            else if (index >= Content.Length)
+                ExpandMemory((int)index + 1);
+
+            Content[index] = value;
+        }
+
+        private void ExpandMemory(int newSize)
+        {
+            Array.Resize(ref _content, newSize);
+
         }
 
         #endregion

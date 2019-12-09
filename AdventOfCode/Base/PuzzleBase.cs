@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -53,9 +54,10 @@ namespace AoC.AdventOfCode.Base
             return $@"D:\AdventofCode\Input_Day{Day}" + (part == 0 ? "" : "_{part}") + ".txt";
         }
 
-        public virtual int SolvePuzzle(int part = 0)
+        public virtual long SolvePuzzle(int part = 0)
         {
-            int[] result = new int[] { 0, 0, 0 };
+            long[] result = new long[] { 0, 0, 0 };
+            Stopwatch watch = new Stopwatch();
 
             try
             {
@@ -66,14 +68,37 @@ namespace AoC.AdventOfCode.Base
                 // Just continue
             }
 
-            Console.WriteLine($"--- {Year} - Day {Day} ---");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"--- {Year} - Day {Day:D2} ---");
             DoPreparations();
-            
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"Result Part 1:");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.White;
+            watch.Start();
             result[1] = SolvePuzzlePartOne();
-            
+            watch.Stop();
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"Calctime: {watch.ElapsedMilliseconds:G} ms");
+            Console.WriteLine();
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine($"Result Part 2:");
+            Console.ResetColor();
+
+            Console.ForegroundColor = ConsoleColor.White;
+            watch.Restart();
             result[2] = SolvePuzzlePartTwo();
+            watch.Stop();
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"Calctime: {watch.ElapsedMilliseconds:G} ms");
+
+            Console.ResetColor();
+            Console.WriteLine();
 
             return result[part];
         }
@@ -81,13 +106,13 @@ namespace AoC.AdventOfCode.Base
         protected virtual void DoPreparations()
         { }
 
-        protected virtual int SolvePuzzlePartOne()
+        protected virtual long SolvePuzzlePartOne()
         {
             Console.WriteLine($"tba");
             return 0;
         }
 
-        protected virtual int SolvePuzzlePartTwo()
+        protected virtual long SolvePuzzlePartTwo()
         {
             Console.WriteLine($"tba");
             return 0;

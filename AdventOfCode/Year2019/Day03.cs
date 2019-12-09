@@ -28,14 +28,14 @@ namespace AoC.AdventOfCode.Year2019
             DigestInput();
             GetAllIntersections();
         }
-        protected override int SolvePuzzlePartOne()
+        protected override long SolvePuzzlePartOne()
         {
             int res = GetMinManhattanDistance();
             Console.WriteLine($"{res}");
             return res;
         }
 
-        protected override int SolvePuzzlePartTwo()
+        protected override long SolvePuzzlePartTwo()
         {
             int res = GetMinWireDistance();
             Console.WriteLine($"{res}");

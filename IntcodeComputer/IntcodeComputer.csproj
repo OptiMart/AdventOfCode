@@ -46,7 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InstructionPointer.cs" />
     <Compile Include="Instructions\OpEquals.cs" />
+    <Compile Include="Instructions\OpAdjustRelativeBase.cs" />
     <Compile Include="Instructions\OpInput.cs" />
     <Compile Include="Instructions\OpJumpFalse.cs" />
     <Compile Include="Instructions\OpJumpTrue.cs" />
@@ -59,6 +61,7 @@
     <Compile Include="Instructions\OpOutput.cs" />
     <Compile Include="IntcodeComputer.cs" />
     <Compile Include="Memory.cs" />
+    <Compile Include="OpHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

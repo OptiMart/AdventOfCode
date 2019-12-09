@@ -11,8 +11,8 @@ namespace AoC.IntcodeComputer.Instructions
         int OPCode { get; }
         int ParameterCount { get; }
 
-        bool CheckInstruction(int code);
+        bool CheckInstruction(long code);
         bool CheckInstruction(Memory memory, int index);
-        int ExecuteInstruction(Memory memory, ref int index, LinkedList<int> inStack = null, LinkedList<int> outStack = null);
+        int ExecuteInstruction(OpHelper opHelper);
     }
 }

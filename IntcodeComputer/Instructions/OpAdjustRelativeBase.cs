@@ -6,17 +6,16 @@ using System.Threading.Tasks;
 
 namespace AoC.IntcodeComputer.Instructions
 {
-    public class OpAddition : BaseInstruction
+    public class OpAdjustRelativeBase : BaseInstruction
     {
         #region Data
-        private long op1;
-        private long op2;
-        private long result;
+        private long relBase;
+        private long add;
 
         #endregion
-        
+
         #region Constructor
-        public OpAddition() : base(1, 3)
+        public OpAdjustRelativeBase() : base(9, 1)
         { }
 
         #endregion
@@ -24,18 +23,20 @@ namespace AoC.IntcodeComputer.Instructions
         #region Methods
         protected override void DoCalculation()
         {
-            result = op1 + op2;
+            relBase += add;
+
+            if (relBase < 0)
+                throw new InvalidOperationException("RelativeBase kann nicht kleiner 0 sein");
         }
 
         protected override void DoLoadParameter(OpHelper opHelper)
         {
-            op1 = GetParameterValue(1, opHelper);
-            op2 = GetParameterValue(2, opHelper);
+            add = GetParameterValue(1, opHelper);
         }
 
         protected override void DoSaveResult(OpHelper opHelper)
         {
-            PutParameterValue(3, result, opHelper);
+            opHelper.RelativeBase = relBase;
         }
 
         #endregion

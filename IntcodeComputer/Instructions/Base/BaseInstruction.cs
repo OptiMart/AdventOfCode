@@ -9,13 +9,14 @@ namespace AoC.IntcodeComputer.Instructions
     public enum ParameterMode
     {
         Position = 0,
-        Imidiate = 1
+        Imidiate = 1,
+        Relative = 2,
     }
 
     public abstract class BaseInstruction : IInstructions
     {
         #region Data
-        private int[] _parameters;
+        private long[] _parameters;
         private ParameterMode[] _paraMode;
 
         #endregion
@@ -40,7 +41,7 @@ namespace AoC.IntcodeComputer.Instructions
         #endregion
 
         #region Methods
-        public bool CheckInstruction(int code)
+        public bool CheckInstruction(long code)
         {
             if (code % 100 == OPCode)
                 return true;
@@ -50,7 +51,7 @@ namespace AoC.IntcodeComputer.Instructions
 
         public bool CheckInstruction(Memory memory, int index)
         {
-            int opCode = memory.GetFromAddress(index);
+            var opCode = memory.GetFromAddress(index);
 
             if (!CheckInstruction(opCode))
                 return false;
@@ -62,29 +63,40 @@ namespace AoC.IntcodeComputer.Instructions
             return true;
         }
 
-        public virtual int ExecuteInstruction(Memory memory, ref int index, LinkedList<int> inStack = null, LinkedList<int> outStack = null)
-        {
-            DoLoadParameter(memory, inStack);
-            DoCalculation();
-            DoSaveResult(memory, outStack);
+        //public virtual int ExecuteInstruction(Memory memory, ref int index, LinkedList<int> inStack = null, LinkedList<int> outStack = null)
+        //{
+        //    DoLoadParameter(memory, inStack);
+        //    DoCalculation();
+        //    DoSaveResult(memory, outStack);
 
-            IncreaseIndex(ref index);
+        //    //IncreaseIndex(ref index);
+        //    return OPCode;
+        //}
+
+        public virtual int ExecuteInstruction(OpHelper opHelper)
+        {
+            DoLoadParameter(opHelper);
+            DoCalculation();
+            DoSaveResult(opHelper);
+
+            IncreaseIndex(opHelper.InstructionPointer);
+
             return OPCode;
         }
 
-        protected abstract void DoLoadParameter(Memory memory, LinkedList<int> stack = null);
+        protected abstract void DoLoadParameter(OpHelper opHelper);
         protected abstract void DoCalculation();
-        protected abstract void DoSaveResult(Memory memory, LinkedList<int> stack = null);
-        
-        protected void IncreaseIndex(ref int index)
+        protected abstract void DoSaveResult(OpHelper opHelper);
+
+        protected void IncreaseIndex(InstructionPointer pointer)
         {
-            index += ParameterCount + 1;
+            pointer.IncresePointer(ParameterCount + 1);
             ClearParameter();
         }
 
         private void InitParameter()
         {
-            _parameters = new int[ParameterCount];
+            _parameters = new long[ParameterCount];
             _paraMode = new ParameterMode[ParameterCount];
         }
 
@@ -94,13 +106,13 @@ namespace AoC.IntcodeComputer.Instructions
             _paraMode = null;
         }
 
-        public void LoadParameterModes(int opCode)
+        public void LoadParameterModes(long opCode)
         {
-            int modes = opCode / 100;
+            var modes = opCode / 100;
 
             for (int i = 0; i < ParameterCount; i++)
             {
-                int temp = modes % 10;
+                int temp = (int)(modes % 10);
                 if (Enum.IsDefined(typeof(ParameterMode), temp))
                     _paraMode[i] = (ParameterMode)(modes % 10);
                 else
@@ -127,15 +139,32 @@ namespace AoC.IntcodeComputer.Instructions
             return _paraMode[index - 1];
         }
 
-        public int GetParameter(int index)
+        public long GetParameter(int parameterID)
         {
-            if (index <= 0 || index > ParameterCount)
+            if (parameterID <= 0 || parameterID > ParameterCount)
                 throw new InvalidOperationException("Ungültiger Parameteraufruf");
 
-            return _parameters[index - 1];
+            return _parameters[parameterID - 1];
         }
 
-        public void PutParameter(Memory memory, int parameterID, int value)
+        public long GetParameterValue(int parameterID, OpHelper opHelper)
+        {
+            switch (GetParameterMode(parameterID))
+            {
+                case ParameterMode.Position:
+                    return opHelper.Memory.GetFromAddress((int)GetParameter(parameterID));
+                case ParameterMode.Imidiate:
+                    return GetParameter(parameterID);
+                case ParameterMode.Relative:
+                    return opHelper.Memory.GetFromAddress((int)(GetParameter(parameterID) + opHelper.RelativeBase));
+                default:
+                    break;
+            }
+
+            throw new ArgumentException("Ungültiger Parametermode");
+        }
+
+        public void PutParameter(Memory memory, int parameterID, long value)
         {
             if (parameterID <= 0 || parameterID > ParameterCount)
                 throw new InvalidOperationException("Ungültiger Parameteraufruf");
@@ -143,7 +172,27 @@ namespace AoC.IntcodeComputer.Instructions
             if (_paraMode[parameterID - 1] == ParameterMode.Imidiate)
                 throw new InvalidOperationException("Ungültiger Parametermode für Output");
 
-            memory.SaveAtAddress(_parameters[parameterID - 1], value);
+            memory.SaveAtAddress((int)_parameters[parameterID - 1], value);
+        }
+
+        public void PutParameterValue(int parameterID, long value, OpHelper opHelper)
+        {
+            if (parameterID <= 0 || parameterID > ParameterCount)
+                throw new InvalidOperationException("Ungültiger Parameteraufruf");
+
+            switch (GetParameterMode(parameterID))
+            {
+                case ParameterMode.Position:
+                    opHelper.Memory.SaveAtAddress(_parameters[parameterID - 1], value);
+                    break;
+                case ParameterMode.Imidiate:
+                    throw new InvalidOperationException("Ungültiger Parametermode für Output");
+                case ParameterMode.Relative:
+                    opHelper.Memory.SaveAtAddress(_parameters[parameterID - 1] + opHelper.RelativeBase, value);
+                    break;
+                default:
+                    throw new ArgumentException("Ungültiger Parametermode");
+            }
         }
 
         #endregion

@@ -9,7 +9,7 @@ namespace AoC.IntcodeComputer.Instructions
     public class OpInput : BaseInstruction
     {
         #region Data
-        private int input;
+        private long input;
 
         #endregion
 
@@ -25,15 +25,15 @@ namespace AoC.IntcodeComputer.Instructions
             // No Calculation
         }
 
-        protected override void DoLoadParameter(Memory memory, LinkedList<int> stack = null)
+        protected override void DoLoadParameter(OpHelper opHelper)
         {
-            input = stack.First();
-            stack.RemoveFirst();
+            input = opHelper.InputStack.First();
+            opHelper.InputStack.RemoveFirst();
         }
 
-        protected override void DoSaveResult(Memory memory, LinkedList<int> stack = null)
+        protected override void DoSaveResult(OpHelper opHelper)
         {
-            PutParameter(memory, 1, input);
+            PutParameterValue(1, input, opHelper);
         }
 
         #endregion

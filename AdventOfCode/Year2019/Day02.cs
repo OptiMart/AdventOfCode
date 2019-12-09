@@ -18,14 +18,14 @@ namespace AoC.AdventOfCode.Year2019
         #endregion
 
         #region Methods
-        protected override int SolvePuzzlePartOne()
+        protected override long SolvePuzzlePartOne()
         {
-            int res = GetCpuResult(12, 2);
+            long res = GetCpuResult(12, 2);
             Console.WriteLine($"{res}");
             return res;
         }
 
-        protected override int SolvePuzzlePartTwo()
+        protected override long SolvePuzzlePartTwo()
         {
             int target = 19690720;
             int pos1 = 0;
@@ -50,7 +50,7 @@ namespace AoC.AdventOfCode.Year2019
             return res;
         }
 
-        private int GetCpuResult(int pos1, int pos2)
+        private long GetCpuResult(int pos1, int pos2)
         {
             Computer cpu = new Computer(PuzzleInput);
             cpu.LoadInstruction(new OpAddition());

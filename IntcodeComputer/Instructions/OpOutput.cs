@@ -9,7 +9,7 @@ namespace AoC.IntcodeComputer.Instructions
     public class OpOutput : BaseInstruction
     {
         #region Data
-        private int output;
+        private long output;
 
         #endregion
 
@@ -25,14 +25,14 @@ namespace AoC.IntcodeComputer.Instructions
             // No Calculation
         }
 
-        protected override void DoLoadParameter(Memory memory, LinkedList<int> stack = null)
+        protected override void DoLoadParameter(OpHelper opHelper)
         {
-            output = GetParameterMode(1) == ParameterMode.Imidiate ? GetParameter(1) : memory.GetFromAddress(GetParameter(1));
+            output = GetParameterValue(1, opHelper);
         }
 
-        protected override void DoSaveResult(Memory memory, LinkedList<int> stack = null)
+        protected override void DoSaveResult(OpHelper opHelper)
         {
-            stack.AddLast(output);
+            opHelper.OutputStack.AddLast(output);
         }
 
         #endregion

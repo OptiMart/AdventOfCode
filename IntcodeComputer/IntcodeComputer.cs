@@ -12,6 +12,8 @@ namespace AoC.IntcodeComputer
         #region Data
         private readonly List<IInstructions> _instructions = new List<IInstructions>();
         private int _position = 0;
+        private long _relBase = 0;
+        private InstructionPointer _pointer = new InstructionPointer();
 
         #endregion
 
@@ -30,10 +32,12 @@ namespace AoC.IntcodeComputer
         #endregion
 
         #region Properties
+        public OpHelper OpHelper { get; private set; }
         public Memory Memory { get; private set; }
-        public LinkedList<int> InputStack { get; set; } = new LinkedList<int>();
-        public LinkedList<int> OutputStack { get; set; } = new LinkedList<int>();
+        public LinkedList<long> InputStack { get; set; } = new LinkedList<long>();
+        public LinkedList<long> OutputStack { get; set; } = new LinkedList<long>();
         public int LastExitCode { get; private set; } = -1;
+        public int Position => _pointer.Position;
 
         #endregion
 
@@ -47,6 +51,18 @@ namespace AoC.IntcodeComputer
         {
             InputStack.Clear();
             AddToInputStack(stack, separator);
+        }
+
+        public void InitOpHelper()
+        {
+            OpHelper = new OpHelper()
+            {
+                Memory = Memory,
+                InputStack = InputStack,
+                OutputStack = OutputStack,
+                InstructionPointer = _pointer,
+                RelativeBase = _relBase,
+            };
         }
 
         public void AddToInputStack(string stack, char separator = ',')
@@ -96,18 +112,20 @@ namespace AoC.IntcodeComputer
             LoadInstruction(new OpJumpFalse());
             LoadInstruction(new OpLessThan());
             LoadInstruction(new OpEquals());
+            LoadInstruction(new OpAdjustRelativeBase());
         }
 
         public int StartExecution()
         {
             try
             {
+                InitOpHelper();
                 while (LastExitCode != 99)
                 {
-                    var op = _instructions.FirstOrDefault(x => x.CheckInstruction(Memory, _position));
+                    var op = _instructions.FirstOrDefault(x => x.CheckInstruction(Memory, Position));
 
                     if (op is null)
-                        throw new InvalidOperationException($"Ungültige Operation an Position: {_position}");
+                        throw new InvalidOperationException($"Ungültige Operation an Position: {Position}");
 
                     if (op.OPCode == 3 && InputStack.Count <= 0)
                     {
@@ -115,7 +133,8 @@ namespace AoC.IntcodeComputer
                         return 3;
                     }
 
-                    LastExitCode = op.ExecuteInstruction(Memory, ref _position, InputStack, OutputStack);
+                    //LastExitCode = op.ExecuteInstruction(Memory, ref _position, InputStack, OutputStack);
+                    LastExitCode = op.ExecuteInstruction(OpHelper);
                 }
             }
             catch (Exception ex)

@@ -9,9 +9,9 @@ namespace AoC.IntcodeComputer.Instructions
     public class OpEquals : BaseInstruction
     {
         #region Data
-        private int result;
-        private int param1;
-        private int param2;
+        private long result;
+        private long param1;
+        private long param2;
 
         #endregion
 
@@ -27,15 +27,15 @@ namespace AoC.IntcodeComputer.Instructions
             result = param1 == param2 ? 1 : 0;
         }
 
-        protected override void DoLoadParameter(Memory memory, LinkedList<int> stack = null)
+        protected override void DoLoadParameter(OpHelper opHelper)
         {
-            param1 = GetParameterMode(1) == ParameterMode.Imidiate ? GetParameter(1) : memory.GetFromAddress(GetParameter(1));
-            param2 = GetParameterMode(2) == ParameterMode.Imidiate ? GetParameter(2) : memory.GetFromAddress(GetParameter(2));
+            param1 = GetParameterValue(1, opHelper);
+            param2 = GetParameterValue(2, opHelper);
         }
 
-        protected override void DoSaveResult(Memory memory, LinkedList<int> stack = null)
+        protected override void DoSaveResult(OpHelper opHelper)
         {
-            PutParameter(memory, 3, result);
+            PutParameterValue(3, result, opHelper);
         }
 
         #endregion

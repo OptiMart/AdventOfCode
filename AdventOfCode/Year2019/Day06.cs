@@ -27,14 +27,14 @@ namespace AoC.AdventOfCode.Year2019
             orbitMap.LoadOrbitalMap(PuzzleInput);
         }
 
-        protected override int SolvePuzzlePartOne()
+        protected override long SolvePuzzlePartOne()
         {
             int res = orbitMap.CalcAllOrbits();
             Console.WriteLine($"{res}");
             return res;
         }
 
-        protected override int SolvePuzzlePartTwo()
+        protected override long SolvePuzzlePartTwo()
         {
             int res = orbitMap.CalcSantaDistance();
             Console.WriteLine($"{res}");
