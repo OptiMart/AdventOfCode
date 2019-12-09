@@ -1,16 +1,17 @@
-﻿using AoC.AdventOfCode.Base;
+﻿using AoC.AdventOfCode.Puzzle.Base;
+using AoC.AdventOfCode.UniversalOrbitMap;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Year2019
+namespace AoC.AdventOfCode.Puzzle.Year2019
 {
     public class Day06 : PuzzleBase
     {
         #region Data
-        private OrbitMap.OrbitMap orbitMap;
+        private OrbitMap orbitMap;
 
         #endregion
 
@@ -23,7 +24,7 @@ namespace AoC.AdventOfCode.Year2019
         #region Methods
         protected override void DoPreparations()
         {
-            orbitMap = new OrbitMap.OrbitMap();
+            orbitMap = new OrbitMap();
             orbitMap.LoadOrbitalMap(PuzzleInput);
         }
 

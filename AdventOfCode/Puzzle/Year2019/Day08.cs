@@ -1,12 +1,12 @@
-﻿using AoC.AdventOfCode.Base;
-using AoC.SpaceImage;
+﻿using AoC.AdventOfCode.Puzzle.Base;
+using AoC.AdventOfCode.SpaceImage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Year2019
+namespace AoC.AdventOfCode.Puzzle.Year2019
 {
     public class Day08 : PuzzleBase
     {

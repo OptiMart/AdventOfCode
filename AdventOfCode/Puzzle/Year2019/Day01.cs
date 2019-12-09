@@ -1,16 +1,16 @@
-﻿using AoC.AdventOfCode.Base;
+﻿using AoC.AdventOfCode.Puzzle.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Year2019
+namespace AoC.AdventOfCode.Puzzle.Year2019
 {
     class Day01 : PuzzleBase
     {
         #region Constructor
-        public Day01() : base(2019, 2)
+        public Day01() : base(2019, 1)
         { }
 
         #endregion
@@ -18,12 +18,46 @@ namespace AoC.AdventOfCode.Year2019
         #region Methods
         protected override long SolvePuzzlePartOne()
         {
-            return base.SolvePuzzlePartOne();
+            long fuel = 0;
+
+            foreach (var item in PuzzleInput.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                if (int.TryParse(item, out int mass))
+                    fuel += CalcFuel(mass);
+            }
+
+            Console.WriteLine($"{fuel}");
+            return fuel;
         }
 
         protected override long SolvePuzzlePartTwo()
         {
-            return base.SolvePuzzlePartTwo();
+            long fuel = 0;
+
+            foreach (var item in PuzzleInput.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                if (int.TryParse(item, out int mass))
+                    fuel += CalcFuelRecurse(mass);
+            }
+
+            Console.WriteLine($"{fuel}");
+            return fuel;
+        }
+
+        private int CalcFuel(int mass)
+        {
+            int res = mass / 3 - 2;
+            return res > 0 ? res : 0;
+        }
+
+        private int CalcFuelRecurse(int mass)
+        {
+            if (mass <= 0)
+                return 0;
+
+            int fuel = CalcFuel(mass);
+
+            return fuel + CalcFuelRecurse(fuel);
         }
 
         #endregion

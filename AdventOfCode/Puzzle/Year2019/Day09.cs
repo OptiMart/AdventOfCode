@@ -1,21 +1,15 @@
-﻿using AoC.AdventOfCode.Base;
-using AoC.IntcodeComputer;
-using AoC.SpaceImage;
+﻿using AoC.AdventOfCode.Common.IntCodeComputer;
+using AoC.AdventOfCode.Puzzle.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Year2019
+namespace AoC.AdventOfCode.Puzzle.Year2019
 {
     public class Day09 : PuzzleBase
     {
-        #region Data
-        private Image image;
-
-        #endregion
-        
         #region Constructor
         public Day09() : base(2019, 9)
         { }

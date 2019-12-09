@@ -1,7 +1,5 @@
-﻿using AoC.AdventOfCode.Base;
-using AoC.AdventOfCode.Year2019;
-using AoC.IntcodeComputer;
-using AoC.IntcodeComputer.Instructions;
+﻿using AoC.AdventOfCode.Puzzle.Base;
+using AoC.AdventOfCode.Puzzle.Year2019;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -86,24 +86,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Geometry\Geometry.csproj">
-      <Project>{3618ab06-5394-4595-90d9-660270979ad8}</Project>
-      <Name>Geometry</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IntcodeComputer\IntcodeComputer.csproj">
-      <Project>{5ce09c6c-b352-4d17-bdcc-4519e1ccf5eb}</Project>
-      <Name>IntcodeComputer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SpaceImage\SpaceImage.csproj">
-      <Project>{e3bceead-268a-41e3-a2b7-2522256c02ab}</Project>
-      <Name>SpaceImage</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\UniversalOrbitMap\OrbitMap.csproj">
-      <Project>{82dc16ae-456c-4a97-aab3-4bfe1012799e}</Project>
-      <Name>OrbitMap</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Puzzle\Year2015\" />
     <Folder Include="Puzzle\Year2016\" />
     <Folder Include="Puzzle\Year2017\" />

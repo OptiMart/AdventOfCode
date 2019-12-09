@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Base
+namespace AoC.AdventOfCode.Puzzle.Base
 {
     public abstract class PuzzleBase : IPuzzleInput
     {
