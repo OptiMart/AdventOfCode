@@ -18,12 +18,12 @@ namespace AoC.IntcodeComputer.Instructions
             // No Calculation
         }
 
-        protected override void DoLoadParameter(Memory memory, Stack<int> stack = null)
+        protected override void DoLoadParameter(Memory memory, LinkedList<int> stack = null)
         {
             // No Parameters to load
         }
 
-        protected override void DoSaveResult(Memory memory, Stack<int> stack = null)
+        protected override void DoSaveResult(Memory memory, LinkedList<int> stack = null)
         {
             // No Result to be saved
         }

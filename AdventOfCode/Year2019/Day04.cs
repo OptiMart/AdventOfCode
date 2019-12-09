@@ -10,6 +10,12 @@ namespace AoC.AdventOfCode.Year2019
 {
     class Day04 : PuzzleBase
     {
+        #region Data
+        private int lbound = 0;
+        private int ubound = 0;
+
+        #endregion
+        
         #region Constructor
         public Day04() : base(2019, 4)
         { }
@@ -17,23 +23,64 @@ namespace AoC.AdventOfCode.Year2019
         #endregion
 
         #region Methods
-        public override int SolvePuzzle(int part = 0)
+        public override void LoadAdditionalParameter(string[] args)
         {
-            return SolvePuzzlePart1();
+            int.TryParse(args[0], out lbound);
+            int.TryParse(args[1], out ubound);
         }
 
-        private int SolvePuzzlePart1()
+        protected override void DoPreparations()
         {
-            LoadPuzzleInputFromFile(@"D:\AdventofCode\Input_Day4_1.txt");
-            Computer cpu = new Computer(PuzzleInput);
+            LoadAdditionalParameter(new[] { "171309", "643603" });
+        }
 
-            cpu.LoadDefaultInstructionSet();
-            cpu.Stack.Push(1);
+        protected override int SolvePuzzlePartOne()
+        {
+            int res = 0;
 
-            cpu.StartExecution();
+            for (int i = lbound; i <= ubound; i++)
+            {
+                if (IsSixDigits(i) && HasAdjacentSameInt(i) &&  NeverDecreses(i))
+                    res++;
+            }
 
-            int res = cpu.Stack.Pop();
+            Console.WriteLine($"{res}");
             return res;
+
+        }
+
+        protected override int SolvePuzzlePartTwo()
+        {
+            int res = 0;
+
+            for (int i = lbound; i <= ubound; i++)
+            {
+                if (IsSixDigits(i) && HasAdjacentSameInt(i) && NeverDecreses(i) && HasPairOfInt(i))
+                    res++;
+            }
+
+            Console.WriteLine($"{res}");
+            return res;
+        }
+
+        private bool IsSixDigits(int number)
+        {
+            return false;
+        }
+
+        private bool HasAdjacentSameInt(int number)
+        {
+            return false;
+        }
+
+        private bool NeverDecreses(int number)
+        {
+            return false;
+        }
+
+        private bool HasPairOfInt(int number)
+        {
+            return false;
         }
 
         #endregion

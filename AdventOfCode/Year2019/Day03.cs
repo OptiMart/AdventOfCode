@@ -18,20 +18,28 @@ namespace AoC.AdventOfCode.Year2019
 
         #region Constructor
         public Day03() : base(2019, 3)
-        {
-
-            //Solve += SolvePuzzle(1);
-        }
+        { }
 
         #endregion
 
         #region Methods
-        public override int SolvePuzzle(int part = 0)
+        protected override void DoPreparations()
         {
             DigestInput();
             GetAllIntersections();
+        }
+        protected override int SolvePuzzlePartOne()
+        {
+            int res = GetMinManhattanDistance();
+            Console.WriteLine($"{res}");
+            return res;
+        }
 
-            return part == 2 ? GetMinWireDistance() : GetMinManhattanDistance();
+        protected override int SolvePuzzlePartTwo()
+        {
+            int res = GetMinWireDistance();
+            Console.WriteLine($"{res}");
+            return res;
         }
 
         private void DigestInput()

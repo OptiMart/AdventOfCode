@@ -27,13 +27,13 @@ namespace AoC.IntcodeComputer.Instructions
             result = op1 + op2;
         }
 
-        protected override void DoLoadParameter(Memory memory, Stack<int> stack = null)
+        protected override void DoLoadParameter(Memory memory, LinkedList<int> stack = null)
         {
             op1 = GetParameterMode(1) == ParameterMode.Imidiate ? GetParameter(1) : memory.GetFromAddress(GetParameter(1));
             op2 = GetParameterMode(2) == ParameterMode.Imidiate ? GetParameter(2) : memory.GetFromAddress(GetParameter(2));
         }
 
-        protected override void DoSaveResult(Memory memory, Stack<int> stack = null)
+        protected override void DoSaveResult(Memory memory, LinkedList<int> stack = null)
         {
             PutParameter(memory, 3, result);
         }

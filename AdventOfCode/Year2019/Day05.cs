@@ -17,39 +17,33 @@ namespace AoC.AdventOfCode.Year2019
         #endregion
 
         #region Methods
-        public override int SolvePuzzle(int part = 0)
+        protected override int SolvePuzzlePartOne()
         {
-            return part == 2 ? SolvePuzzlePart2() : SolvePuzzlePart1();
-        }
-
-        private int SolvePuzzlePart1()
-        {
-            LoadPuzzleInputFromFile(@"D:\AdventofCode\Input_Day5_1.txt");
-            Computer cpu = new Computer(PuzzleInput);
-
-            cpu.LoadDefaultInstructionSet();
-            cpu.Stack.Push(1);
-
-            cpu.StartExecution();
-
-            int res = cpu.Stack.Pop();
+            int res = SolvePuzzleHelper(1);
+            Console.WriteLine($"{res}");
             return res;
         }
 
-        private int SolvePuzzlePart2()
+        protected override int SolvePuzzlePartTwo()
         {
-            LoadPuzzleInputFromFile(@"D:\AdventofCode\Input_Day5_1.txt");
+            int res = SolvePuzzleHelper(5);
+            Console.WriteLine($"{res}");
+            return res;
+        }
+
+        private int SolvePuzzleHelper(int input)
+        {
             Computer cpu = new Computer(PuzzleInput);
 
             cpu.LoadDefaultInstructionSet();
-            cpu.Stack.Push(5);
+            cpu.InputStack.AddFirst(input);
 
             cpu.StartExecution();
 
-            int res = cpu.Stack.Pop();
+            int res = cpu.OutputStack.Last();
             return res;
         }
+
         #endregion
-
     }
 }

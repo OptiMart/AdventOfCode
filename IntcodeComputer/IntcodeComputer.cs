@@ -25,14 +25,15 @@ namespace AoC.IntcodeComputer
         public Computer(Memory memory)
         {
             Memory = memory;
-            Stack = new Stack<int>();
         }
 
         #endregion
 
         #region Properties
         public Memory Memory { get; private set; }
-        public Stack<int> Stack { get; private set; }
+        public LinkedList<int> InputStack { get; set; } = new LinkedList<int>();
+        public LinkedList<int> OutputStack { get; set; } = new LinkedList<int>();
+        public int LastExitCode { get; private set; } = -1;
 
         #endregion
 
@@ -42,13 +43,13 @@ namespace AoC.IntcodeComputer
             Memory.LoadMemory(memory, separator);
         }
 
-        public void LoadStack(string stack, char separator = ',')
+        public void LoadInputStack(string stack, char separator = ',')
         {
-            Stack.Clear();
-            AddToStack(stack, separator);
+            InputStack.Clear();
+            AddToInputStack(stack, separator);
         }
 
-        public void AddToStack(string stack, char separator = ',')
+        public void AddToInputStack(string stack, char separator = ',')
         {
             var inArr = stack.Split(separator);
 
@@ -57,7 +58,7 @@ namespace AoC.IntcodeComputer
                 if (!int.TryParse(item, out int val))
                     throw new InvalidOperationException($"Fehlerhafter input string an Position: {item}");
 
-                Stack.Push(val);
+                InputStack.AddLast(val);
             }
         }
 
@@ -99,26 +100,32 @@ namespace AoC.IntcodeComputer
 
         public int StartExecution()
         {
-            int result = -1;
             try
             {
-                do
+                while (LastExitCode != 99)
                 {
                     var op = _instructions.FirstOrDefault(x => x.CheckInstruction(Memory, _position));
 
                     if (op is null)
                         throw new InvalidOperationException($"Ungültige Operation an Position: {_position}");
 
-                    result = op.ExecuteInstruction(Memory, ref _position, Stack);
-                } while (result != 99);
+                    if (op.OPCode == 3 && InputStack.Count <= 0)
+                    {
+                        LastExitCode = 3;
+                        return 3;
+                    }
+
+                    LastExitCode = op.ExecuteInstruction(Memory, ref _position, InputStack, OutputStack);
+                }
             }
             catch (Exception ex)
             {
                 throw new InvalidOperationException("Fehler bei der Ausführung", ex);
             }
 
-            return result;
+            return LastExitCode;
         }
+
         #endregion
     }
 }

@@ -14,39 +14,6 @@ namespace Aoc.AdventOfCode
     {
         static void Main(string[] args)
         {
-            string input = System.IO.File.ReadAllText(@"D:\AdventofCode\Input_Day2_1.txt");
-            var mem = new Memory(input);
-
-            mem.SaveAtAddress(1, 12);
-            mem.SaveAtAddress(2, 2);
-
-
-            List<IInstructions> instructions = new List<IInstructions>()
-            {
-                new OpTermination(),
-                new OpAddition(),
-                new OpMultiplication(),
-            };
-
-            try
-            {
-                int result = -1;
-                int position = 0;
-
-                do
-                {
-                    var op = instructions.FirstOrDefault(x => x.CheckInstruction(mem, position));
-
-                    if (op is null)
-                        throw new InvalidOperationException($"Ungültige Operation an Position: {position}");
-                    result = op.ExecuteInstruction(mem, ref position);
-                } while (result != 99);
-            }
-            catch (Exception ex)
-            {
-                throw new InvalidOperationException("Fehler bei der Ausführung", ex);
-            }
-
             List<PuzzleBase> puzzles = new List<PuzzleBase>()
             {
                 new Day01(),
@@ -56,20 +23,15 @@ namespace Aoc.AdventOfCode
                 new Day05(),
                 new Day06(),
                 new Day07(),
+                new Day08(),
             };
 
-            var day3 = new Day03();
-            day3.LoadPuzzleInputFromFile(@"D:\AdventofCode\Input_Day3_Example2.txt");
-            day3.LoadPuzzleInputFromFile(@"D:\AdventofCode\Input_Day3_1.txt");
-            int result3 = day3.SolvePuzzle(2);
+            foreach (var day in puzzles)
+            {
+                day.SolvePuzzle();
+            }
 
-
-            var day5 = new Day05();
-            var result5 = day5.SolvePuzzle(2);
-
-            var day6 = new Day06();
-            day6.LoadPuzzleInputFromFile(@"D:\AdventofCode\Input_Day6_1.txt");
-            int result6 = day6.SolvePuzzle(2);
+            Console.ReadKey();
         }
     }
 }

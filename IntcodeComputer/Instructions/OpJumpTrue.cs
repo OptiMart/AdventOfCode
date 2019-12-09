@@ -22,9 +22,9 @@ namespace AoC.IntcodeComputer.Instructions
         #endregion
 
         #region Methods
-        public override int ExecuteInstruction(Memory memory, ref int index, Stack<int> stack = null)
+        public override int ExecuteInstruction(Memory memory, ref int index, LinkedList<int> inStack = null, LinkedList<int> outStack = null)
         {
-            _ = base.ExecuteInstruction(memory, ref index, stack);
+            _ = base.ExecuteInstruction(memory, ref index, inStack, outStack);
 
             if (newPos >= 0)
                 index = newPos;
@@ -39,13 +39,13 @@ namespace AoC.IntcodeComputer.Instructions
                 newPos = -1;
         }
 
-        protected override void DoLoadParameter(Memory memory, Stack<int> stack = null)
+        protected override void DoLoadParameter(Memory memory, LinkedList<int> stack = null)
         {
             param1 = GetParameterMode(1) == ParameterMode.Imidiate ? GetParameter(1) : memory.GetFromAddress(GetParameter(1));
             param2 = GetParameterMode(2) == ParameterMode.Imidiate ? GetParameter(2) : memory.GetFromAddress(GetParameter(2));
         }
 
-        protected override void DoSaveResult(Memory memory, Stack<int> stack = null)
+        protected override void DoSaveResult(Memory memory, LinkedList<int> stack = null)
         {
             // Nothing to save
         }

@@ -28,7 +28,7 @@ namespace AoC.IntcodeComputer
         #region Methods
         public void LoadMemory(string inString, char separator = ',')
         {
-            var inArr = inString.Split(separator);
+            var inArr = inString.Split(new[] { separator }, StringSplitOptions.RemoveEmptyEntries);
             int count = inArr.Length;
 
             Content = new int[count];

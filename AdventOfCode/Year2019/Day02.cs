@@ -1,4 +1,6 @@
 ﻿using AoC.AdventOfCode.Base;
+using AoC.IntcodeComputer;
+using AoC.IntcodeComputer.Instructions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,29 +18,50 @@ namespace AoC.AdventOfCode.Year2019
         #endregion
 
         #region Methods
-        public override int SolvePuzzle(int part = 0)
+        protected override int SolvePuzzlePartOne()
         {
-            if (part == 1)
-                return SolvePuzzlePart1();
-            else if (part == 2)
-                return SolvePuzzlePart2();
-
-            return 0;
+            int res = GetCpuResult(12, 2);
+            Console.WriteLine($"{res}");
+            return res;
         }
 
-        public override void LoadAdditionalParameter(string[] args)
+        protected override int SolvePuzzlePartTwo()
         {
-            base.LoadAdditionalParameter(args);
+            int target = 19690720;
+            int pos1 = 0;
+            int pos2 = 0;
+
+            for (int i = 0; i <= 99; i++)
+            {
+                for (int n = 0; n <= 99; n++)
+                {
+                    var val = GetCpuResult(i, n);
+
+                    if (val == target)
+                    {
+                        pos1 = i;
+                        pos2 = n;
+                    }
+                }
+            }
+
+            int res = pos1 * 100 + pos2;
+            Console.WriteLine($"{res}");
+            return res;
         }
 
-        private int SolvePuzzlePart1()
+        private int GetCpuResult(int pos1, int pos2)
         {
-            return 0;
-        }
+            Computer cpu = new Computer(PuzzleInput);
+            cpu.LoadInstruction(new OpAddition());
+            cpu.LoadInstruction(new OpMultiplication());
+            cpu.LoadInstruction(new OpTermination());
+            cpu.Memory.SaveAtAddress(1, pos1);
+            cpu.Memory.SaveAtAddress(2, pos2);
 
-        private int SolvePuzzlePart2()
-        {
-            return 0;
+            cpu.StartExecution();
+
+            return cpu.Memory.GetFromAddress(0);
         }
 
         #endregion

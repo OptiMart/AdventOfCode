@@ -13,6 +13,6 @@ namespace AoC.IntcodeComputer.Instructions
 
         bool CheckInstruction(int code);
         bool CheckInstruction(Memory memory, int index);
-        int ExecuteInstruction(Memory memory, ref int index, Stack<int> stack = null);
+        int ExecuteInstruction(Memory memory, ref int index, LinkedList<int> inStack = null, LinkedList<int> outStack = null);
     }
 }

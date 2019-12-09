@@ -62,21 +62,21 @@ namespace AoC.IntcodeComputer.Instructions
             return true;
         }
 
-        public virtual int ExecuteInstruction(Memory memory, ref int index, Stack<int> stack = null)
+        public virtual int ExecuteInstruction(Memory memory, ref int index, LinkedList<int> inStack = null, LinkedList<int> outStack = null)
         {
-            DoLoadParameter(memory, stack);
+            DoLoadParameter(memory, inStack);
             DoCalculation();
-            DoSaveResult(memory, stack);
+            DoSaveResult(memory, outStack);
 
             IncreaseIndex(ref index);
             return OPCode;
         }
 
-        protected abstract void DoLoadParameter(Memory memory, Stack<int> stack = null);
+        protected abstract void DoLoadParameter(Memory memory, LinkedList<int> stack = null);
         protected abstract void DoCalculation();
-        protected abstract void DoSaveResult(Memory memory, Stack<int> stack = null);
+        protected abstract void DoSaveResult(Memory memory, LinkedList<int> stack = null);
         
-        private void IncreaseIndex(ref int index)
+        protected void IncreaseIndex(ref int index)
         {
             index += ParameterCount + 1;
             ClearParameter();

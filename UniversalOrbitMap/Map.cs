@@ -89,7 +89,7 @@ namespace AoC.OrbitMap
         private OrbitObject GetSameAnchestor(OrbitObject obj1, OrbitObject obj2)
         {
             OrbitObject anchestor1 = obj1;
-            OrbitObject anchestor2 = obj2;
+            OrbitObject anchestor2;
             do
             {
                 anchestor1 = anchestor1.Parent;

@@ -59,7 +59,6 @@
     <Compile Include="Instructions\OpOutput.cs" />
     <Compile Include="IntcodeComputer.cs" />
     <Compile Include="Memory.cs" />
-    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -9,9 +9,6 @@ namespace AoC.AdventOfCode.Base
 {
     public abstract class PuzzleBase : IPuzzleInput
     {
-        public delegate int DelSolvePuzzle(int part);
-        public DelSolvePuzzle Solve;
-
         #region Constructor
         protected PuzzleBase() : this(0, 0)
         { }
@@ -51,8 +48,48 @@ namespace AoC.AdventOfCode.Base
                 throw new FileNotFoundException($"Datei {input} konnte nicht gefunden werden");
         }
 
+        public string GetInputPath(int part = 0)
+        {
+            return $@"D:\AdventofCode\Input_Day{Day}" + (part == 0 ? "" : "_{part}") + ".txt";
+        }
+
         public virtual int SolvePuzzle(int part = 0)
         {
+            int[] result = new int[] { 0, 0, 0 };
+
+            try
+            {
+                LoadPuzzleInputFromFile(GetInputPath());
+            }
+            catch (Exception)
+            { 
+                // Just continue
+            }
+
+            Console.WriteLine($"--- {Year} - Day {Day} ---");
+            DoPreparations();
+            
+            Console.WriteLine($"Result Part 1:");
+            result[1] = SolvePuzzlePartOne();
+            
+            Console.WriteLine($"Result Part 2:");
+            result[2] = SolvePuzzlePartTwo();
+
+            return result[part];
+        }
+
+        protected virtual void DoPreparations()
+        { }
+
+        protected virtual int SolvePuzzlePartOne()
+        {
+            Console.WriteLine($"tba");
+            return 0;
+        }
+
+        protected virtual int SolvePuzzlePartTwo()
+        {
+            Console.WriteLine($"tba");
             return 0;
         }
 
