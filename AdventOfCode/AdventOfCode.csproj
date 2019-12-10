@@ -66,8 +66,10 @@
     <Compile Include="Common\ReflectiveEnumerator.cs" />
     <Compile Include="Common\SpaceImage\Image.cs" />
     <Compile Include="Common\SpaceImage\ImageLayer.cs" />
-    <Compile Include="Common\UniversalOrbitMap\OrbitMap.cs" />
-    <Compile Include="Common\UniversalOrbitMap\OrbitObject.cs" />
+    <Compile Include="Common\SpaceMap\Asteroid.cs" />
+    <Compile Include="Common\SpaceMap\AsteroidMap.cs" />
+    <Compile Include="Common\SpaceMap\OrbitMap.cs" />
+    <Compile Include="Common\SpaceMap\OrbitObject.cs" />
     <Compile Include="Puzzle\Base\IPuzzleInput.cs" />
     <Compile Include="Puzzle\Base\PuzzleBase.cs" />
     <Compile Include="Puzzle\Year2019\Day01.cs" />

@@ -1,5 +1,5 @@
 ﻿using AoC.AdventOfCode.Puzzle.Base;
-using AoC.AdventOfCode.UniversalOrbitMap;
+using AoC.AdventOfCode.SpaceMap;
 using System;
 using System.Collections.Generic;
 using System.Linq;
