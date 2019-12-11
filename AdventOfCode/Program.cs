@@ -15,6 +15,8 @@ namespace Aoc.AdventOfCode
         static void Main(string[] args)
         {
             SolveAllPuzzles();
+            //var day = new Day11();
+            //day.SolvePuzzle();
 
             Console.ReadKey();
         }

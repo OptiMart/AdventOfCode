@@ -16,7 +16,6 @@ namespace AoC.AdventOfCode.Common.IntCodeComputer
         private readonly List<IInstructions> _instructions = new List<IInstructions>();
         private long _relBase = 0;
         private InstructionPointer _pointer = new InstructionPointer();
-
         #endregion
 
         #region Constructor
@@ -111,6 +110,8 @@ namespace AoC.AdventOfCode.Common.IntCodeComputer
             }
         }
 
+        private List<int> operations = new List<int>();
+
         public int StartExecution()
         {
             try
@@ -123,14 +124,18 @@ namespace AoC.AdventOfCode.Common.IntCodeComputer
                     if (op is null)
                         throw new InvalidOperationException($"Ungültige Operation an Position: {Position}");
 
+                    operations.Add(op.OPCode);
+
                     if (op.OPCode == 3 && InputStack.Count <= 0)
                     {
                         LastExitCode = 3;
+                        _relBase = OpHelper.RelativeBase;
                         return 3;
                     }
 
                     LastExitCode = op.ExecuteInstruction(OpHelper);
                 }
+                _relBase = OpHelper.RelativeBase;
             }
             catch (Exception ex)
             {

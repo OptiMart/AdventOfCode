@@ -85,7 +85,7 @@ namespace AoC.AdventOfCode.Puzzle.Base
                 watch.Stop();
 
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine($"Calctime: {watch.ElapsedMilliseconds:G} ms");
+                Console.WriteLine($"Calctime: {watch.ElapsedMilliseconds:N0} ms");
                 Console.WriteLine();
             }
 
@@ -101,7 +101,7 @@ namespace AoC.AdventOfCode.Puzzle.Base
                 watch.Stop();
 
                 Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.WriteLine($"Calctime: {watch.ElapsedMilliseconds:G} ms");
+                Console.WriteLine($"Calctime: {watch.ElapsedMilliseconds:N0} ms");
 
                 Console.ResetColor();
                 Console.WriteLine();

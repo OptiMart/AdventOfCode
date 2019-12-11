@@ -63,6 +63,9 @@
     <Compile Include="Common\IntCodeComputer\Instructions\OpOutput.cs" />
     <Compile Include="Common\IntCodeComputer\Instructions\OpTermination.cs" />
     <Compile Include="Common\IntCodeComputer\Computer.cs" />
+    <Compile Include="Common\PaintingRobot\PaintArea.cs" />
+    <Compile Include="Common\PaintingRobot\PaintSpot.cs" />
+    <Compile Include="Common\PaintingRobot\Robot.cs" />
     <Compile Include="Common\ReflectiveEnumerator.cs" />
     <Compile Include="Common\SpaceImage\Image.cs" />
     <Compile Include="Common\SpaceImage\ImageLayer.cs" />
@@ -84,6 +87,7 @@
     <Compile Include="Puzzle\Year2019\Day10.cs" />
     <Compile Include="Puzzle\Year2019\Day09.cs" />
     <Compile Include="Puzzle\Year2019\Day08.cs" />
+    <Compile Include="Puzzle\Year2019\Day11.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
