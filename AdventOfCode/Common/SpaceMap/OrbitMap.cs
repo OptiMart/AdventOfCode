@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.SpaceMap
+namespace AoC.AdventOfCode.Common.SpaceMap
 {
     public class OrbitMap
     {

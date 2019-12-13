@@ -1,5 +1,4 @@
 ﻿using AoC.AdventOfCode.Common.IntCodeComputer;
-using AoC.AdventOfCode.Common.SpaceMap;
 using AoC.AdventOfCode.Puzzle.Base;
 using System;
 using System.Collections.Generic;
@@ -9,37 +8,38 @@ using System.Threading.Tasks;
 
 namespace AoC.AdventOfCode.Puzzle.Year2019
 {
-    public class Day10 : PuzzleBase
+    public class Puzzle2019Day09 : PuzzleBase
     {
-        #region Data
-        private AsteroidMap map;
-        #endregion
-
         #region Constructor
-        public Day10() : base(2019, 10)
+        public Puzzle2019Day09() : base(2019, 9)
         { }
 
         #endregion
 
         #region Methods
-        protected override void DoPreparations()
-        {
-            map = new AsteroidMap();
-        }
-
         protected override long SolvePuzzlePartOne()
         {
-            map.LoadAsteroids(PuzzleInput);
-            var res = map.GetMaxDetectionValue();
+            var res = SolvePuzzleHelper(1);
             Console.WriteLine($"{res}");
             return res;
         }
 
         protected override long SolvePuzzlePartTwo()
         {
-            var ast = map.GetBetAsteroid();
-            var res = ast.PosX * 100 + ast.PosY;
+            var res = SolvePuzzleHelper(2);
             Console.WriteLine($"{res}");
+            return res;
+        }
+
+        private long SolvePuzzleHelper(int input)
+        {
+            Computer cpu = new Computer(PuzzleInput);
+            cpu.LoadDefaultInstructionSet();
+            cpu.InputStack.AddFirst(input);
+
+            cpu.StartExecution();
+
+            var res = cpu.OutputStack.Last();
             return res;
         }
 

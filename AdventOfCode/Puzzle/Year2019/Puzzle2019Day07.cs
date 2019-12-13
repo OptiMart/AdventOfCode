@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AoC.AdventOfCode.Puzzle.Year2019
 {
-    public class Day07 : PuzzleBase
+    public class Puzzle2019Day07 : PuzzleBase
     {
         #region Data
         private List<int> _settings;
@@ -17,7 +17,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
         #endregion
 
         #region Constructor
-        public Day07() : base(2019, 7)
+        public Puzzle2019Day07() : base(2019, 7)
         { }
 
         #endregion

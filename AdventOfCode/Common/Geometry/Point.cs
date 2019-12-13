@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AoC.AdventOfCode.Common.IntCodeComputer;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -34,6 +35,7 @@ namespace AoC.AdventOfCode.Common.Geometry
         public int PointX { get; set; }
         public int PointY { get; set; }
         public int ManhattanDistance => Math.Abs(PointX) + Math.Abs(PointY);
+        public Tiles Tile { get; set; }
 
         #endregion
 

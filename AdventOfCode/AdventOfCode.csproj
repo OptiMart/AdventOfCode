@@ -47,6 +47,7 @@
     <Compile Include="Common\Geometry\Line.cs" />
     <Compile Include="Common\Geometry\Point.cs" />
     <Compile Include="Common\Geometry\Wire.cs" />
+    <Compile Include="Common\IntCodeComputer\Arcade.cs" />
     <Compile Include="Common\IntCodeComputer\Base\InstructionPointer.cs" />
     <Compile Include="Common\IntCodeComputer\Base\Memory.cs" />
     <Compile Include="Common\IntCodeComputer\Base\OpHelper.cs" />
@@ -71,23 +72,30 @@
     <Compile Include="Common\SpaceImage\ImageLayer.cs" />
     <Compile Include="Common\SpaceMap\Asteroid.cs" />
     <Compile Include="Common\SpaceMap\AsteroidMap.cs" />
+    <Compile Include="Common\SpaceMap\ICoord3D.cs" />
     <Compile Include="Common\SpaceMap\OrbitMap.cs" />
     <Compile Include="Common\SpaceMap\OrbitObject.cs" />
+    <Compile Include="Common\SpaceMap\Point4D.cs" />
+    <Compile Include="Common\SpaceMap\SpaceVector.cs" />
     <Compile Include="Puzzle\Base\IPuzzleInput.cs" />
     <Compile Include="Puzzle\Base\PuzzleBase.cs" />
-    <Compile Include="Puzzle\Year2019\Day01.cs" />
+    <Compile Include="Puzzle\Year2018\Puzzle2018Day25.cs" />
+    <Compile Include="Puzzle\Year2018\Puzzle2018Day01.cs" />
+    <Compile Include="Puzzle\Year2019\Puzzle2019Day01.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Puzzle\Year2019\Day02.cs" />
-    <Compile Include="Puzzle\Year2019\Day03.cs" />
-    <Compile Include="Puzzle\Year2019\Day04.cs" />
-    <Compile Include="Puzzle\Year2019\Day05.cs" />
-    <Compile Include="Puzzle\Year2019\Day06.cs" />
-    <Compile Include="Puzzle\Year2019\Day07.cs" />
-    <Compile Include="Puzzle\Year2019\Day10.cs" />
-    <Compile Include="Puzzle\Year2019\Day09.cs" />
-    <Compile Include="Puzzle\Year2019\Day08.cs" />
-    <Compile Include="Puzzle\Year2019\Day11.cs" />
+    <Compile Include="Puzzle\Year2019\Puzzle2019Day02.cs" />
+    <Compile Include="Puzzle\Year2019\Puzzle2019Day03.cs" />
+    <Compile Include="Puzzle\Year2019\Puzzle2019Day04.cs" />
+    <Compile Include="Puzzle\Year2019\Puzzle2019Day05.cs" />
+    <Compile Include="Puzzle\Year2019\Puzzle2019Day06.cs" />
+    <Compile Include="Puzzle\Year2019\Puzzle2019Day07.cs" />
+    <Compile Include="Puzzle\Year2019\Puzzle2019Day10.cs" />
+    <Compile Include="Puzzle\Year2019\Puzzle2019Day09.cs" />
+    <Compile Include="Puzzle\Year2019\Puzzle2019Day08.cs" />
+    <Compile Include="Puzzle\Year2019\Puzzle2019Day11.cs" />
+    <Compile Include="Puzzle\Year2019\Puzzle2019Day13.cs" />
+    <Compile Include="Puzzle\Year2019\Puzzle2019Day12.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -96,7 +104,6 @@
     <Folder Include="Puzzle\Year2015\" />
     <Folder Include="Puzzle\Year2016\" />
     <Folder Include="Puzzle\Year2017\" />
-    <Folder Include="Puzzle\Year2018\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

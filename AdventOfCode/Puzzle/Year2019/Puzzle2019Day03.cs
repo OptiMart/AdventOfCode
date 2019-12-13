@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AoC.AdventOfCode.Puzzle.Year2019
 {
-    class Day03 : PuzzleBase
+    public class Puzzle2019Day03 : PuzzleBase
     {
         #region Data
         private List<LinkedList<Line>> _lines;
@@ -17,7 +17,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
         #endregion
 
         #region Constructor
-        public Day03() : base(2019, 3)
+        public Puzzle2019Day03() : base(2019, 3)
         { }
 
         #endregion

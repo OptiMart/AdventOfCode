@@ -51,7 +51,7 @@ namespace AoC.AdventOfCode.Puzzle.Base
 
         public string GetInputPath(int part = 0)
         {
-            return $@"D:\AdventofCode\Input_Day{Day}" + (part == 0 ? "" : "_{part}") + ".txt";
+            return $@"D:\AdventofCode\{Year}\Input_Day{Day}" + (part == 0 ? "" : "_{part}") + ".txt";
         }
 
         public virtual long SolvePuzzle(int part = 0, bool loadInput = true)

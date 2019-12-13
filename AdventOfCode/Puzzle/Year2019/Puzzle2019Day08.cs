@@ -1,5 +1,5 @@
 ﻿using AoC.AdventOfCode.Puzzle.Base;
-using AoC.AdventOfCode.SpaceMap;
+using AoC.AdventOfCode.SpaceImage;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,38 +8,38 @@ using System.Threading.Tasks;
 
 namespace AoC.AdventOfCode.Puzzle.Year2019
 {
-    public class Day06 : PuzzleBase
+    public class Puzzle2019Day08 : PuzzleBase
     {
         #region Data
-        private OrbitMap orbitMap;
+        private Image image;
 
         #endregion
-
+        
         #region Constructor
-        public Day06() : base(2019, 6)
+        public Puzzle2019Day08() : base(2019, 8)
         { }
 
         #endregion
 
         #region Methods
-        protected override void DoPreparations()
-        {
-            orbitMap = new OrbitMap();
-            orbitMap.LoadOrbitalMap(PuzzleInput);
-        }
-
         protected override long SolvePuzzlePartOne()
         {
-            int res = orbitMap.CalcAllOrbits();
+            var layer = image.GetLayerFewestInt(0);
+            int res = layer.CountIntegers(1) * layer.CountIntegers(2);
             Console.WriteLine($"{res}");
             return res;
         }
 
         protected override long SolvePuzzlePartTwo()
         {
-            int res = orbitMap.CalcSantaDistance();
-            Console.WriteLine($"{res}");
-            return res;
+            var result = image.AggregateAllLayers();
+            Console.Write(result.ToString().Replace('0', ' ').Replace('1', '#'));
+            return 0;
+        }
+
+        protected override void DoPreparations()
+        {
+            image = new Image(25, 6, PuzzleInput);
         }
 
         #endregion

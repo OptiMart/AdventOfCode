@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AoC.AdventOfCode.Puzzle.Year2019
 {
-    public class Day04 : PuzzleBase
+    public class Puzzle2019Day04 : PuzzleBase
     {
         #region Data
         private int lbound = 0;
@@ -16,7 +16,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
         #endregion
         
         #region Constructor
-        public Day04() : base(2019, 4)
+        public Puzzle2019Day04() : base(2019, 4)
         { }
 
         #endregion
@@ -30,7 +30,8 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
 
         protected override void DoPreparations()
         {
-            LoadAdditionalParameter(new[] { "171309", "643603" });
+            var input = PuzzleInput.Split('-');
+            LoadAdditionalParameter(input);
         }
 
         protected override long SolvePuzzlePartOne()

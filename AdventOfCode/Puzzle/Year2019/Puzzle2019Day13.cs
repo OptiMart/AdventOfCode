@@ -8,10 +8,14 @@ using System.Threading.Tasks;
 
 namespace AoC.AdventOfCode.Puzzle.Year2019
 {
-    public class Day09 : PuzzleBase
+    public class Puzzle2019Day13 : PuzzleBase
     {
+        #region Data
+
+        #endregion
+
         #region Constructor
-        public Day09() : base(2019, 9)
+        public Puzzle2019Day13() : base(2019, 13)
         { }
 
         #endregion
@@ -19,28 +23,27 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
         #region Methods
         protected override long SolvePuzzlePartOne()
         {
-            var res = SolvePuzzleHelper(1);
+            Arcade cpu = new Arcade(PuzzleInput);
+            cpu.StartGame(true);
+            
+            var res = cpu.Points.Count(p => p.Tile == Tiles.Block);
             Console.WriteLine($"{res}");
             return res;
         }
 
         protected override long SolvePuzzlePartTwo()
         {
-            var res = SolvePuzzleHelper(2);
+            Arcade cpu = new Arcade(PuzzleInput);
+            cpu.Memory.SaveAtAddress(0, 2);
+            cpu.StartGame(true);
+            var res = cpu.Score;
             Console.WriteLine($"{res}");
             return res;
         }
 
-        private long SolvePuzzleHelper(int input)
+        private void DoStuff(LinkedList<long> input)
         {
-            Computer cpu = new Computer(PuzzleInput);
-            cpu.LoadDefaultInstructionSet();
-            cpu.InputStack.AddFirst(input);
 
-            cpu.StartExecution();
-
-            var res = cpu.OutputStack.Last();
-            return res;
         }
 
         #endregion
