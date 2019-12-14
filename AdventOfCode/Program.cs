@@ -20,6 +20,10 @@ namespace Aoc.AdventOfCode
             for (int i = 0; i < args.Length; i++)
                 int.TryParse(args[i], out start[i]);
 
+            start[0] = 2019;
+            //start[1] = 13;
+            //start[2] = 2;
+
             try
             {
                 SolveAllPuzzles(start[0], start[1], start[2]);

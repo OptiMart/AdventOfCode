@@ -62,8 +62,8 @@ namespace AoC.AdventOfCode.Common.IntCodeComputer
                 int move = ballX < paddX ? -1 : ballX > paddX ? 1 : 0;
 
                 InputStack.AddLast(move);
-                //if (display)
-                //    System.Threading.Thread.Sleep(1);
+                if (display)
+                    System.Threading.Thread.Sleep(0);
             } while (res !=  99);
 
             if (display)

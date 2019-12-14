@@ -10,11 +10,21 @@ namespace AoC.AdventOfCode.Puzzle.Base
 {
     public abstract class PuzzleBase : IPuzzleInput
     {
+        #region Data
+        private readonly string _inputFolder;
+
+        #endregion
+
         #region Constructor
         protected PuzzleBase() : this(0, 0)
         { }
 
-        protected PuzzleBase(int year, int day)
+        protected PuzzleBase(int year, int day) : this(year, day, string.Empty)
+        {
+            _inputFolder = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory);
+        }
+
+        protected PuzzleBase(int year, int day, string inputPath)
         {
             Year = year;
             Day = day;
@@ -51,7 +61,7 @@ namespace AoC.AdventOfCode.Puzzle.Base
 
         public string GetInputPath(int part = 0)
         {
-            return $@"D:\AdventofCode\{Year}\Input_Day{Day}" + (part == 0 ? "" : "_{part}") + ".txt";
+            return $@"D:\AdventofCode\{Year:0000}\Input_Day{Day:00}" + (part == 0 ? "" : $"_{part}") + ".txt";
         }
 
         public virtual long SolvePuzzle(int part = 0, bool loadInput = true)
@@ -70,7 +80,7 @@ namespace AoC.AdventOfCode.Puzzle.Base
             }
 
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"--- {Year} - Day {Day:D2} ---");
+            Console.WriteLine($"--- {Year} - Day {Day:00} ---");
             DoPreparations();
 
             if (part == 0 || part == 1)

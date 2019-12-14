@@ -41,11 +41,6 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
             return res;
         }
 
-        private void DoStuff(LinkedList<long> input)
-        {
-
-        }
-
         #endregion
     }
 }
