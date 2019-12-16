@@ -64,6 +64,11 @@
     <Compile Include="Common\IntCodeComputer\Instructions\OpOutput.cs" />
     <Compile Include="Common\IntCodeComputer\Instructions\OpTermination.cs" />
     <Compile Include="Common\IntCodeComputer\Computer.cs" />
+    <Compile Include="Common\RepairDroid\MapTile.cs" />
+    <Compile Include="Common\RepairDroid\MapDirection.cs" />
+    <Compile Include="Common\RepairDroid\MapLocation.cs" />
+    <Compile Include="Common\RepairDroid\MapNeighbor.cs" />
+    <Compile Include="Common\RepairDroid\RepairDroid.cs" />
     <Compile Include="Common\PaintingRobot\PaintArea.cs" />
     <Compile Include="Common\PaintingRobot\PaintSpot.cs" />
     <Compile Include="Common\PaintingRobot\Robot.cs" />
@@ -94,6 +99,8 @@
     <Compile Include="Puzzle\Year2019\Puzzle2019Day09.cs" />
     <Compile Include="Puzzle\Year2019\Puzzle2019Day08.cs" />
     <Compile Include="Puzzle\Year2019\Puzzle2019Day11.cs" />
+    <Compile Include="Puzzle\Year2019\Puzzle2019Day15.cs" />
+    <Compile Include="Puzzle\Year2019\Puzzle2019Day14.cs" />
     <Compile Include="Puzzle\Year2019\Puzzle2019Day13.cs" />
     <Compile Include="Puzzle\Year2019\Puzzle2019Day12.cs" />
   </ItemGroup>

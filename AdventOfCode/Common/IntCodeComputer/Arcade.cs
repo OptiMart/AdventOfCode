@@ -12,7 +12,7 @@ namespace AoC.AdventOfCode.Common.IntCodeComputer
         Empty = 0,
         Wall = 1,
         Block = 2,
-        HorPaddle = 3,
+        Paddle = 3,
         Ball = 4,
     }
 
@@ -54,7 +54,7 @@ namespace AoC.AdventOfCode.Common.IntCodeComputer
                 PrepareDisplay(OutputStack, display);
 
                 var ballX = Points.FirstOrDefault(p => p.Tile == Tiles.Ball)?.PointX;
-                var paddX = Points.FirstOrDefault(p => p.Tile == Tiles.HorPaddle)?.PointX;
+                var paddX = Points.FirstOrDefault(p => p.Tile == Tiles.Paddle)?.PointX;
 
                 if (ballX is null || paddX is null)
                     return;
@@ -120,7 +120,7 @@ namespace AoC.AdventOfCode.Common.IntCodeComputer
                     return '#';
                 case Tiles.Block:
                     return '.';
-                case Tiles.HorPaddle:
+                case Tiles.Paddle:
                     return '_';
                 case Tiles.Ball:
                     return 'o';

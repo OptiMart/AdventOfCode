@@ -145,6 +145,22 @@ namespace AoC.AdventOfCode.Common.IntCodeComputer
             return LastExitCode;
         }
 
+        public long? PopOutput()
+        {
+            if (OutputStack.Count == 0)
+                return null;
+
+            var result = OutputStack.First();
+            OutputStack.RemoveFirst();
+
+            return result;
+        }
+
+        public void PushInput(long input)
+        {
+            InputStack.AddLast(input);
+        }
+
         #endregion
     }
 }
