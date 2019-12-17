@@ -86,6 +86,8 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
             long cap = (long)Math.Pow(10, 12);
             long res = 0;
 
+            // Find way that every problem can be 100% solved
+
             if (!(rezFuel is null))
             {
                 res = 1;

@@ -36,6 +36,8 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
 
         protected override long SolvePuzzlePartTwo()
         {
+            // Find performant way
+
             //SolveExternal();
             int.TryParse(PuzzleInput.Substring(0, 7), out int offset);
             StringBuilder message = new StringBuilder();

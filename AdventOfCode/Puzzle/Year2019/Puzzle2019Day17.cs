@@ -33,6 +33,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
         {
             var opCode = cpu.StartExecution();
 
+            // Do the Calc in Code
             WriteOutput();
 
             int res = 0;
@@ -45,6 +46,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
             cpu.Initialize();
             cpu.Memory.SaveAtAddress(0, 2);
 
+            // Do the Pathfinding and compression in code
             StringBuilder input = new StringBuilder();
             input.Append("A,B,A,C,A,B,A,C,B,C");
             input.Append((char)10);
