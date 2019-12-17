@@ -20,6 +20,44 @@ namespace AoC.AdventOfCode.Common.RepairDroid
             return Math.Abs(CoordX - x) + Math.Abs(CoordY - y);
         }
 
+        public bool CheckOrAddIfNeighbor(MapLocation location)
+        {
+            if (Neighbors.Any(x => x.Location == location))
+                return true;
+
+            if (Math.Abs(location.CoordX - CoordX) + Math.Abs(location.CoordY - CoordY) == 1)
+            {
+                Neighbors.Add(new MapNeighbor()
+                {
+                    Location = location,
+                    Direction = GetRelativeDirection(location)
+                });
+                return location.CheckOrAddIfNeighbor(this);
+            }
+
+            return false;
+        }
+
+        private MapDirection GetRelativeDirection(MapLocation location)
+        {
+            if (location.CoordX == CoordX)
+            {
+                if (location.CoordY - CoordY == 1)
+                    return MapDirection.South;
+                else if (CoordY - location.CoordY == 1)
+                    return MapDirection.North;
+            }
+            else if (location.CoordY == CoordY)
+            {
+                if (location.CoordX - CoordX == 1)
+                    return MapDirection.East;
+                else if (CoordX - location.CoordX == 1)
+                    return MapDirection.West;
+            }
+
+            return MapDirection.None;
+        }
+
         public MapDirection NextUnknownNeighbor()
         {
             // Search for unknown Naighbor
@@ -48,7 +86,7 @@ namespace AoC.AdventOfCode.Common.RepairDroid
             {
                 if (item.Location.Tile == MapTile.Wall)
                     continue;
-                
+
                 var search = item.Location.NextSearchDirection();
 
                 if (search.Any())

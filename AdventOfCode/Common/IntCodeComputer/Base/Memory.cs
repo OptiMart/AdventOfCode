@@ -9,6 +9,7 @@ namespace AoC.AdventOfCode.Common.IntCodeComputer.Base
     public class Memory
     {
         #region Data
+        private long[] _initial;
         private long[] _content;
 
         #endregion
@@ -21,6 +22,12 @@ namespace AoC.AdventOfCode.Common.IntCodeComputer.Base
         public Memory(string input, char separator = ',')
         {
             LoadMemory(input, separator);
+        }
+
+        public Memory(long[] memory)
+        {
+            _initial = (long[])memory.Clone();
+            LoadInitialMemory();
         }
 
         #endregion
@@ -48,13 +55,20 @@ namespace AoC.AdventOfCode.Common.IntCodeComputer.Base
             var inArr = inString.Split(new[] { separator }, StringSplitOptions.RemoveEmptyEntries);
             int count = inArr.Length;
 
-            _content = new long[count];
+            _initial = new long[count];
 
             for (int i = 0; i < count; i++)
             {
-                if(!long.TryParse(inArr[i], out Content[i]))
+                if(!long.TryParse(inArr[i], out _initial[i]))
                     throw new InvalidOperationException($"Fehlerhafter input string an Position: {i}");
             }
+
+            LoadInitialMemory();
+        }
+
+        public void LoadInitialMemory()
+        {
+            _content = (long[])_initial.Clone();
         }
 
         public long GetFromAddress(int index)

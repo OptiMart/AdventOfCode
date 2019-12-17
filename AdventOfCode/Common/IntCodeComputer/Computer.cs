@@ -15,7 +15,8 @@ namespace AoC.AdventOfCode.Common.IntCodeComputer
         #region Data
         private readonly List<IInstructions> _instructions = new List<IInstructions>();
         private long _relBase = 0;
-        private InstructionPointer _pointer = new InstructionPointer();
+        private readonly InstructionPointer _pointer = new InstructionPointer();
+
         #endregion
 
         #region Constructor
@@ -43,6 +44,23 @@ namespace AoC.AdventOfCode.Common.IntCodeComputer
         #endregion
 
         #region Methods
+        public void Initialize()
+        {
+            if (Memory is null)
+                Memory = new Memory();
+
+            Memory.LoadInitialMemory();
+
+            _relBase = 0;
+
+            _pointer.Position = 0;
+
+            InputStack.Clear();
+            OutputStack.Clear();
+
+            LastExitCode = -1;
+        }
+
         public void LoadMemory(string memory, char separator = ',')
         {
             Memory.LoadMemory(memory, separator);
@@ -54,7 +72,7 @@ namespace AoC.AdventOfCode.Common.IntCodeComputer
             AddToInputStack(stack, separator);
         }
 
-        public void InitOpHelper()
+        private void InitOpHelper()
         {
             OpHelper = new OpHelper()
             {
@@ -110,8 +128,6 @@ namespace AoC.AdventOfCode.Common.IntCodeComputer
             }
         }
 
-        private List<int> operations = new List<int>();
-
         public int StartExecution()
         {
             try
@@ -123,8 +139,6 @@ namespace AoC.AdventOfCode.Common.IntCodeComputer
 
                     if (op is null)
                         throw new InvalidOperationException($"Ungültige Operation an Position: {Position}");
-
-                    operations.Add(op.OPCode);
 
                     if (op.OPCode == 3 && InputStack.Count <= 0)
                     {

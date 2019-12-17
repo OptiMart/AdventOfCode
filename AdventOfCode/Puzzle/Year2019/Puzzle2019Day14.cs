@@ -10,7 +10,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
     public class Puzzle2019Day14 : PuzzleBase
     {
         #region Data
-        private List<Reaction> rezipies;
+        private List<Reaction> recipes;
 
         #endregion
 
@@ -23,7 +23,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
         #region Methods
         protected override void DoPreparations()
         {
-            rezipies = new List<Reaction>();
+            recipes = new List<Reaction>();
 
             foreach (var item in PuzzleInput.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries))
             {
@@ -55,12 +55,12 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
                 return null;
 
             int.TryParse(arr[0], out quantity);
-            var result = rezipies.FirstOrDefault(x => x.Name == arr[1]);
+            var result = recipes.FirstOrDefault(x => x.Name == arr[1]);
 
             if (result is null)
             {
                 result = new Reaction(arr[1]);
-                rezipies.Add(result);
+                recipes.Add(result);
             }
 
             return result;
@@ -68,7 +68,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
 
         protected override long SolvePuzzlePartOne()
         {
-            var rezFuel = rezipies.FirstOrDefault(x => x.Name == "FUEL");
+            var rezFuel = recipes.FirstOrDefault(x => x.Name == "FUEL");
 
             long res = 0;
 
@@ -81,7 +81,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
 
         protected override long SolvePuzzlePartTwo()
         {
-            var rezFuel = rezipies.FirstOrDefault(x => x.Name == "FUEL");
+            var rezFuel = recipes.FirstOrDefault(x => x.Name == "FUEL");
 
             long cap = (long)Math.Pow(10, 12);
             long res = 0;
@@ -109,7 +109,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
         #endregion
         private void ClearRemaining()
         {
-            rezipies.ForEach(x => x.Remaining = 0);
+            recipes.ForEach(x => x.Remaining = 0);
         }
     }
 

@@ -9,6 +9,13 @@ namespace AoC.AdventOfCode.Common.RepairDroid
 {
     public class RepairDroid : Computer
     {
+        private int xOffset = 21;
+        private int yOffset = 21;
+        private int minX;
+        private int maxX;
+        private int minY;
+        private int maxY;
+
         #region Constructor
         public RepairDroid(string program) : base(program)
         {
@@ -28,26 +35,38 @@ namespace AoC.AdventOfCode.Common.RepairDroid
         {
             MapPosition = new MapLocation()
             {
-                CoordX = 0,
-                CoordY = 0,
+                CoordX = 21,
+                CoordY = 21,
                 Tile = MapTile.Start,
             };
-            
+
             Map = new List<MapLocation>()
             {
                 MapPosition
             };
+
+
         }
 
-        public void CheckMap()
+        public void CheckMap(bool visual = true)
         {
             InitializeMap();
+            long totalMoves = 0;
 
             bool allChecked = false;
+
+            if (visual)
+                Console.Clear();
 
             do
             {
                 var target = FindUnkownSpot();
+
+                if (visual)
+                {
+                    PaintInfo(target, true);
+                    System.Threading.Thread.Sleep(20);
+                }
 
                 Map.ForEach(x => x.PathFinding = int.MaxValue);
                 MapPosition.PathFinding = 0;
@@ -57,13 +76,16 @@ namespace AoC.AdventOfCode.Common.RepairDroid
 
                 foreach (var item in test)
                 {
-                    MoveDirection(item);
+                    totalMoves++;
+                    MoveDirection(item, visual);
+                    System.Threading.Thread.Sleep(0);
                 }
 
                 if (!test.Any())
                     allChecked = true;
 
             } while (!allChecked);
+            totalMoves++;
         }
 
         public int FindShortestWay()
@@ -74,7 +96,7 @@ namespace AoC.AdventOfCode.Common.RepairDroid
             Map.ForEach(x => x.PathFinding = int.MaxValue);
             start.PathFinding = 0;
             var way = start.FindWayToDestination(target, false);
-            return way.Count();
+            return way.Count;
 
         }
 
@@ -115,23 +137,35 @@ namespace AoC.AdventOfCode.Common.RepairDroid
         private MapLocation FindUnkownSpot()
         {
             int minDistance = int.MaxValue;
+            int minMoves = int.MaxValue;
             MapLocation result = null;
 
             foreach (var item in Map.Where(x => x.Tile != MapTile.Wall && x.NextUnknownNeighbor() != MapDirection.None))
             {
-                int test = item.GetManhattanDistance(MapPosition.CoordX, MapPosition.CoordY);
+                int manhDist = item.GetManhattanDistance(MapPosition.CoordX, MapPosition.CoordY);
 
-                if (test < minDistance)
+                if (manhDist < minDistance)
                 {
-                    minDistance = test;
-                    result = item;
+                    Map.ForEach(x => x.PathFinding = int.MaxValue);
+                    item.PathFinding = 0;
+                    int moves = item.FindWayToDestination(MapPosition, false).Count;
+
+                    if (moves == 0)
+                        return item;
+
+                    if (moves < minMoves)
+                    {
+                        minMoves = moves;
+                        minDistance = manhDist;
+                        result = item;
+                    }
                 }
             }
 
             return result;
         }
 
-        private void MoveDirection(MapDirection direction)
+        private void MoveDirection(MapDirection direction, bool visual = false)
         {
             PushInput((int)direction);
             var opCode = StartExecution();
@@ -140,11 +174,11 @@ namespace AoC.AdventOfCode.Common.RepairDroid
             {
                 var moveResult = PopOutput();
                 if (!(moveResult is null))
-                    AnalyseMoveResult(direction, (long)moveResult);
+                    AnalyseMoveResult(direction, (long)moveResult, visual);
             }
         }
 
-        private void AnalyseMoveResult(MapDirection direction, long result)
+        private void AnalyseMoveResult(MapDirection direction, long result, bool visual = false)
         {
             GetDestinationCoords(direction, out int newX, out int newY);
             var wellKnown = MapPosition.Neighbors.FirstOrDefault(x => x.Direction == direction);
@@ -165,23 +199,45 @@ namespace AoC.AdventOfCode.Common.RepairDroid
                     };
                     Map.Add(nextHop);
                 }
-                MapPosition.Neighbors.Add(new MapNeighbor()
-                {
-                    Direction = direction,
-                    Location = nextHop,
-                });
-                nextHop.Neighbors.Add(new MapNeighbor()
-                {
-                    Direction = GetOppisingDirection(direction),
-                    Location = MapPosition,
-                });
+                //MapPosition.Neighbors.Add(new MapNeighbor()
+                //{
+                //    Direction = direction,
+                //    Location = nextHop,
+                //});
+                //nextHop.Neighbors.Add(new MapNeighbor()
+                //{
+                //    Direction = GetOppisingDirection(direction),
+                //    Location = MapPosition,
+                //});
+                UpdateNeighbors(nextHop);
             }
             else
             {
             }
 
             if (nextHop.Tile != MapTile.Wall)
+            {
+                var oldSpot = MapPosition;
                 MapPosition = nextHop;
+
+                if (visual)
+                {
+                    PaintInfo(oldSpot);
+                    PaintInfo(MapPosition);
+                }
+            }
+            else if (visual)
+            {
+                PaintInfo(nextHop);
+            }
+        }
+
+        private void UpdateNeighbors(MapLocation newLocation)
+        {
+            foreach (var item in Map.Where(m => Math.Abs(m.CoordX - newLocation.CoordX) == 1 || Math.Abs(m.CoordY - newLocation.CoordY) == 1))
+            {
+                _ = item.CheckOrAddIfNeighbor(newLocation);
+            }
         }
 
         private void GetDestinationCoords(MapDirection direction, out int x, out int y)
@@ -212,6 +268,54 @@ namespace AoC.AdventOfCode.Common.RepairDroid
 
             return 0;
         }
+
+        private void PaintInfo(MapLocation location, bool isTarget = false)
+        {
+            Console.SetCursorPosition(location.CoordX, location.CoordY);
+
+            if (isTarget)
+            {
+                Console.BackgroundColor = ConsoleColor.Green;
+                Console.Write(GetMapChar(location.Tile));
+                Console.SetCursorPosition(location.CoordX, location.CoordY);
+            }
+            else
+            {
+                if (location.Tile == MapTile.Wall)
+                    Console.BackgroundColor = ConsoleColor.White;
+                else
+                    Console.BackgroundColor = ConsoleColor.Black;
+
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.Write(GetMapChar(location.Tile));
+                Console.SetCursorPosition(location.CoordX, location.CoordY);
+            }
+
+            if (MapPosition == location)
+            {
+
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.Write('D');
+            }
+
+            Console.SetCursorPosition(0, 0);
+            //Console.BackgroundColor = ConsoleColor.Black;
+        }
+
+        private char GetMapChar(MapTile mapTile)
+        {
+            if (mapTile == MapTile.Start)
+                return 'S';
+            else if (mapTile == MapTile.OxygenSystem)
+                return 'O';
+            else if (mapTile == MapTile.Empty)
+                return '.';
+            else if (mapTile == MapTile.Wall)
+                return '#';
+
+            return ' ';
+        }
+
         #endregion
     }
 }

@@ -43,6 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Base\BasePoint4D.cs" />
+    <Compile Include="Common\Base\BasePoint3D.cs" />
+    <Compile Include="Common\Base\BasePoint2D.cs" />
+    <Compile Include="Common\Base\BasePoint1D.cs" />
+    <Compile Include="Common\Base\UniversalPoint.cs" />
     <Compile Include="Common\Geometry\EnumOrientation.cs" />
     <Compile Include="Common\Geometry\Line.cs" />
     <Compile Include="Common\Geometry\Point.cs" />
@@ -99,6 +104,8 @@
     <Compile Include="Puzzle\Year2019\Puzzle2019Day09.cs" />
     <Compile Include="Puzzle\Year2019\Puzzle2019Day08.cs" />
     <Compile Include="Puzzle\Year2019\Puzzle2019Day11.cs" />
+    <Compile Include="Puzzle\Year2019\Puzzle2019Day17.cs" />
+    <Compile Include="Puzzle\Year2019\Puzzle2019Day16.cs" />
     <Compile Include="Puzzle\Year2019\Puzzle2019Day15.cs" />
     <Compile Include="Puzzle\Year2019\Puzzle2019Day14.cs" />
     <Compile Include="Puzzle\Year2019\Puzzle2019Day13.cs" />

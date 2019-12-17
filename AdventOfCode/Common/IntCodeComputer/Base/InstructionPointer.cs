@@ -30,9 +30,9 @@ namespace AoC.AdventOfCode.Common.IntCodeComputer.Base
             get => _position;
             set
             {
-                
                 if (value < 0)
                     throw new InvalidOperationException("Instructionpointer kann nicht kleiner als 0 sein.");
+                
                 _position = value;
             }
         }
