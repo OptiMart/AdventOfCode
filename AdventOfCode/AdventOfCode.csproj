@@ -89,6 +89,7 @@
     <Compile Include="Common\SpaceMap\SpaceVector.cs" />
     <Compile Include="Puzzle\Base\IPuzzleInput.cs" />
     <Compile Include="Puzzle\Base\PuzzleBase.cs" />
+    <Compile Include="Puzzle\Base\PuzzleHelper.cs" />
     <Compile Include="Puzzle\Year2018\Puzzle2018Day25.cs" />
     <Compile Include="Puzzle\Year2018\Puzzle2018Day01.cs" />
     <Compile Include="Puzzle\Year2019\Puzzle2019Day01.cs" />

@@ -75,7 +75,6 @@
     <Compile Include="Results\Year2019\ResultTestYear2019Day05.cs" />
     <Compile Include="Results\Year2019\ResultTestYear2019Day03.cs" />
     <Compile Include="Results\Year2019\ResultTestYear2019Day01.cs" />
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
