@@ -8,8 +8,6 @@ namespace AoC.AdventOfCode.Puzzle.Base
 {
     public interface IPuzzleInput
     {
-        int Year { get; }
-        int Day { get; }
         void LoadPuzzleInput(string input);
         void LoadPuzzleInputFromFile(string input);
         void LoadAdditionalParameter(string[] args);

@@ -10,8 +10,6 @@ namespace AoC.AdventOfCode.Puzzle.Year2018
     public class Puzzle2018Day01 : PuzzleBase
     {
         #region Constructor
-        public Puzzle2018Day01() : base(2018, 1)
-        { }
 
         #endregion
 

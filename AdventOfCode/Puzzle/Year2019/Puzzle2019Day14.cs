@@ -14,12 +14,6 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
 
         #endregion
 
-        #region Constructor
-        public Puzzle2019Day14() : base(2019, 14)
-        { }
-
-        #endregion
-
         #region Methods
         protected override void DoPreparations()
         {

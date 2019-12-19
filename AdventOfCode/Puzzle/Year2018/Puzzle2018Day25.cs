@@ -12,12 +12,10 @@ namespace AoC.AdventOfCode.Puzzle.Year2018
     {
         #region Data
         private List<Point4D> map = new List<Point4D>();
-        
+
         #endregion
 
         #region Constructor
-        public Puzzle2018Day25() : base(2018, 25)
-        { }
 
         #endregion
 

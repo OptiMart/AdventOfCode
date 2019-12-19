@@ -14,12 +14,6 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
 
         #endregion
 
-        #region Constructor
-        public Puzzle2019Day13() : base(2019, 13)
-        { }
-
-        #endregion
-
         #region Methods
         protected override long SolvePuzzlePartOne()
         {

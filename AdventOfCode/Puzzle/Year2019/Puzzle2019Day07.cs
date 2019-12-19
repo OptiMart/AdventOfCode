@@ -16,12 +16,6 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
 
         #endregion
 
-        #region Constructor
-        public Puzzle2019Day07() : base(2019, 7)
-        { }
-
-        #endregion
-
         #region Methods
         public override void LoadAdditionalParameter(string[] args)
         {

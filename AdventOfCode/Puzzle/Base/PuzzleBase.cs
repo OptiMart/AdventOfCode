@@ -1,9 +1,12 @@
-﻿using System;
+﻿using AoC.AdventOfCode.Common;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace AoC.AdventOfCode.Puzzle.Base
@@ -16,18 +19,18 @@ namespace AoC.AdventOfCode.Puzzle.Base
         #endregion
 
         #region Constructor
-        protected PuzzleBase() : this(0, 0)
+        protected PuzzleBase() : this(string.Empty)
         { }
 
-        protected PuzzleBase(int year, int day) : this(year, day, string.Empty)
+        protected PuzzleBase(string inputPath)
         {
-            _inputFolder = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory);
-        }
+            if (string.IsNullOrEmpty(inputPath))
+                _inputFolder = Path.Combine(Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory), "Input");
+            else
+                _inputFolder = inputPath;
 
-        protected PuzzleBase(int year, int day, string inputPath)
-        {
-            Year = year;
-            Day = day;
+            Year = GetYear();
+            Day = GetDay();
         }
 
         #endregion
@@ -61,7 +64,7 @@ namespace AoC.AdventOfCode.Puzzle.Base
 
         public string GetInputPath(int part = 0)
         {
-            return $@"D:\AdventofCode\{Year:0000}\Input_Day{Day:00}" + (part == 0 ? "" : $"_{part}") + ".txt";
+            return Path.Combine(_inputFolder, $@"{Year:0000}\Input_Day{Day:00}" + (part == 0 ? "" : $"_{part}") + ".txt");
         }
 
         public virtual long SolvePuzzle(int part = 0, bool loadInput = true)
@@ -133,6 +136,69 @@ namespace AoC.AdventOfCode.Puzzle.Base
         {
             Console.WriteLine($"tba");
             return 0;
+        }
+
+        public int GetYear()
+        {
+            return GetYear(this.GetType().Name);
+        }
+
+        public int GetDay()
+        {
+            return GetDay(this.GetType().Name);
+        }
+
+        private static int GetValueFromName(string name, string key)
+        {
+            string result = string.Empty;
+            
+            int start = name.IndexOf(key) + key.Length;
+            result = new string(name.Substring(start).TakeWhile(c => char.IsDigit(c)).ToArray());
+
+            if (int.TryParse(result,out int value))
+                return value;
+
+            return -1;
+        }
+
+        public static int GetYear(string name)
+        {
+            string key = "Puzzle";
+            return GetValueFromName(name, key);
+        }
+
+        public static int GetDay(string name)
+        {
+            string key = "Day";
+            return GetValueFromName(name, key);
+        }
+
+        public static int GetYear(Type type)
+        {
+            return GetYear(type.Name);
+        }
+
+        public static int GetDay(Type type)
+        {
+            return GetDay(type.Name);
+        }
+
+        public static List<PuzzleBase> GetPuzzles(int year = 0, int day = 0)
+        {
+            List<PuzzleBase> puzzles = new List<PuzzleBase>();
+
+            foreach (var item in ReflectiveEnumerator.FindDerivedTypes(Assembly.GetExecutingAssembly(), typeof(PuzzleBase)))
+            {
+                if ((year == 0 || year == GetYear(item)) && (day == 0 || day == GetDay(item)))
+                    puzzles.Add((PuzzleBase)Activator.CreateInstance(item));
+            }
+
+            return puzzles;
+        }
+
+        public static PuzzleBase GetPuzzle(int year, int day)
+        {
+            return GetPuzzles(year, day).OrderBy(x => x.Year * 100 + x.Day).FirstOrDefault();
         }
 
         #endregion

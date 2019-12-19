@@ -13,12 +13,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
     {
         #region Data
         private AsteroidMap map;
-        #endregion
-
-        #region Constructor
-        public Puzzle2019Day10() : base(2019, 10)
-        { }
-
+        
         #endregion
 
         #region Methods

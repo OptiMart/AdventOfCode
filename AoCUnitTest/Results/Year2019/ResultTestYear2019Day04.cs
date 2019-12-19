@@ -14,7 +14,7 @@ namespace AoCUnitTest.Results
     {
         public ResultTestYear2019Day04() : base()
         {
-            Day = new Puzzle2019Day04();
+            Puzzle = new Puzzle2019Day04();
             string _filePath = Path.GetDirectoryName(System.AppDomain.CurrentDomain.BaseDirectory);
             Input = System.IO.File.ReadAllText(Path.Combine(_filePath + "\\Source\\Inputs\\2019\\Input_Day4.txt"));
         }
@@ -28,8 +28,8 @@ namespace AoCUnitTest.Results
             int expected = 1625;
 
             // Act
-            Day.LoadPuzzleInput(Input);
-            var result = Day.SolvePuzzle(Part, false);
+            Puzzle.LoadPuzzleInput(Input);
+            var result = Puzzle.SolvePuzzle(Part, false);
 
             // Assert
             Assert.AreEqual(expected, result);
@@ -44,8 +44,8 @@ namespace AoCUnitTest.Results
             int expected = 1111;
 
             // Act
-            Day.LoadPuzzleInput(Input);
-            var result = Day.SolvePuzzle(Part, false);
+            Puzzle.LoadPuzzleInput(Input);
+            var result = Puzzle.SolvePuzzle(Part, false);
 
             // Assert
             Assert.AreEqual(expected, result);

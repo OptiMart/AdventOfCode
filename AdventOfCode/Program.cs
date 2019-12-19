@@ -21,8 +21,8 @@ namespace Aoc.AdventOfCode
                 int.TryParse(args[i], out start[i]);
 
             start[0] = 2019;
-            start[1] = 17;
-            start[2] = 2;
+            start[1] = 1;
+            start[2] = 0;
 
             try
             {
@@ -38,12 +38,9 @@ namespace Aoc.AdventOfCode
 
         private static void SolveAllPuzzles(int year = 0, int day = 0, int part = 0)
         {
-            List<PuzzleBase> puzzles = new List<PuzzleBase>();
+            var puzzles = PuzzleBase.GetPuzzles(year, day);
 
-            foreach (var item in ReflectiveEnumerator.FindDerivedTypes(Assembly.GetExecutingAssembly(), typeof(PuzzleBase)))
-                puzzles.Add((PuzzleBase)Activator.CreateInstance(item));
-
-            foreach (var puzzle in puzzles.Where(x => (year == 0 || x.Year == year) && (day == 0 || x.Day == day)).OrderBy(x => x.Year * 100 + x.Day))
+            foreach (var puzzle in puzzles.OrderBy(x => x.Year * 100 + x.Day))
                 puzzle.SolvePuzzle(part);
 
         }
