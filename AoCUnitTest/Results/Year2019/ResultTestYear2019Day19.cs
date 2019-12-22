@@ -23,7 +23,7 @@ namespace AoCUnitTest.Results
         {
             // Arrange
             Part = 1;
-            int expected = 3256114;
+            int expected = 176;
 
             // Act
             Puzzle.LoadPuzzleInput(Input);
