@@ -14,7 +14,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
     public class Puzzle2019Day21 : PuzzleBase
     {
         #region Methods
-        protected override long SolvePuzzlePartOne()
+        protected override string SolvePuzzlePartOne()
         {
             Computer cpu = new Computer(PuzzleInput);
             cpu.LoadDefaultInstructionSet();
@@ -65,10 +65,10 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
             }
 
             Console.WriteLine($"{res}");
-            return res;
+            return res.ToString();
         }
 
-        protected override long SolvePuzzlePartTwo()
+        protected override string SolvePuzzlePartTwo()
         {
             Computer cpu = new Computer(PuzzleInput);
             cpu.LoadDefaultInstructionSet();
@@ -119,7 +119,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
             }
 
             Console.WriteLine($"{res}");
-            return res;
+            return res.ToString();
         }
 
         #endregion

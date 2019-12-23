@@ -12,7 +12,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
     public class Puzzle2019Day22 : PuzzleBase
     {
         #region Methods
-        protected override long SolvePuzzlePartOne()
+        protected override string SolvePuzzlePartOne()
         {
             List<long> deck = GetNewDeck(10007);
 
@@ -23,10 +23,10 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
 
             long res = deck.IndexOf(2019);
             Console.WriteLine($"{res}");
-            return res;
+            return res.ToString();
         }
 
-        protected override long SolvePuzzlePartTwo()
+        protected override string SolvePuzzlePartTwo()
         {
             List<long> deck = GetNewDeck(119315717514047);
 
@@ -37,7 +37,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
 
             long res = 0;
             Console.WriteLine($"{res}");
-            return res;
+            return res.ToString();
         }
 
         private List<long> GetNewDeck(long size)

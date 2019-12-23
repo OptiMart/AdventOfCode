@@ -10,7 +10,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
     public class Puzzle2019Day01 : PuzzleBase
     {
         #region Methods
-        protected override long SolvePuzzlePartOne()
+        protected override string SolvePuzzlePartOne()
         {
             long fuel = 0;
 
@@ -21,10 +21,10 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
             }
 
             Console.WriteLine($"{fuel}");
-            return fuel;
+            return fuel.ToString();
         }
 
-        protected override long SolvePuzzlePartTwo()
+        protected override string SolvePuzzlePartTwo()
         {
             long fuel = 0;
 
@@ -35,7 +35,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
             }
 
             Console.WriteLine($"{fuel}");
-            return fuel;
+            return fuel.ToString();
         }
 
         private int CalcFuel(int mass)

@@ -31,14 +31,14 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
             FindStartEnd();
         }
 
-        protected override long SolvePuzzlePartOne()
+        protected override string SolvePuzzlePartOne()
         {
             int res = GetTriangle(endPoint) - GetTriangle(startPoint) + 1;
             Console.WriteLine($"{res}");
-            return res;
+            return res.ToString();
         }
 
-        protected override long SolvePuzzlePartTwo()
+        protected override string SolvePuzzlePartTwo()
         {
             int target = 100;
             int start = (int)((target / (kStart - kEnd)) * (kEnd > 1 ? kEnd : 1));
@@ -68,7 +68,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
 
             int res = x * 10000 + y - 99;
             Console.WriteLine($"{res}");
-            return res;
+            return res.ToString();
         }
 
         private bool TargetFits(int x)

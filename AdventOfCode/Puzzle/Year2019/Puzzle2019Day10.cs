@@ -22,20 +22,20 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
             map = new AsteroidMap();
         }
 
-        protected override long SolvePuzzlePartOne()
+        protected override string SolvePuzzlePartOne()
         {
             map.LoadAsteroids(PuzzleInput);
             var res = map.GetMaxDetectionValue();
             Console.WriteLine($"{res}");
-            return res;
+            return res.ToString();
         }
 
-        protected override long SolvePuzzlePartTwo()
+        protected override string SolvePuzzlePartTwo()
         {
             var ast = map.GetBetAsteroid();
             var res = ast.PosX * 100 + ast.PosY;
             Console.WriteLine($"{res}");
-            return res;
+            return res.ToString();
         }
 
         #endregion

@@ -60,7 +60,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
             return result;
         }
 
-        protected override long SolvePuzzlePartOne()
+        protected override string SolvePuzzlePartOne()
         {
             var rezFuel = recipes.FirstOrDefault(x => x.Name == "FUEL");
 
@@ -70,10 +70,10 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
                 res = rezFuel.GetNeededReagent(1, "ORE");
             
             Console.WriteLine($"{res}");
-            return res;
+            return res.ToString();
         }
 
-        protected override long SolvePuzzlePartTwo()
+        protected override string SolvePuzzlePartTwo()
         {
             var rezFuel = recipes.FirstOrDefault(x => x.Name == "FUEL");
 
@@ -99,7 +99,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
             }
 
             Console.WriteLine($"{res}");
-            return res;
+            return res.ToString();
         }
 
         #endregion

@@ -20,15 +20,15 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
         {
         }
 
-        protected override long SolvePuzzlePartOne()
+        protected override string SolvePuzzlePartOne()
         {
             var output = GetFFT(PuzzleInput, 100);
             int.TryParse(output.Substring(0, 8), out int res);
             Console.WriteLine($"{res}");
-            return res;
+            return res.ToString();
         }
 
-        protected override long SolvePuzzlePartTwo()
+        protected override string SolvePuzzlePartTwo()
         {
             // Find performant way
 
@@ -55,7 +55,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
             //var output = GetFFT(message, 100);
             int res = 0;
             Console.WriteLine($"{res}");
-            return res;
+            return res.ToString();
         }
 
         private string GetFFT(string input, int phases)

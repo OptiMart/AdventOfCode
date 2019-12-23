@@ -15,26 +15,26 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
         #endregion
 
         #region Methods
-        protected override long SolvePuzzlePartOne()
+        protected override string SolvePuzzlePartOne()
         {
             robot = new Robot();
             robot.LoadProgram(PuzzleInput);
 
             robot.StartPainting();
             var res = robot.PaintArea.CountMarkedSpots();
-            Console.WriteLine($"{res}");
-            return res;
+            //Console.WriteLine($"{res}");
+            return res.ToString();
         }
 
-        protected override long SolvePuzzlePartTwo()
+        protected override string SolvePuzzlePartTwo()
         {
             robot = new Robot();
             robot.LoadProgram(PuzzleInput);
 
             robot.StartPainting(1);
             var res = robot.PaintArea.ToString().Replace('.', ' ');
-            Console.WriteLine($"{res}");
-            return 0;
+            //Console.WriteLine($"{res}");
+            return res;
         }
 
         #endregion

@@ -22,18 +22,18 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
             droid.CheckMap();
         }
 
-        protected override long SolvePuzzlePartOne()
+        protected override string SolvePuzzlePartOne()
         {
             int res = droid.FindShortestWay();            
             Console.WriteLine($"{res}");
-            return res;
+            return res.ToString();
         }
 
-        protected override long SolvePuzzlePartTwo()
+        protected override string SolvePuzzlePartTwo()
         {
             int res = droid.GetFarthestOxygenDistance();
             Console.WriteLine($"{res}");
-            return res;
+            return res.ToString();
         }
 
         #endregion

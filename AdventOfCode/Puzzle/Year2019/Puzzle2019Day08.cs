@@ -16,19 +16,19 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
         #endregion
         
         #region Methods
-        protected override long SolvePuzzlePartOne()
+        protected override string SolvePuzzlePartOne()
         {
             var layer = image.GetLayerFewestInt(0);
             int res = layer.CountIntegers(1) * layer.CountIntegers(2);
-            Console.WriteLine($"{res}");
-            return res;
+            //Console.WriteLine($"{res}");
+            return res.ToString();
         }
 
-        protected override long SolvePuzzlePartTwo()
+        protected override string SolvePuzzlePartTwo()
         {
-            var result = image.AggregateAllLayers();
-            Console.Write(result.ToString().Replace('0', ' ').Replace('1', '#'));
-            return 0;
+            var res = image.AggregateAllLayers();
+            //Console.Write(res.ToString().Replace('0', ' ').Replace('1', '#'));
+            return res.ToString();
         }
 
         protected override void DoPreparations()

@@ -11,18 +11,18 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
     public class Puzzle2019Day20 : PuzzleBase
     {
         #region Methods
-        protected override long SolvePuzzlePartOne()
+        protected override string SolvePuzzlePartOne()
         {
             int res = 0;
             Console.WriteLine($"{res}");
-            return res;
+            return res.ToString();
         }
 
-        protected override long SolvePuzzlePartTwo()
+        protected override string SolvePuzzlePartTwo()
         {
             int res = 0;
             Console.WriteLine($"{res}");
-            return res;
+            return res.ToString();
         }
 
         #endregion

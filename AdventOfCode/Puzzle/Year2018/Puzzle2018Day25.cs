@@ -20,7 +20,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2018
         #endregion
 
         #region Methods
-        protected override long SolvePuzzlePartOne()
+        protected override string SolvePuzzlePartOne()
         {
             long freq = 0;
 
@@ -43,10 +43,10 @@ namespace AoC.AdventOfCode.Puzzle.Year2018
             }
 
             Console.WriteLine($"{res}");
-            return res;
+            return res.ToString();
         }
 
-        protected override long SolvePuzzlePartTwo()
+        protected override string SolvePuzzlePartTwo()
         {
             List<int> freqs = new List<int>();
             int freq = 0;
@@ -67,7 +67,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2018
             } while (!found);
             
             Console.WriteLine($"{freq}");
-            return freq;
+            return freq.ToString();
         }
 
         #endregion

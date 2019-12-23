@@ -12,14 +12,14 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
     public class Puzzle2019Day02 : PuzzleBase
     {
         #region Methods
-        protected override long SolvePuzzlePartOne()
+        protected override string SolvePuzzlePartOne()
         {
             long res = GetCpuResult(12, 2);
             Console.WriteLine($"{res}");
-            return res;
+            return res.ToString();
         }
 
-        protected override long SolvePuzzlePartTwo()
+        protected override string SolvePuzzlePartTwo()
         {
             int target = 19690720;
             int pos1 = 0;
@@ -41,7 +41,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
 
             int res = pos1 * 100 + pos2;
             Console.WriteLine($"{res}");
-            return res;
+            return res.ToString();
         }
 
         private long GetCpuResult(int pos1, int pos2)

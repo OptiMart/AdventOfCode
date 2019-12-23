@@ -33,20 +33,20 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
             }
         }
 
-        protected override long SolvePuzzlePartOne()
+        protected override string SolvePuzzlePartOne()
         {
             LoadAdditionalParameter(new[] { "0,1,2,3,4" });
             var res = GetMaxThrusterSignal();
             Console.WriteLine($"{res}");
-            return res;
+            return res.ToString();
         }
 
-        protected override long SolvePuzzlePartTwo()
+        protected override string SolvePuzzlePartTwo()
         {
             LoadAdditionalParameter(new[] { "5,6,7,8,9" });
             var res = GetMaxThrusterSignal();
             Console.WriteLine($"{res}");
-            return res;
+            return res.ToString();
         }
 
         private long GetMaxThrusterSignal()

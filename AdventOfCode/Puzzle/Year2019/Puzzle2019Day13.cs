@@ -15,24 +15,24 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
         #endregion
 
         #region Methods
-        protected override long SolvePuzzlePartOne()
+        protected override string SolvePuzzlePartOne()
         {
             Arcade cpu = new Arcade(PuzzleInput);
             cpu.StartGame(true);
             
             var res = cpu.Points.Count(p => p.Tile == Tiles.Block);
             Console.WriteLine($"{res}");
-            return res;
+            return res.ToString();
         }
 
-        protected override long SolvePuzzlePartTwo()
+        protected override string SolvePuzzlePartTwo()
         {
             Arcade cpu = new Arcade(PuzzleInput);
             cpu.Memory.SaveAtAddress(0, 2);
             cpu.StartGame(true);
             var res = cpu.Score;
             Console.WriteLine($"{res}");
-            return res;
+            return res.ToString();
         }
 
         #endregion

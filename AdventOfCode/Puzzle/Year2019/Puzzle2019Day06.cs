@@ -22,18 +22,18 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
             orbitMap.LoadOrbitalMap(PuzzleInput);
         }
 
-        protected override long SolvePuzzlePartOne()
+        protected override string SolvePuzzlePartOne()
         {
             int res = orbitMap.CalcAllOrbits();
-            Console.WriteLine($"{res}");
-            return res;
+            //Console.WriteLine($"{res}");
+            return res.ToString();
         }
 
-        protected override long SolvePuzzlePartTwo()
+        protected override string SolvePuzzlePartTwo()
         {
             int res = orbitMap.CalcSantaDistance();
-            Console.WriteLine($"{res}");
-            return res;
+            //Console.WriteLine($"{res}");
+            return res.ToString();
         }
 
         #endregion

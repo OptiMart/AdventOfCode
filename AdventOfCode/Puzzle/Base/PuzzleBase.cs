@@ -67,9 +67,9 @@ namespace AoC.AdventOfCode.Puzzle.Base
             return Path.Combine(_inputFolder, $@"{Year:0000}\Input_Day{Day:00}" + (part == 0 ? "" : $"_{part}") + ".txt");
         }
 
-        public virtual long SolvePuzzle(int part = 0, bool loadInput = true)
+        public virtual string SolvePuzzle(int part = 0, bool loadInput = true)
         {
-            long[] result = new long[] { 0, 0, 0 };
+            StringBuilder result = new StringBuilder();
             Stopwatch watch = new Stopwatch();
 
             try
@@ -94,7 +94,7 @@ namespace AoC.AdventOfCode.Puzzle.Base
 
                 Console.ForegroundColor = ConsoleColor.White;
                 watch.Start();
-                result[1] = SolvePuzzlePartOne();
+                result.AppendLine(SolvePuzzlePartOne());
                 watch.Stop();
 
                 Console.ForegroundColor = ConsoleColor.Cyan;
@@ -110,7 +110,7 @@ namespace AoC.AdventOfCode.Puzzle.Base
 
                 Console.ForegroundColor = ConsoleColor.White;
                 watch.Restart();
-                result[2] = SolvePuzzlePartTwo();
+                result.AppendLine(SolvePuzzlePartTwo());
                 watch.Stop();
 
                 Console.ForegroundColor = ConsoleColor.Cyan;
@@ -120,22 +120,24 @@ namespace AoC.AdventOfCode.Puzzle.Base
                 Console.WriteLine();
             }
 
-            return result[part];
+            return result.ToString();
         }
 
         protected virtual void DoPreparations()
         { }
 
-        protected virtual long SolvePuzzlePartOne()
+        protected virtual string SolvePuzzlePartOne()
         {
-            Console.WriteLine($"tba");
-            return 0;
+            //string res = "tba";
+            //Console.WriteLine($"{res}");
+            return "tba";
         }
 
-        protected virtual long SolvePuzzlePartTwo()
+        protected virtual string SolvePuzzlePartTwo()
         {
-            Console.WriteLine($"tba");
-            return 0;
+            //string res = "tba";
+            //Console.WriteLine($"{res}");
+            return "tba";
         }
 
         public int GetYear()

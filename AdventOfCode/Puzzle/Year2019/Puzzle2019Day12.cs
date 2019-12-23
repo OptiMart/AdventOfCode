@@ -65,7 +65,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
             }
         }
 
-        protected override long SolvePuzzlePartOne()
+        protected override string SolvePuzzlePartOne()
         {
             ResetMoons();
 
@@ -81,10 +81,10 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
 
             var res = moons.Sum(m => m.GetTotalEnergy());
             Console.WriteLine($"{res}");
-            return res;
+            return res.ToString();
         }
 
-        protected override long SolvePuzzlePartTwo()
+        protected override string SolvePuzzlePartTwo()
         {
             ResetMoons();
 
@@ -119,7 +119,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
 
             var res = GetKgV(GetKgV(x, y), z);
             Console.WriteLine($"{res}");
-            return 0;
+            return res.ToString();
         }
 
         private void CalcVelocity()

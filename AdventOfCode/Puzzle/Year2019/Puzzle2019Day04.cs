@@ -28,7 +28,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
             LoadAdditionalParameter(input);
         }
 
-        protected override long SolvePuzzlePartOne()
+        protected override string SolvePuzzlePartOne()
         {
             int res = 0;
 
@@ -39,11 +39,11 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
             }
 
             Console.WriteLine($"{res}");
-            return res;
+            return res.ToString();
 
         }
 
-        protected override long SolvePuzzlePartTwo()
+        protected override string SolvePuzzlePartTwo()
         {
             int res = 0;
 
@@ -54,7 +54,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
             }
 
             Console.WriteLine($"{res}");
-            return res;
+            return res.ToString();
         }
 
         private bool IsSixDigits(int number)

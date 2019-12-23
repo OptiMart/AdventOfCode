@@ -23,7 +23,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
             cpu.LoadDefaultInstructionSet();
         }
 
-        protected override long SolvePuzzlePartOne()
+        protected override string SolvePuzzlePartOne()
         {
             var opCode = cpu.StartExecution();
 
@@ -32,10 +32,10 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
 
             int res = 0;
             Console.WriteLine($"{res}");
-            return res;
+            return res.ToString();
         }
 
-        protected override long SolvePuzzlePartTwo()
+        protected override string SolvePuzzlePartTwo()
         {
             cpu.Initialize();
             cpu.Memory.SaveAtAddress(0, 2);
@@ -64,7 +64,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
 
             long res = output.First();
             Console.WriteLine($"{res}");
-            return res;
+            return res.ToString();
         }
 
         private void WriteOutput()

@@ -93,7 +93,7 @@ namespace AoC.AdventOfCode.SpaceImage
                 result.AppendLine();
             }
 
-            return result.ToString();
+            return result.ToString().Replace('0', ' ').Replace('1', '#');
         }
 
         #endregion
