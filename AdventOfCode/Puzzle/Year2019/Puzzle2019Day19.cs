@@ -8,6 +8,9 @@ using System.Text;
 
 namespace AoC.AdventOfCode.Puzzle.Year2019
 {
+    /// <summary>
+    /// Day 19: Tractor Beam
+    /// </summary>
     public class Puzzle2019Day19 : PuzzleBase
     {
         #region Data
@@ -40,8 +43,30 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
             int target = 100;
             int start = (int)((target / (kStart - kEnd)) * (kEnd > 1 ? kEnd : 1));
 
+            int x = 0;
+            int y = 0;
+            int lastX = 0;
+            bool found = false;
 
-            int res = 0;
+            for (y = start; y < int.MaxValue; y++)
+            {
+                for (x = lastX; x < int.MaxValue; x++)
+                {
+                    if (GetMovement(x, y))
+                    {
+                        if (GetMovement(x + target - 1, y - target + 1))
+                            found = true;
+
+                        lastX = x;
+                        break;
+                    }
+                }
+
+                if (found)
+                    break;
+            }
+
+            int res = x * 10000 + y - 99;
             Console.WriteLine($"{res}");
             return res;
         }
@@ -49,6 +74,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
         private bool TargetFits(int x)
         {
 
+            return false;
         }
 
         private void FindStartEnd()
@@ -97,6 +123,9 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
 
         private bool GetMovement(int x, int y)
         {
+            if (x < 0 || y < 0)
+                return false;
+
             cpu.Initialize();
             cpu.PushInput(x);
             cpu.PushInput(y);

@@ -53,9 +53,11 @@
     <Compile Include="Common\Geometry\Point.cs" />
     <Compile Include="Common\Geometry\Wire.cs" />
     <Compile Include="Common\IntCodeComputer\Arcade.cs" />
+    <Compile Include="Common\IntCodeComputer\AsyncComputer.cs" />
     <Compile Include="Common\IntCodeComputer\Base\InstructionPointer.cs" />
     <Compile Include="Common\IntCodeComputer\Base\Memory.cs" />
     <Compile Include="Common\IntCodeComputer\Base\OpHelper.cs" />
+    <Compile Include="Common\IntCodeComputer\ComputerNetwork.cs" />
     <Compile Include="Common\IntCodeComputer\Instructions\Base\BaseInstruction.cs" />
     <Compile Include="Common\IntCodeComputer\Instructions\Base\IInstructions.cs" />
     <Compile Include="Common\IntCodeComputer\Instructions\OpAddition.cs" />
@@ -69,6 +71,7 @@
     <Compile Include="Common\IntCodeComputer\Instructions\OpOutput.cs" />
     <Compile Include="Common\IntCodeComputer\Instructions\OpTermination.cs" />
     <Compile Include="Common\IntCodeComputer\Computer.cs" />
+    <Compile Include="Common\IntCodeComputer\SpringDroid.cs" />
     <Compile Include="Common\RepairDroid\MapTile.cs" />
     <Compile Include="Common\RepairDroid\MapDirection.cs" />
     <Compile Include="Common\RepairDroid\MapLocation.cs" />
@@ -78,6 +81,7 @@
     <Compile Include="Common\PaintingRobot\PaintSpot.cs" />
     <Compile Include="Common\PaintingRobot\Robot.cs" />
     <Compile Include="Common\ReflectiveEnumerator.cs" />
+    <Compile Include="Common\Shuffle\Shuffle.cs" />
     <Compile Include="Common\SpaceImage\Image.cs" />
     <Compile Include="Common\SpaceImage\ImageLayer.cs" />
     <Compile Include="Common\SpaceMap\Asteroid.cs" />
@@ -105,6 +109,10 @@
     <Compile Include="Puzzle\Year2019\Puzzle2019Day09.cs" />
     <Compile Include="Puzzle\Year2019\Puzzle2019Day08.cs" />
     <Compile Include="Puzzle\Year2019\Puzzle2019Day11.cs" />
+    <Compile Include="Puzzle\Year2019\Puzzle2019Day23.cs" />
+    <Compile Include="Puzzle\Year2019\Puzzle2019Day22.cs" />
+    <Compile Include="Puzzle\Year2019\Puzzle2019Day21.cs" />
+    <Compile Include="Puzzle\Year2019\Puzzle2019Day20.cs" />
     <Compile Include="Puzzle\Year2019\Puzzle2019Day19.cs" />
     <Compile Include="Puzzle\Year2019\Puzzle2019Day18.cs" />
     <Compile Include="Puzzle\Year2019\Puzzle2019Day17.cs" />

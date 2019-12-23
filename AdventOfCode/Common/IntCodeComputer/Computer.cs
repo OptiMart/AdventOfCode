@@ -40,6 +40,7 @@ namespace AoC.AdventOfCode.Common.IntCodeComputer
         public LinkedList<long> OutputStack { get; set; } = new LinkedList<long>();
         public int LastExitCode { get; private set; } = -1;
         public int Position => _pointer.Position;
+        public int Address { get; set; }
 
         #endregion
 
@@ -112,7 +113,7 @@ namespace AoC.AdventOfCode.Common.IntCodeComputer
 
         public void RemoveInstruction(IInstructions instruction)
         {
-            var instr =_instructions.FirstOrDefault(x => x.OPCode == instruction.OPCode);
+            var instr = _instructions.FirstOrDefault(x => x.OPCode == instruction.OPCode);
 
             if (instr is null)
                 throw new InvalidOperationException($"Instruction mit OPCode {instruction.OPCode} nicht gefunden");
@@ -133,11 +134,10 @@ namespace AoC.AdventOfCode.Common.IntCodeComputer
             try
             {
                 InitOpHelper();
+                
                 while (LastExitCode != 99)
                 {
-                    var op = _instructions.FirstOrDefault(x => x.CheckInstruction(Memory, Position));
-
-                    if (op is null)
+                    var op = _instructions.FirstOrDefault(x => x.CheckInstruction(Memory, Position)); if (op is null)
                         throw new InvalidOperationException($"Ungültige Operation an Position: {Position}");
 
                     if (op.OPCode == 3 && InputStack.Count <= 0)
@@ -159,6 +159,24 @@ namespace AoC.AdventOfCode.Common.IntCodeComputer
             return LastExitCode;
         }
 
+        public Task<int> StartExecutionAsync()
+        {
+            Task<int> task = new Task<int>(() =>
+            {
+                while (LastExitCode != 99)
+                {
+                    if (LastExitCode == 3 && InputStack.Count == 0)
+                        PushInput(-1);
+
+                    StartExecution();
+                }
+
+                return LastExitCode;
+            });
+
+            return task;
+        }
+
         public long? PopOutput()
         {
             if (OutputStack.Count == 0)
@@ -170,9 +188,11 @@ namespace AoC.AdventOfCode.Common.IntCodeComputer
             return result;
         }
 
-        public void PushInput(long input)
+        public void PushInput(long input, bool startExecution = false)
         {
             InputStack.AddLast(input);
+            if (startExecution && LastExitCode == 3)
+                StartExecution();
         }
 
         #endregion

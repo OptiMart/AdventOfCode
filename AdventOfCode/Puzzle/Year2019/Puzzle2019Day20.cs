@@ -8,10 +8,7 @@ using System.Text;
 
 namespace AoC.AdventOfCode.Puzzle.Year2019
 {
-    /// <summary>
-    /// Day 18: Many-Worlds Interpretation
-    /// </summary>
-    public class Puzzle2019Day18 : PuzzleBase
+    public class Puzzle2019Day20 : PuzzleBase
     {
         #region Methods
         protected override long SolvePuzzlePartOne()
