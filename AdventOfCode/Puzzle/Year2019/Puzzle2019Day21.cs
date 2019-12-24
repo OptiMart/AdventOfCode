@@ -75,20 +75,31 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
             cpu.Initialize();
 
             StringBuilder input = new StringBuilder();
-            input.Append("OR A T");
+            input.Append("NOT B J");
+            input.Append((char)10);
+            input.Append("NOT E T");
+            input.Append((char)10);
+            input.Append("AND T J");
+            input.Append((char)10);
+            input.Append("NOT A T");
+            input.Append((char)10);
+            input.Append("OR T J");
+            input.Append((char)10);
+            input.Append("OR H J");
+            input.Append((char)10);
+            input.Append("AND D J");
+            input.Append((char)10);
+
+            input.Append("NOT A T");
+            input.Append((char)10);
+            input.Append("NOT T T");
             input.Append((char)10);
             input.Append("AND B T");
             input.Append((char)10);
             input.Append("AND C T");
             input.Append((char)10);
-
             input.Append("NOT T T");
             input.Append((char)10);
-
-
-            input.Append("OR D J");
-            input.Append((char)10);
-
             input.Append("AND T J");
             input.Append((char)10);
 

@@ -4,23 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Common.Base
+namespace AoC.AdventOfCode.Common.Base.Points
 {
-    public class BasePoint4D : BasePoint3D
+    public class BasePoint4D<TPointData> : BasePoint3D<TPointData>
     {
         #region Data
         private const int _thisDim = 4;
 
         #endregion
-        
+
         #region Constructor
-        public BasePoint4D() : this(0, 0, 0, 0)
+        public BasePoint4D() : this(default)
         { }
 
-        public BasePoint4D(int x, int y, int z, int t) : this(x, y, z, t, _thisDim)
+        public BasePoint4D(TPointData item) : this(item, 0, 0, 0, 0)
         { }
 
-        protected BasePoint4D(int x, int y, int z, int t, int dimension) : base(x, y, z, dimension)
+        public BasePoint4D(TPointData item, int x, int y, int z, int t) : this(item, x, y, z, t, _thisDim)
+        { }
+
+        protected BasePoint4D(TPointData item, int x, int y, int z, int t, int dimension) : base(item, x, y, z, dimension)
         {
             T = t;
         }

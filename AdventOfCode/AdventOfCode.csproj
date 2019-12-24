@@ -43,11 +43,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\Base\BasePoint4D.cs" />
-    <Compile Include="Common\Base\BasePoint3D.cs" />
-    <Compile Include="Common\Base\BasePoint2D.cs" />
-    <Compile Include="Common\Base\BasePoint1D.cs" />
-    <Compile Include="Common\Base\UniversalPoint.cs" />
+    <Compile Include="Common\Base\Points\BasePointGeneric.cs" />
+    <Compile Include="Common\Base\Points\BasePoint4D.cs" />
+    <Compile Include="Common\Base\Points\BasePoint3D.cs" />
+    <Compile Include="Common\Base\Points\BasePoint2D.cs" />
+    <Compile Include="Common\Base\Points\BasePoint1D.cs" />
+    <Compile Include="Common\Base\Mesh\UniversalMesh.cs" />
+    <Compile Include="Common\Base\Mesh\GenericNode.cs" />
+    <Compile Include="Common\Base\Points\BasePoint.cs" />
     <Compile Include="Common\Geometry\EnumOrientation.cs" />
     <Compile Include="Common\Geometry\Line.cs" />
     <Compile Include="Common\Geometry\Point.cs" />
@@ -126,6 +129,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Common\Base\Links\" />
     <Folder Include="Input\2018\" />
     <Folder Include="Puzzle\Year2015\" />
     <Folder Include="Puzzle\Year2016\" />

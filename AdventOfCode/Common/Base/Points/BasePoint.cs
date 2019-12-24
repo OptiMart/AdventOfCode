@@ -1,23 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Common.Base
+namespace AoC.AdventOfCode.Common.Base.Points
 {
-    public abstract class UniversalPoint
+    public abstract class BasePoint
     {
         #region Data
-        private int[] _coords;
+        private readonly int[] _coords;
+        private readonly int _dimensions;
 
         #endregion
 
         #region Constructor
-        protected UniversalPoint() : this(1)
+        protected BasePoint() : this(1)
         { }
 
-        protected UniversalPoint(int dimension)
+        protected BasePoint(int dimension)
         {
             if (dimension <= 0)
                 throw new ArgumentException("Point dimension cannot be less or equals zero!");
@@ -55,7 +57,7 @@ namespace AoC.AdventOfCode.Common.Base
             return true;
         }
 
-        public long GetManhattanDistance(UniversalPoint point)
+        public long GetManhattanDistance(BasePoint point)
         {
             int minDim = Dimensions < point.Dimensions ? Dimensions : point.Dimensions;
             long result = 0;
@@ -66,7 +68,7 @@ namespace AoC.AdventOfCode.Common.Base
             return result;
         }
 
-        public double GetStraightLineDistance(UniversalPoint point)
+        public double GetStraightLineDistance(BasePoint point)
         {
             int minDim = Dimensions < point.Dimensions ? Dimensions : point.Dimensions;
             double result = 0;
@@ -77,7 +79,7 @@ namespace AoC.AdventOfCode.Common.Base
             return Math.Sqrt(result);
         }
 
-        public int GetDimensionDistance(UniversalPoint point, int dimension)
+        public int GetDimensionDistance(BasePoint point, int dimension)
         {
             return Math.Abs(GetCoord(dimension) ?? 0 - point.GetCoord(dimension) ?? 0);
         }
