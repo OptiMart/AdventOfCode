@@ -109,6 +109,7 @@
     <Compile Include="Puzzle\Year2019\Puzzle2019Day09.cs" />
     <Compile Include="Puzzle\Year2019\Puzzle2019Day08.cs" />
     <Compile Include="Puzzle\Year2019\Puzzle2019Day11.cs" />
+    <Compile Include="Puzzle\Year2019\Puzzle2019Day24.cs" />
     <Compile Include="Puzzle\Year2019\Puzzle2019Day23.cs" />
     <Compile Include="Puzzle\Year2019\Puzzle2019Day22.cs" />
     <Compile Include="Puzzle\Year2019\Puzzle2019Day21.cs" />
