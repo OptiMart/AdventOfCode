@@ -21,8 +21,8 @@ namespace Aoc.AdventOfCode
                 int.TryParse(args[i], out start[i]);
 
             start[0] = 2019;
-            start[1] = 21;
-            start[2] = 2;
+            start[1] = 25;
+            start[2] = 1;
 
             try
             {
