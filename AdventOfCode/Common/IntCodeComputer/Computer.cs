@@ -195,6 +195,32 @@ namespace AoC.AdventOfCode.Common.IntCodeComputer
                 StartExecution();
         }
 
+        public string GetAsciiOutput()
+        {
+            StringBuilder result = new StringBuilder();
+
+            while (OutputStack.Count > 0)
+            {
+                result.Append((char)PopOutput());
+            }
+
+            return result.ToString();
+        }
+
+        public void WriteAsciiInput(string input, bool startExecution = true)
+        {
+            if (string.IsNullOrEmpty(input))
+                return;
+
+            foreach (var item in input)
+            {
+                PushInput((int)item);
+            }
+
+            if (startExecution)
+                StartExecution();
+        }
+
         #endregion
     }
 }
