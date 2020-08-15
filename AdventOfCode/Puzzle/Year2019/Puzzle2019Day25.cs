@@ -27,6 +27,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
             cpu.LoadDefaultInstructionSet();
             cpu.Initialize();
             GetEverythingInPosition(cpu);
+            DropItem(cpu, _items);
             //Console.Write(cpu.GetAsciiOutput());
             _ = cpu.GetAsciiOutput();
 
@@ -34,7 +35,6 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
             {
                 foreach (var set in Shuffle.GetKCombs(_items, i))
                 {
-                    DropItem(cpu, _items);
                     TakeItem(cpu, set.ToList());
                     _ = cpu.GetAsciiOutput();
                     cpu.WriteAsciiInput("north" + (char)10);
@@ -45,6 +45,8 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
                         i = 9;
                         break;
                     }
+
+                    DropItem(cpu, set.ToList());
                 }
             }
 
