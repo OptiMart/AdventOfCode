@@ -1,4 +1,5 @@
-﻿using AoC.AdventOfCode.Common.IntCodeComputer;
+﻿using AoC.AdventOfCode.Common.Base;
+using AoC.AdventOfCode.Common.IntCodeComputer;
 using AoC.AdventOfCode.Common.Shuffle;
 using AoC.AdventOfCode.Puzzle.Base;
 using System;
@@ -22,10 +23,9 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
         #region Methods
         protected override string SolvePuzzlePartOne()
         {
-            ComputerNetwork nic = new ComputerNetwork(PuzzleInput, 50);
-            nic.StartComputing(true);
+            UniversalMesh mesh = new UniversalMesh();
 
-            long res = nic.LastNATPacket.Item3;
+            long res = 0;
             Console.WriteLine($"{res}");
             return res.ToString();
         }

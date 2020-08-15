@@ -9,14 +9,18 @@ namespace AoC.AdventOfCode.Common.Base
     public class GenericNode<TNodeType>
     {
         #region Constructor
-        public GenericNode()
-        {
+        public GenericNode() : this(default)
+        { }
 
+        public GenericNode(TNodeType node)
+        {
+            Node = node;
         }
 
         #endregion
 
         #region Properties
+        public TNodeType Node { get; set; }
         public Type NodeType => typeof(TNodeType);
         public List<TNodeType> Neighbors { get; private set; } = new List<TNodeType>();
         public TNodeType Parent { get; private set; }
