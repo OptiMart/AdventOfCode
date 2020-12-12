@@ -9,75 +9,42 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
 {
     public class Puzzle2020Day02 : PuzzleBase
     {
+        private List<PassTest> _passTest;
+
         #region Methods
 
         protected override void DoPreparations()
         {
-            base.DoPreparations();
+            _passTest = new List<PassTest>();
+
+            foreach (var item in PuzzleInput.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries))
+            {
+                _passTest.Add(new PassTest(item));
+            }
         }
 
         protected override string SolvePuzzlePartOne()
         {
-            long result = 0;
+            int result = 0;
 
-            string[] values = PuzzleInput.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-
-            foreach (var itema in values)
+            foreach (var pass in _passTest)
             {
-                if (int.TryParse(itema, out int valuea))
-                {
-                    foreach (var itemb in values)
-                    {
-                        if (int.TryParse(itemb, out int valueb) && valuea + valueb == 2020)
-                        {
-                            result = valuea * valueb;
-                            break;
-                        }
-                    }
-                }
-
-                if (result != 0)
-                {
-                    break;
-                }
+                if (pass.PasswordIsValidOne())
+                    result++;
             }
-
+            
             Console.WriteLine($"{result}");
             return result.ToString();
         }
 
         protected override string SolvePuzzlePartTwo()
         {
-            long result = 0;
+            int result = 0;
 
-            string[] values = PuzzleInput.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-
-            foreach (var itema in values)
+            foreach (var pass in _passTest)
             {
-                if (int.TryParse(itema, out int valuea))
-                {
-                    foreach (var itemb in values)
-                    {
-                        if (int.TryParse(itemb, out int valueb) && valuea + valueb < 2020)
-                        {
-                            foreach (var itemc in values)
-                            {
-                                if (int.TryParse(itemc, out int valuec) && valuea + valueb + valuec == 2020)
-                                {
-                                    result = valuea * valueb * valuec;
-                                    break;
-                                }
-                            }
-                        }
-
-                        if (result != 0)
-                            break;
-
-                    }
-                }
-
-                if (result != 0)
-                    break;
+                if (pass.PasswordIsValidTwo())
+                    result++;
             }
 
             Console.WriteLine($"{result}");
@@ -86,5 +53,47 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
 
         #endregion
 
+        private class PassTest
+        {
+            public PassTest(string input)
+            {
+                DecodeInput(input);
+            }
+
+            public string Letter { get; set; }
+            public int Minimum { get; set; }
+            public int Maximum { get; set; }
+            public string Password { get; set; }
+
+            private void DecodeInput(string input)
+            {
+                string[] temp = input.Split("- :".ToCharArray(), StringSplitOptions.RemoveEmptyEntries);
+
+                Minimum = int.Parse(temp[0]);
+                Maximum = int.Parse(temp[1]);
+                Letter = temp[2];
+                Password = temp[3];
+            }
+
+            public bool PasswordIsValidOne()
+            {
+                int occurance = Password.Count(x => x == Letter[0]);
+
+                if (occurance >= Minimum && occurance <= Maximum)
+                {
+                    return true;
+                }
+
+                return false;
+            }
+
+            public bool PasswordIsValidTwo()
+            {
+                if (Letter[0] == Password[Minimum - 1] ^ Letter[0] == Password[Maximum - 1])
+                    return true;
+
+                return false;
+            }
+        }
     }
 }

@@ -126,6 +126,7 @@
     <Compile Include="Puzzle\Year2019\Puzzle2019Day14.cs" />
     <Compile Include="Puzzle\Year2019\Puzzle2019Day13.cs" />
     <Compile Include="Puzzle\Year2019\Puzzle2019Day12.cs" />
+    <Compile Include="Puzzle\Year2020\Puzzle2020Day03.cs" />
     <Compile Include="Puzzle\Year2020\Puzzle2020Day02.cs" />
     <Compile Include="Puzzle\Year2020\Puzzle2020Day01.cs" />
   </ItemGroup>
@@ -134,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\Base\Links\" />
+    <Folder Include="Common\Extensions\" />
     <Folder Include="Input\2018\" />
     <Folder Include="Puzzle\Year2015\" />
     <Folder Include="Puzzle\Year2016\" />

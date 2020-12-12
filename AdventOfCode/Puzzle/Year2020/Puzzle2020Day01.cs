@@ -16,8 +16,6 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
 
             string[] values = PuzzleInput.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
 
-            List<int> val = new List<int>(values.ToList());
-
             foreach (var itema in values)
             {
                 if (int.TryParse(itema, out int valuea))
