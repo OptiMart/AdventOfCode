@@ -23,7 +23,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
         #region Methods
         protected override string SolvePuzzlePartOne()
         {
-            UniversalMesh mesh = new UniversalMesh();
+            //UniversalMesh mesh = new UniversalMesh();
 
             long res = 0;
             Console.WriteLine($"{res}");

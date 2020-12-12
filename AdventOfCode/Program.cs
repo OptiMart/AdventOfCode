@@ -20,9 +20,9 @@ namespace Aoc.AdventOfCode
             for (int i = 0; i < args.Length; i++)
                 int.TryParse(args[i], out start[i]);
 
-            start[0] = 2019;
-            start[1] = 25;
-            start[2] = 1;
+            start[0] = 2020;
+            start[1] = 1;
+            start[2] = 0;
 
             try
             {
