@@ -39,6 +39,7 @@ namespace AoC.AdventOfCode.Puzzle.Base
         public int Year { get; private set; }
         public int Day { get; private set; }
         public string PuzzleInput { get; set; }
+        public List<string> PuzzleItems {get;set;} = new List<string>();
 
         #endregion
 
@@ -53,11 +54,39 @@ namespace AoC.AdventOfCode.Puzzle.Base
             PuzzleInput = input;
         }
 
+        public virtual List<string> LoadPuzzleItemsString(string separator, bool removeEmpty)
+        {
+            List<string> items = new List<string>();
+
+            foreach (var item in PuzzleInput.Split(new[] { separator }, removeEmpty ? StringSplitOptions.RemoveEmptyEntries : StringSplitOptions.None))
+                items.Add(item);
+
+            return items;
+        }
+
+        public virtual List<int> LoadPuzzleItemsInteger(string separator, bool removeEmpty)
+        {
+            List<int> items = new List<int>();
+
+            foreach (var item in PuzzleInput.Split(new[] { separator }, removeEmpty ? StringSplitOptions.RemoveEmptyEntries : StringSplitOptions.None))
+                if (int.TryParse(item, out int val))
+                    items.Add(val);
+
+            return items;
+        }
+
         public virtual void LoadPuzzleInputFromFile(string input)
         {
             FileInfo fileInfo = new FileInfo(input);
+
+            if (!fileInfo.Exists)
+            {
+                Connector.Connector connector = new Connector.Connector("53616c7465645f5f92108aa9823b64a0fe20c4e2a7dd8d5f9d846d14a1eaf57405dd348891463f348cb117c5ed8f021e5ad70f0279b897416c98f30afb7030c7");
+                connector.SavePuzzleInput(Year, Day);
+                fileInfo.Refresh();
+            }
             if (fileInfo.Exists)
-                PuzzleInput = System.IO.File.ReadAllText(input);
+                PuzzleInput = File.ReadAllText(input);
             else
                 throw new FileNotFoundException($"Datei {input} konnte nicht gefunden werden");
         }
@@ -185,23 +214,23 @@ namespace AoC.AdventOfCode.Puzzle.Base
             return GetDay(type.Name);
         }
 
-        public static List<PuzzleBase> GetPuzzles(int year = 0, int day = 0)
-        {
-            List<PuzzleBase> puzzles = new List<PuzzleBase>();
+        //public static List<PuzzleBase> GetPuzzles(int year = 0, int day = 0)
+        //{
+        //    List<PuzzleBase> puzzles = new List<PuzzleBase>();
 
-            foreach (var item in ReflectiveEnumerator.FindDerivedTypes(Assembly.GetExecutingAssembly(), typeof(PuzzleBase)))
-            {
-                if ((year == 0 || year == GetYear(item)) && (day == 0 || day == GetDay(item)))
-                    puzzles.Add((PuzzleBase)Activator.CreateInstance(item));
-            }
+        //    foreach (var item in ReflectiveEnumerator.FindDerivedTypes(Assembly.GetExecutingAssembly(), typeof(PuzzleBase)))
+        //    {
+        //        if ((year == 0 || year == GetYear(item)) && (day == 0 || day == GetDay(item)))
+        //            puzzles.Add((PuzzleBase)Activator.CreateInstance(item));
+        //    }
 
-            return puzzles;
-        }
+        //    return puzzles;
+        //}
 
-        public static PuzzleBase GetPuzzle(int year, int day)
-        {
-            return GetPuzzles(year, day).OrderBy(x => x.Year * 100 + x.Day).FirstOrDefault();
-        }
+        //public static PuzzleBase GetPuzzle(int year, int day)
+        //{
+        //    return GetPuzzles(year, day).OrderBy(x => x.Year * 100 + x.Day).FirstOrDefault();
+        //}
 
         #endregion
 

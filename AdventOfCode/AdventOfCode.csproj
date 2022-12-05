@@ -12,6 +12,21 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,6 +51,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Numerics" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,6 +69,8 @@
     <Compile Include="Common\Base\Mesh\GenericNode.cs" />
     <Compile Include="Common\Base\Points\BasePoint.cs" />
     <Compile Include="Common\Biotop.cs" />
+    <Compile Include="Common\Extensions\IntegerExtension.cs" />
+    <Compile Include="Common\Extensions\ListExtensions.cs" />
     <Compile Include="Common\Geometry\EnumOrientation.cs" />
     <Compile Include="Common\Geometry\Line.cs" />
     <Compile Include="Common\Geometry\Point.cs" />
@@ -94,9 +112,16 @@
     <Compile Include="Common\SpaceMap\OrbitObject.cs" />
     <Compile Include="Common\SpaceMap\Point4D.cs" />
     <Compile Include="Common\SpaceMap\SpaceVector.cs" />
+    <Compile Include="Connector\Connector.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Puzzle\Base\IPuzzleInput.cs" />
     <Compile Include="Puzzle\Base\PuzzleBase.cs" />
     <Compile Include="Puzzle\Base\PuzzleHelper.cs" />
+    <Compile Include="Puzzle\Year2015\Puzzle2015Day24.cs" />
     <Compile Include="Puzzle\Year2018\Puzzle2018Day25.cs" />
     <Compile Include="Puzzle\Year2018\Puzzle2018Day01.cs" />
     <Compile Include="Puzzle\Year2019\Puzzle2019Day01.cs" />
@@ -129,15 +154,24 @@
     <Compile Include="Puzzle\Year2020\Puzzle2020Day03.cs" />
     <Compile Include="Puzzle\Year2020\Puzzle2020Day02.cs" />
     <Compile Include="Puzzle\Year2020\Puzzle2020Day01.cs" />
+    <Compile Include="Puzzle\Year2021\Puzzle2021Day01.cs" />
+    <Compile Include="Puzzle\Year2022\Puzzle2022Day00.cs" />
+    <Compile Include="Puzzle\Year2022\Puzzle2022Day05.cs" />
+    <Compile Include="Puzzle\Year2022\Puzzle2022Day04.cs" />
+    <Compile Include="Puzzle\Year2022\Puzzle2022Day03.cs" />
+    <Compile Include="Puzzle\Year2022\Puzzle2022Day01.cs" />
+    <Compile Include="Settings.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\Base\Links\" />
-    <Folder Include="Common\Extensions\" />
     <Folder Include="Input\2018\" />
-    <Folder Include="Puzzle\Year2015\" />
     <Folder Include="Puzzle\Year2016\" />
     <Folder Include="Puzzle\Year2017\" />
   </ItemGroup>
@@ -271,6 +305,18 @@
     <Content Include="Input\2020\Input_Day02.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.2">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.2 %28x86 und x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

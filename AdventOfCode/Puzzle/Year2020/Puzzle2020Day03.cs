@@ -61,7 +61,7 @@ namespace AoC.AdventOfCode.Puzzle.Year2019
 
                     i++;
                 }
-                posx = (posx + 3) % item.Length;
+                //posx = (posx + 3) % item.Length;
 
                 rowN++;
             }

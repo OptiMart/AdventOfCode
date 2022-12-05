@@ -1,13 +1,17 @@
 ﻿using AoC.AdventOfCode.Common;
+using AoC.AdventOfCode.Connector;
+using AoC.AdventOfCode.Properties;
 using AoC.AdventOfCode.Puzzle.Base;
-using AoC.AdventOfCode.Puzzle.Year2018;
-using AoC.AdventOfCode.Puzzle.Year2019;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Reflection;
+using System.Resources;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Aoc.AdventOfCode
 {
@@ -20,25 +24,32 @@ namespace Aoc.AdventOfCode
             for (int i = 0; i < args.Length; i++)
                 int.TryParse(args[i], out start[i]);
 
-            start[0] = 2020;
-            start[1] = 3;
+            start[0] = 2022;
+            start[1] = 5;
             start[2] = 0;
+
+            var test = Settings.Default.SessionID;
 
             try
             {
                 SolveAllPuzzles(start[0], start[1], start[2]);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine("Fehler");
             }
+
+            //Connector connector = new Connector(_webSession);
+            //Console.Write(connector.SubmitPuzzleAnswer(2022, 4, 1, "599"));
+
+            //connector.SavePuzzleInput(0,0);
 
             Console.ReadKey();
         }
 
         private static void SolveAllPuzzles(int year = 0, int day = 0, int part = 0)
         {
-            var puzzles = PuzzleBase.GetPuzzles(year, day);
+            var puzzles = PuzzleHelper.GetPuzzles(year, day);
 
             foreach (var puzzle in puzzles.OrderBy(x => x.Year * 100 + x.Day))
                 puzzle.SolvePuzzle(part);
