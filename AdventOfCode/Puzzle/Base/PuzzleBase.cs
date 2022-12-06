@@ -39,7 +39,6 @@ namespace AoC.AdventOfCode.Puzzle.Base
         public int Year { get; private set; }
         public int Day { get; private set; }
         public string PuzzleInput { get; set; }
-        public List<string> PuzzleItems {get;set;} = new List<string>();
 
         #endregion
 
@@ -96,9 +95,9 @@ namespace AoC.AdventOfCode.Puzzle.Base
             return Path.Combine(_inputFolder, $@"{Year:0000}\Input_Day{Day:00}" + (part == 0 ? "" : $"_{part}") + ".txt");
         }
 
-        public virtual string SolvePuzzle(int part = 0, bool loadInput = true)
+        public virtual IEnumerable<string> SolvePuzzle(int part = 0, bool loadInput = true)
         {
-            StringBuilder result = new StringBuilder();
+            List<string> result = new List<string>();
             Stopwatch watch = new Stopwatch();
 
             try
@@ -123,7 +122,7 @@ namespace AoC.AdventOfCode.Puzzle.Base
 
                 Console.ForegroundColor = ConsoleColor.White;
                 watch.Start();
-                result.AppendLine(SolvePuzzlePartOne());
+                result.Add(SolvePuzzlePartOne());
                 watch.Stop();
 
                 Console.ForegroundColor = ConsoleColor.Cyan;
@@ -139,7 +138,7 @@ namespace AoC.AdventOfCode.Puzzle.Base
 
                 Console.ForegroundColor = ConsoleColor.White;
                 watch.Restart();
-                result.AppendLine(SolvePuzzlePartTwo());
+                result.Add(SolvePuzzlePartTwo());
                 watch.Stop();
 
                 Console.ForegroundColor = ConsoleColor.Cyan;
@@ -149,7 +148,7 @@ namespace AoC.AdventOfCode.Puzzle.Base
                 Console.WriteLine();
             }
 
-            return result.ToString();
+            return result;
         }
 
         protected virtual void DoPreparations()
@@ -171,14 +170,17 @@ namespace AoC.AdventOfCode.Puzzle.Base
 
         public int GetYear()
         {
-            return GetYear(this.GetType().Name);
+            return GetYear(GetType().Name);
         }
 
         public int GetDay()
         {
-            return GetDay(this.GetType().Name);
+            return GetDay(GetType().Name);
         }
 
+        #endregion
+
+        #region Static Methods
         private static int GetValueFromName(string name, string key)
         {
             string result = string.Empty;
@@ -214,25 +216,6 @@ namespace AoC.AdventOfCode.Puzzle.Base
             return GetDay(type.Name);
         }
 
-        //public static List<PuzzleBase> GetPuzzles(int year = 0, int day = 0)
-        //{
-        //    List<PuzzleBase> puzzles = new List<PuzzleBase>();
-
-        //    foreach (var item in ReflectiveEnumerator.FindDerivedTypes(Assembly.GetExecutingAssembly(), typeof(PuzzleBase)))
-        //    {
-        //        if ((year == 0 || year == GetYear(item)) && (day == 0 || day == GetDay(item)))
-        //            puzzles.Add((PuzzleBase)Activator.CreateInstance(item));
-        //    }
-
-        //    return puzzles;
-        //}
-
-        //public static PuzzleBase GetPuzzle(int year, int day)
-        //{
-        //    return GetPuzzles(year, day).OrderBy(x => x.Year * 100 + x.Day).FirstOrDefault();
-        //}
-
         #endregion
-
     }
 }
