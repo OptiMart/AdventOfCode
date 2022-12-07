@@ -68,7 +68,12 @@
     <Compile Include="Common\Base\Mesh\UniversalMesh.cs" />
     <Compile Include="Common\Base\Mesh\GenericNode.cs" />
     <Compile Include="Common\Base\Points\BasePoint.cs" />
+    <Compile Include="Common\Base\Tree\TreeNode.cs" />
     <Compile Include="Common\Biotop.cs" />
+    <Compile Include="Common\ElvDevice\ElvDevice.cs" />
+    <Compile Include="Common\ElvDevice\FileSystem\ElvDirectory.cs" />
+    <Compile Include="Common\ElvDevice\FileSystem\ElvFile.cs" />
+    <Compile Include="Common\ElvDevice\FileSystem\ElvFilesystem.cs" />
     <Compile Include="Common\Extensions\IntegerExtension.cs" />
     <Compile Include="Common\Extensions\ListExtensions.cs" />
     <Compile Include="Common\Geometry\EnumOrientation.cs" />
@@ -155,6 +160,7 @@
     <Compile Include="Puzzle\Year2020\Puzzle2020Day02.cs" />
     <Compile Include="Puzzle\Year2020\Puzzle2020Day01.cs" />
     <Compile Include="Puzzle\Year2021\Puzzle2021Day01.cs" />
+    <Compile Include="Puzzle\Year2022\Puzzle2022Day07.cs" />
     <Compile Include="Puzzle\Year2022\Puzzle2022Day06.cs" />
     <Compile Include="Puzzle\Year2022\Puzzle2022Day00.cs" />
     <Compile Include="Puzzle\Year2022\Puzzle2022Day05.cs" />
@@ -172,6 +178,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\Base\Links\" />
+    <Folder Include="Common\ElvDevice\Commands\" />
     <Folder Include="Input\2018\" />
     <Folder Include="Puzzle\Year2016\" />
     <Folder Include="Puzzle\Year2017\" />
