@@ -24,7 +24,7 @@ namespace Aoc.AdventOfCode
                 int.TryParse(args[i], out start[i]);
 
             start[0] = 2022;
-            start[1] = 5;
+            start[1] = 8;
             start[2] = 0;
 
             try
@@ -69,3 +69,4 @@ namespace Aoc.AdventOfCode
         }
     }
 }
+

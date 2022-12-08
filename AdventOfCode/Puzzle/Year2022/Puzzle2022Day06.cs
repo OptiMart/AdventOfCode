@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace AoC.AdventOfCode.Puzzle.Year2022
 {
     /// <summary>
-    /// Text
+    /// Tuning Trouble
     /// </summary>
     public class Puzzle2022Day06 : PuzzleBase
     {
