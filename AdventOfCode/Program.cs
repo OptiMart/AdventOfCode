@@ -25,7 +25,7 @@ namespace Aoc.AdventOfCode
                 int.TryParse(args[i], out start[i]);
 
             start[0] = 2022;
-            start[1] = 5;
+            start[1] = 8;
             start[2] = 0;
 
             var test = Settings.Default.SessionID;
@@ -57,3 +57,4 @@ namespace Aoc.AdventOfCode
         }
     }
 }
+

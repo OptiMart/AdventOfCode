@@ -39,7 +39,7 @@ namespace AoC.AdventOfCode.Puzzle.Base
         public int Year { get; private set; }
         public int Day { get; private set; }
         public string PuzzleInput { get; set; }
-        public List<string> PuzzleItems {get;set;} = new List<string>();
+        public List<string> PuzzleItems { get; set; } = new List<string>();
 
         #endregion
 
@@ -86,7 +86,10 @@ namespace AoC.AdventOfCode.Puzzle.Base
                 fileInfo.Refresh();
             }
             if (fileInfo.Exists)
+            {
                 PuzzleInput = File.ReadAllText(input);
+                PuzzleItems = File.ReadAllLines(input).ToList();
+            }
             else
                 throw new FileNotFoundException($"Datei {input} konnte nicht gefunden werden");
         }
@@ -107,7 +110,7 @@ namespace AoC.AdventOfCode.Puzzle.Base
                     LoadPuzzleInputFromFile(GetInputPath());
             }
             catch (Exception)
-            { 
+            {
                 // Just continue
             }
 
@@ -182,11 +185,11 @@ namespace AoC.AdventOfCode.Puzzle.Base
         private static int GetValueFromName(string name, string key)
         {
             string result = string.Empty;
-            
+
             int start = name.IndexOf(key) + key.Length;
             result = new string(name.Substring(start).TakeWhile(c => char.IsDigit(c)).ToArray());
 
-            if (int.TryParse(result,out int value))
+            if (int.TryParse(result, out int value))
                 return value;
 
             return -1;
