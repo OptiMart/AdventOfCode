@@ -1,35 +1,27 @@
-﻿using AoC.AdventOfCode.Common;
-using AoC.AdventOfCode.Connector;
-using AoC.AdventOfCode.Puzzle.Base;
+﻿using AoC.AdventOfCode.Puzzle.Base;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
-using System.Reflection;
-using System.Resources;
-using System.Runtime.InteropServices;
+using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
-namespace Aoc.AdventOfCode
+namespace AoCSolver
 {
-    static class Program
+    internal class Program
     {
         static void Main(string[] args)
         {
-            int[] start = new int[] { 0, 0, 0 };
+            ReadArgs(args, out int year, out int day, out int part);
 
-            for (int i = 0; i < args.Length; i++)
-                int.TryParse(args[i], out start[i]);
-
-            start[0] = 2022;
-            start[1] = 8;
-            start[2] = 0;
-
+#if DEBUG
+            year = 2022;
+            day = 0;
+#endif
             try
             {
-                SolveAllPuzzles(start[0], start[1], start[2]);
+                SolvePuzzles(year, day, part);
             }
             catch (Exception)
             {
@@ -44,7 +36,23 @@ namespace Aoc.AdventOfCode
             Console.ReadKey();
         }
 
-        private static void SolveAllPuzzles(int year = 0, int day = 0, int part = 0)
+        private static void ReadArgs(string[] args, out int year, out int day, out int part)
+        {
+            year = 0;
+            day = 0;
+            part = 0;
+
+            if (args.Length >= 1)
+                int.TryParse(args[0], out year);
+
+            if (args.Length >= 2)
+                int.TryParse(args[1], out day);
+
+            if (args.Length >= 3)
+                int.TryParse(args[2], out part);
+        }
+
+        private static void SolvePuzzles(int year = 0, int day = 0, int part = 0)
         {
             var puzzles = PuzzleHelper.GetPuzzles(year, day);
 
@@ -69,4 +77,3 @@ namespace Aoc.AdventOfCode
         }
     }
 }
-

@@ -25,13 +25,13 @@ namespace AoC.AdventOfCode.Puzzle.Year2022
         {
             base.DoPreparations();
 
-            PuzzleItems = LoadPuzzleItemsString("\n", false);
+            var puzzleItems = LoadPuzzleItemsString("\n", false);
 
-            int split = PuzzleItems.FindIndex(x => string.IsNullOrEmpty(x));
-            _input1 = PuzzleItems.GetRange(0, split - 1);
-            _input2 = PuzzleItems.GetRange(split, PuzzleItems.Count - split).Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
+            int split = puzzleItems.FindIndex(x => string.IsNullOrEmpty(x));
+            _input1 = puzzleItems.GetRange(0, split - 1);
+            _input2 = puzzleItems.GetRange(split, puzzleItems.Count - split).Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
 
-            var lastNum = int.Parse(PuzzleItems[split - 1].Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries).Last());
+            var lastNum = int.Parse(puzzleItems[split - 1].Split(new[] { " " }, StringSplitOptions.RemoveEmptyEntries).Last());
 
             _stacks = new Dictionary<int, Stack<string>>();
 
