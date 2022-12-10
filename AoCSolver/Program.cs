@@ -17,7 +17,7 @@ namespace AoCSolver
 
 #if DEBUG
             year = 2022;
-            day = 0;
+            day = 9;
 #endif
             try
             {

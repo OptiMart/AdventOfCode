@@ -160,6 +160,8 @@
     <Compile Include="Puzzle\Year2020\Puzzle2020Day02.cs" />
     <Compile Include="Puzzle\Year2020\Puzzle2020Day01.cs" />
     <Compile Include="Puzzle\Year2021\Puzzle2021Day01.cs" />
+    <Compile Include="Puzzle\Year2022\Puzzle2022Day10.cs" />
+    <Compile Include="Puzzle\Year2022\Puzzle2022Day09.cs" />
     <Compile Include="Puzzle\Year2022\Puzzle2022Day08.cs" />
     <Compile Include="Puzzle\Year2022\Puzzle2022Day07.cs" />
     <Compile Include="Puzzle\Year2022\Puzzle2022Day06.cs" />
