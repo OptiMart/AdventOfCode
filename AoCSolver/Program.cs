@@ -17,8 +17,9 @@ namespace AoCSolver
 
 #if DEBUG
             year = 2022;
-            day = 9;
+            day = 11;
 #endif
+
             try
             {
                 SolvePuzzles(year, day, part);

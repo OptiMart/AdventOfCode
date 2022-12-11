@@ -103,6 +103,7 @@
     <Compile Include="Common\IntCodeComputer\Instructions\OpOutput.cs" />
     <Compile Include="Common\IntCodeComputer\Instructions\OpTermination.cs" />
     <Compile Include="Common\IntCodeComputer\Computer.cs" />
+    <Compile Include="Common\Monkeys\Monkey.cs" />
     <Compile Include="Common\RepairDroid\MapTile.cs" />
     <Compile Include="Common\RepairDroid\MapDirection.cs" />
     <Compile Include="Common\RepairDroid\MapLocation.cs" />
@@ -160,6 +161,7 @@
     <Compile Include="Puzzle\Year2020\Puzzle2020Day02.cs" />
     <Compile Include="Puzzle\Year2020\Puzzle2020Day01.cs" />
     <Compile Include="Puzzle\Year2021\Puzzle2021Day01.cs" />
+    <Compile Include="Puzzle\Year2022\Puzzle2022Day11.cs" />
     <Compile Include="Puzzle\Year2022\Puzzle2022Day10.cs" />
     <Compile Include="Puzzle\Year2022\Puzzle2022Day09.cs" />
     <Compile Include="Puzzle\Year2022\Puzzle2022Day08.cs" />
