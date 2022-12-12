@@ -123,49 +123,19 @@ namespace AoC.AdventOfCode.Common.Base
             return distance;
         }
 
-        public List<GenericNode<TNodeType>> GetPathToTarget(GenericNode<TNodeType> target, Func<GenericNode<TNodeType>, GenericNode<TNodeType>, bool> predicate)
+        public List<GenericNode<TNodeType>> GetPathToTarget(GenericNode<TNodeType> target, Func<GenericNode<TNodeType>, GenericNode<TNodeType>, bool> neighbor)
         {
-            List<GenericNode<TNodeType>> result = new List<GenericNode<TNodeType>>();
-
-            foreach (var item in Neighbors.Where(x => x.PathFinding > PathFinding + 1 && predicate.Invoke(this, x)))
-            {
-                //if (item.PathFinding <= PathFinding)
-                //    continue;
-
-                item.PathFinding = PathFinding + 1;
-
-                if (item == target)
-                {
-                    result.Add(this);
-                    result.Add(item);
-                    return result;
-                }
-
-                var path = item.GetPathToTarget(target, predicate);
-
-                if (path.Any())
-                {
-                    if (result.Count > path.Count)
-                        result.Clear();
-
-                    if (result.Count == 0)
-                    {
-                        result.Add(this);
-                        result.AddRange(path);
-                    }
-                }
-            }
-
-            return result;
+            return GetPathToTarget(x => x.Equals(target), neighbor, y => y.PathFinding + 1);
         }
 
-        public List<GenericNode<TNodeType>> GetPathToTarget(Func<GenericNode<TNodeType>, bool> target, Func<GenericNode<TNodeType>, GenericNode<TNodeType>, bool> predicate)
+        public List<GenericNode<TNodeType>> GetPathToTarget(Func<GenericNode<TNodeType>, bool> target, Func<GenericNode<TNodeType>, GenericNode<TNodeType>, bool> neighbor, Func<GenericNode<TNodeType>, long> pathcost)
         {
             List<GenericNode<TNodeType>> result = new List<GenericNode<TNodeType>>();
 
-            foreach (var item in Neighbors.Where(x => x.PathFinding > PathFinding + 1 && predicate.Invoke(this, x)))
+            foreach (var item in Neighbors.Where(x => x.PathFinding > pathcost.Invoke(this) && neighbor.Invoke(this, x)))
             {
-                item.PathFinding = PathFinding + 1;
+                //item.PathFinding = PathFinding + 1;
+                item.PathFinding = pathcost.Invoke(this);
 
                 if (target.Invoke(item))
                 {
@@ -174,7 +144,7 @@ namespace AoC.AdventOfCode.Common.Base
                     return result;
                 }
 
-                var path = item.GetPathToTarget(target, predicate);
+                var path = item.GetPathToTarget(target, neighbor, pathcost);
 
                 if (path.Any())
                 {

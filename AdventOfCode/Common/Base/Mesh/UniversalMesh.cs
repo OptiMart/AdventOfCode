@@ -47,7 +47,7 @@ namespace AoC.AdventOfCode.Common.Base
         public List<GenericNode<TNodeType>> GetShortestPath(GenericNode<TNodeType> start, Func<GenericNode<TNodeType>, bool> target, Func<GenericNode<TNodeType>, GenericNode<TNodeType>, bool> predicate)
         {
             InitPathfinding(start);
-            return start.GetPathToTarget(target, predicate);
+            return start.GetPathToTarget(target, predicate, x => x.PathFinding + 1);
         }
 
         #endregion
