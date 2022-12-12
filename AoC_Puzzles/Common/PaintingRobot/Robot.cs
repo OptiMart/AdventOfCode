@@ -1,11 +1,11 @@
-﻿using AoC.AdventOfCode.Common.IntCodeComputer;
+﻿using AoC.Puzzles.Common.IntCodeComputer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Common.PaintingRobot
+namespace AoC.Puzzles.Common.PaintingRobot
 {
     public enum PaintColor
     {

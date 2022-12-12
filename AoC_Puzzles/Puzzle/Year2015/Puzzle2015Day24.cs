@@ -1,8 +1,8 @@
-﻿using AoC.AdventOfCode.Common.Extensions;
-using AoC.AdventOfCode.Common.Shuffle;
-using AoC.AdventOfCode.Puzzle.Base;
+﻿using AoC.Puzzles.Common.Extensions;
+using AoC.Puzzles.Common.Shuffle;
+using AoC.Puzzles.Puzzle.Base;
 
-namespace AoC.AdventOfCode.Puzzle.Year2015
+namespace AoC.Puzzles.Puzzle.Year2015
 {
     /// <summary>
     /// Calorie Counting

@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Common
+namespace AoC.Puzzles.Common
 {
     public static class ReflectiveEnumerator
     {

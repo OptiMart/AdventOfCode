@@ -1,4 +1,4 @@
-﻿namespace AoC.AdventOfCode.Puzzle.Base
+﻿namespace AoC.Puzzles.Puzzle.Base
 {
     public interface IPuzzleInput
     {

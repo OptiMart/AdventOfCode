@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Common.SpaceMap
+namespace AoC.Puzzles.Common.SpaceMap
 {
     [DebuggerDisplay("({PosX}/{PosY}) - {DetectedObjects}")]
     public class Asteroid : IComparer

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Common.Geometry
+namespace AoC.Puzzles.Common.Geometry
 {
     class Wire
     {

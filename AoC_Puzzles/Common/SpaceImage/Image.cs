@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.SpaceImage
+namespace AoC.Puzzles.SpaceImage
 {
     public class Image
     {

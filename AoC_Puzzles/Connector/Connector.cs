@@ -1,7 +1,7 @@
 ﻿
 using System.Net;
 
-namespace AoC.AdventOfCode.Connector
+namespace AoC.Puzzles.Connector
 {
     internal class Connector
     {

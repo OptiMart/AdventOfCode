@@ -1,13 +1,13 @@
-﻿using AoC.AdventOfCode.Common.IntCodeComputer;
-using AoC.AdventOfCode.Common.Shuffle;
-using AoC.AdventOfCode.Puzzle.Base;
+﻿using AoC.Puzzles.Common.IntCodeComputer;
+using AoC.Puzzles.Common.Shuffle;
+using AoC.Puzzles.Puzzle.Base;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
 
-namespace AoC.AdventOfCode.Puzzle.Year2019
+namespace AoC.Puzzles.Puzzle.Year2019
 {
     /// <summary>
     /// Day 23: Category Six

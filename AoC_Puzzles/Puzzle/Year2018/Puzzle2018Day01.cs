@@ -1,11 +1,11 @@
-﻿using AoC.AdventOfCode.Puzzle.Base;
+﻿using AoC.Puzzles.Puzzle.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Puzzle.Year2018
+namespace AoC.Puzzles.Puzzle.Year2018
 {
     public class Puzzle2018Day01 : PuzzleBase
     {

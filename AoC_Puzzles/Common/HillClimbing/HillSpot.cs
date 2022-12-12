@@ -1,5 +1,5 @@
-﻿using AoC.AdventOfCode.Common.Base;
-using AoC.AdventOfCode.Common.Base.Points;
+﻿using AoC.Puzzles.Common.Base;
+using AoC.Puzzles.Common.Base.Points;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Common.HillClimbing
+namespace AoC.Puzzles.Common.HillClimbing
 {
     [DebuggerDisplay("{Value} - ({X}/{Y})")]
     internal class HillSpot : BasePoint2D<char>

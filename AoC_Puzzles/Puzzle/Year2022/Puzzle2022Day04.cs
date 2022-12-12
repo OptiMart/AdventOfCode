@@ -1,12 +1,12 @@
-﻿using AoC.AdventOfCode.Common.Extensions;
-using AoC.AdventOfCode.Puzzle.Base;
+﻿using AoC.Puzzles.Common.Extensions;
+using AoC.Puzzles.Puzzle.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Puzzle.Year2022
+namespace AoC.Puzzles.Puzzle.Year2022
 {
     /// <summary>
     /// Camp Cleanup

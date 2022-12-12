@@ -1,4 +1,4 @@
-﻿using AoC.AdventOfCode.Common.HillClimbing;
+﻿using AoC.Puzzles.Common.HillClimbing;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Common.Base
+namespace AoC.Puzzles.Common.Base
 {
     [DebuggerDisplay("Node: {Node} - Pathfinding({PathFinding})")]
     public class GenericNode<TNodeType>

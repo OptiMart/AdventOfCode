@@ -1,12 +1,12 @@
-﻿using AoC.AdventOfCode.Common.IntCodeComputer;
-using AoC.AdventOfCode.Common.RepairDroid;
-using AoC.AdventOfCode.Puzzle.Base;
+﻿using AoC.Puzzles.Common.IntCodeComputer;
+using AoC.Puzzles.Common.RepairDroid;
+using AoC.Puzzles.Puzzle.Base;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-namespace AoC.AdventOfCode.Puzzle.Year2019
+namespace AoC.Puzzles.Puzzle.Year2019
 {
     public class Puzzle2019Day15 : PuzzleBase
     {

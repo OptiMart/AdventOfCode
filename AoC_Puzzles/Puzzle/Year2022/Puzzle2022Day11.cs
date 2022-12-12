@@ -1,5 +1,5 @@
-﻿using AoC.AdventOfCode.Common.Monkeys;
-using AoC.AdventOfCode.Puzzle.Base;
+﻿using AoC.Puzzles.Common.Monkeys;
+using AoC.Puzzles.Puzzle.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Puzzle.Year2022
+namespace AoC.Puzzles.Puzzle.Year2022
 {
     /// <summary>
     /// Monkey in the Middle

@@ -1,4 +1,4 @@
-﻿using AoC.AdventOfCode.Common.SpaceMap;
+﻿using AoC.Puzzles.Common.SpaceMap;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Common.SpaceMap
+namespace AoC.Puzzles.Common.SpaceMap
 {
     [DebuggerDisplay("{Name} <{Position.X}, {Position.Y}, {Position.Z}> <{Velocity.X}, {Velocity.Y}, {Velocity.Z}>")]
     public class OrbitObject

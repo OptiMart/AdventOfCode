@@ -1,4 +1,4 @@
-﻿using AoC.AdventOfCode.Common.Base.Tree;
+﻿using AoC.Puzzles.Common.Base.Tree;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Common.ElvDevice.FileSystem
+namespace AoC.Puzzles.Common.ElvDevice.FileSystem
 {
     [DebuggerDisplay("File - {Name} - Level {Level} - Size {Size}")]
     internal class ElvFile : TreeNode

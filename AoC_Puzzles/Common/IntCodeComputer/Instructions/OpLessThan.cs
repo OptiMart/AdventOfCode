@@ -1,12 +1,12 @@
-﻿using AoC.AdventOfCode.Common.IntCodeComputer.Base;
-using AoC.AdventOfCode.Common.IntCodeComputer.Instructions.Base;
+﻿using AoC.Puzzles.Common.IntCodeComputer.Base;
+using AoC.Puzzles.Common.IntCodeComputer.Instructions.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Common.IntCodeComputer.Instructions
+namespace AoC.Puzzles.Common.IntCodeComputer.Instructions
 {
     public class OpLessThan : BaseInstruction
     {

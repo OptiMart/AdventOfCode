@@ -1,13 +1,13 @@
-﻿using AoC.AdventOfCode.Common.IntCodeComputer;
-using AoC.AdventOfCode.Common.IntCodeComputer.Instructions;
-using AoC.AdventOfCode.Puzzle.Base;
+﻿using AoC.Puzzles.Common.IntCodeComputer;
+using AoC.Puzzles.Common.IntCodeComputer.Instructions;
+using AoC.Puzzles.Puzzle.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Puzzle.Year2019
+namespace AoC.Puzzles.Puzzle.Year2019
 {
     public class Puzzle2019Day02 : PuzzleBase
     {

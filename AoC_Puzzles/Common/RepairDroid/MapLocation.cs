@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Common.RepairDroid
+namespace AoC.Puzzles.Common.RepairDroid
 {
     public class MapLocation
     {

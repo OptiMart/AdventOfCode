@@ -1,11 +1,11 @@
-﻿using AoC.AdventOfCode.Common.ElvDevice.FileSystem;
+﻿using AoC.Puzzles.Common.ElvDevice.FileSystem;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Common.ElvDevice
+namespace AoC.Puzzles.Common.ElvDevice
 {
     internal class ElvDevice
     {

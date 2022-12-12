@@ -1,7 +1,7 @@
 ﻿
 using System.Diagnostics;
 
-namespace AoC.AdventOfCode.Puzzle.Base
+namespace AoC.Puzzles.Puzzle.Base
 {
     public abstract class PuzzleBase : IPuzzleInput
     {

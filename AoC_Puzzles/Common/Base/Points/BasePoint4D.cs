@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Common.Base.Points
+namespace AoC.Puzzles.Common.Base.Points
 {
     public class BasePoint4D<TPointData> : BasePoint3D<TPointData>
     {

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Common.Geometry
+namespace AoC.Puzzles.Common.Geometry
 {
 
     [DebuggerDisplay("{Orientation} - ({StartPoint.PointX}/{StartPoint.PointY}) | ({EndPoint.PointX}/{EndPoint.PointY})")]

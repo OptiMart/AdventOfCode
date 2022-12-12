@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Common.SpaceMap
+namespace AoC.Puzzles.Common.SpaceMap
 {
     [DebuggerDisplay("<{X}, {Y}, {Z}, {T}>")]
     public class Point4D

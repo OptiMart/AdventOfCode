@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Common.IntCodeComputer.Base
+namespace AoC.Puzzles.Common.IntCodeComputer.Base
 {
     public class InstructionPointer
     {

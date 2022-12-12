@@ -1,5 +1,5 @@
 ﻿
-using AoC.AdventOfCode.Puzzle.Base;
+using AoC.Puzzles.Puzzle.Base;
 
 namespace AoC.Solver
 {
@@ -7,12 +7,13 @@ namespace AoC.Solver
     {
         static void Main(string[] args)
         {
+            
             ReadArgs(args, out int year, out int day, out int part);
 
-#if DEBUG
-            year = 2022;
-            day = 12;
-#endif
+//#if DEBUG
+//            year = 2022;
+//            day = 1;
+//#endif
 
             try
             {

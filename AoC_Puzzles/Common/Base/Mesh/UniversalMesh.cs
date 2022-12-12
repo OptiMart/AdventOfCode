@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Common.Base
+namespace AoC.Puzzles.Common.Base
 {
     public class UniversalMesh<TNodeType>
     {

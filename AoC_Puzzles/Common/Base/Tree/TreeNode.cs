@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Common.Base.Tree
+namespace AoC.Puzzles.Common.Base.Tree
 {
     public class TreeNode
     {

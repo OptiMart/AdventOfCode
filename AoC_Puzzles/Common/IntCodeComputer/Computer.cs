@@ -1,6 +1,6 @@
-﻿using AoC.AdventOfCode.Common.IntCodeComputer.Base;
-using AoC.AdventOfCode.Common.IntCodeComputer.Instructions;
-using AoC.AdventOfCode.Common.IntCodeComputer.Instructions.Base;
+﻿using AoC.Puzzles.Common.IntCodeComputer.Base;
+using AoC.Puzzles.Common.IntCodeComputer.Instructions;
+using AoC.Puzzles.Common.IntCodeComputer.Instructions.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Common.IntCodeComputer
+namespace AoC.Puzzles.Common.IntCodeComputer
 {
     public class Computer
     {

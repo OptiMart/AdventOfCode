@@ -1,11 +1,11 @@
-﻿using AoC.AdventOfCode.Common.Geometry;
+﻿using AoC.Puzzles.Common.Geometry;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Common.IntCodeComputer
+namespace AoC.Puzzles.Common.IntCodeComputer
 {
     public enum Tiles
     {

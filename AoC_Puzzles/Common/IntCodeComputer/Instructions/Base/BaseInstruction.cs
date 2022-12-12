@@ -1,11 +1,11 @@
-﻿using AoC.AdventOfCode.Common.IntCodeComputer.Base;
+﻿using AoC.Puzzles.Common.IntCodeComputer.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Common.IntCodeComputer.Instructions.Base
+namespace AoC.Puzzles.Common.IntCodeComputer.Instructions.Base
 {
     public enum ParameterMode
     {

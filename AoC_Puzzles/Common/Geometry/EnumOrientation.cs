@@ -1,4 +1,4 @@
-﻿namespace AoC.AdventOfCode.Common.Geometry
+﻿namespace AoC.Puzzles.Common.Geometry
 {
     public enum EnumOrientation
     {

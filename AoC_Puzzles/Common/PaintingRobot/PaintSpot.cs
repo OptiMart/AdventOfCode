@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AoC.AdventOfCode.Common.PaintingRobot
+namespace AoC.Puzzles.Common.PaintingRobot
 {
     public class PaintSpot
     {

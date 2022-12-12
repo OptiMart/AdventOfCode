@@ -1,4 +1,4 @@
-﻿namespace AoC.AdventOfCode.Common.RepairDroid
+﻿namespace AoC.Puzzles.Common.RepairDroid
 {
     public enum MapTile
     {

@@ -1,8 +1,8 @@
 ﻿
-using AoC.AdventOfCode.Common;
+using AoC.Puzzles.Common;
 using System.Reflection;
 
-namespace AoC.AdventOfCode.Puzzle.Base
+namespace AoC.Puzzles.Puzzle.Base
 {
     public class PuzzleHelper
     {

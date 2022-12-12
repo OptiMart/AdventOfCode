@@ -1,5 +1,5 @@
 ﻿
-namespace AoC.AdventOfCode.Common.ElvDevice.FileSystem
+namespace AoC.Puzzles.Common.ElvDevice.FileSystem
 {
     internal class ElvFilesystem
     {
