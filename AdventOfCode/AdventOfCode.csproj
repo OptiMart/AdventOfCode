@@ -179,7 +179,6 @@
   <ItemGroup>
     <Folder Include="Common\Base\Links\" />
     <Folder Include="Common\ElvDevice\Commands\" />
-    <Folder Include="Input\2018\" />
     <Folder Include="Puzzle\Year2016\" />
     <Folder Include="Puzzle\Year2017\" />
   </ItemGroup>
