@@ -85,6 +85,7 @@
     <Compile Include="Common\Geometry\Line.cs" />
     <Compile Include="Common\Geometry\Point.cs" />
     <Compile Include="Common\Geometry\Wire.cs" />
+    <Compile Include="Common\HillClimbing\HillSpot.cs" />
     <Compile Include="Common\IntCodeComputer\Arcade.cs" />
     <Compile Include="Common\IntCodeComputer\Base\InstructionPointer.cs" />
     <Compile Include="Common\IntCodeComputer\Base\Memory.cs" />
@@ -161,6 +162,7 @@
     <Compile Include="Puzzle\Year2020\Puzzle2020Day02.cs" />
     <Compile Include="Puzzle\Year2020\Puzzle2020Day01.cs" />
     <Compile Include="Puzzle\Year2021\Puzzle2021Day01.cs" />
+    <Compile Include="Puzzle\Year2022\Puzzle2022Day12.cs" />
     <Compile Include="Puzzle\Year2022\Puzzle2022Day11.cs" />
     <Compile Include="Puzzle\Year2022\Puzzle2022Day10.cs" />
     <Compile Include="Puzzle\Year2022\Puzzle2022Day09.cs" />
