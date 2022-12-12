@@ -1,4 +1,5 @@
-﻿namespace AoC.AdventOfCode.Common.ElvDevice.FileSystem
+﻿
+namespace AoC.AdventOfCode.Common.ElvDevice.FileSystem
 {
     internal class ElvFilesystem
     {

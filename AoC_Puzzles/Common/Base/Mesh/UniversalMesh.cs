@@ -17,7 +17,7 @@ namespace AoC.AdventOfCode.Common.Base
         #endregion
 
         #region Properties
-        public List<GenericNode<TNodeType>> Nodes { get; private set; }
+        public List<GenericNode<TNodeType>> Nodes { get; private set; } = new List<GenericNode<TNodeType>>();
 
         #endregion
 
@@ -30,6 +30,24 @@ namespace AoC.AdventOfCode.Common.Base
         public void AddNode(TNodeType node)
         {
             AddNode(new GenericNode<TNodeType>(node));
+        }
+
+        public void InitPathfinding(GenericNode<TNodeType> start)
+        {
+            Nodes.ForEach(x => x.PathFinding = long.MaxValue);
+            start.PathFinding = 0;
+        }
+
+        public List<GenericNode<TNodeType>> GetShortestPath(GenericNode<TNodeType> start, GenericNode<TNodeType> target, Func<GenericNode<TNodeType>, GenericNode<TNodeType>, bool> predicate)
+        {
+            InitPathfinding(start);
+            return start.GetPathToTarget(target, predicate);
+        }
+
+        public List<GenericNode<TNodeType>> GetShortestPath(GenericNode<TNodeType> start, Func<GenericNode<TNodeType>, bool> target, Func<GenericNode<TNodeType>, GenericNode<TNodeType>, bool> predicate)
+        {
+            InitPathfinding(start);
+            return start.GetPathToTarget(target, predicate, x => x.PathFinding + 1);
         }
 
         #endregion
