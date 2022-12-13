@@ -83,7 +83,7 @@ namespace AoC.Puzzles.Common.SpaceMap
             //DetectedObjects.Sort();
         }
 
-        public int Compare(object x, object y)
+        public int Compare(object? x, object? y)
         {
             return 0;
         }

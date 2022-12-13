@@ -1,4 +1,5 @@
 ﻿
+using AoC.Puzzles.Common.Base;
 using AoC.Puzzles.Puzzle.Base;
 
 namespace AoC.Solver

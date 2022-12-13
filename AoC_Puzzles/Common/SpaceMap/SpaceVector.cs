@@ -36,7 +36,7 @@ namespace AoC.Puzzles.Common.SpaceMap
             return Math.Abs(X) + Math.Abs(Y) + Math.Abs(Z);
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
             SpaceVector vec = obj as SpaceVector;
 

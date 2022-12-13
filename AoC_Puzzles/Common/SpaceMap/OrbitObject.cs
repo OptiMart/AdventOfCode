@@ -44,8 +44,11 @@ namespace AoC.Puzzles.Common.SpaceMap
             return Position.GetEnergy() * Velocity.GetEnergy();
         }
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
+            if (obj == null) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            
             OrbitObject oo = obj as OrbitObject;
 
             if (oo is null)

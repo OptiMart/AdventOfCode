@@ -24,9 +24,9 @@ namespace AoC.Puzzles.Common.Shuffle
                 stack.RemoveRange(start, count);
                 stack.AddRange(temp);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                throw ex;
+                throw;
             }
         }
 

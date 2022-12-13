@@ -1,4 +1,5 @@
-﻿using AoC.Puzzles.Common.HillClimbing;
+﻿using AoC.Puzzles.Common.Base.Points;
+using AoC.Puzzles.Common.HillClimbing;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -9,12 +10,9 @@ using System.Threading.Tasks;
 namespace AoC.Puzzles.Common.Base
 {
     [DebuggerDisplay("Node: {Node} - Pathfinding({PathFinding})")]
-    public class GenericNode<TNodeType>
+    public class GenericNode<TNodeType> : IEquatable<GenericNode<TNodeType>> where TNodeType : IEquatable<TNodeType>
     {
         #region Constructor
-        public GenericNode() : this(default)
-        { }
-
         public GenericNode(TNodeType node)
         {
             Node = node;
@@ -26,7 +24,7 @@ namespace AoC.Puzzles.Common.Base
         public TNodeType Node { get; set; }
         public Type NodeType => typeof(TNodeType);
         public List<GenericNode<TNodeType>> Neighbors { get; private set; } = new List<GenericNode<TNodeType>>();
-        public GenericNode<TNodeType> Parent { get; private set; }
+        public GenericNode<TNodeType>? Parent { get; private set; }
         public long PathFinding { get; set; }
 
         #endregion
@@ -160,6 +158,27 @@ namespace AoC.Puzzles.Common.Base
             }
 
             return result;
+        }
+
+        public bool Equals(GenericNode<TNodeType>? other)
+        {
+            if (other is null)
+                return false;
+
+            return this == other;
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is null)
+                return false;
+
+            return Equals(obj as GenericNode<TNodeType>);
+        }
+
+        public override int GetHashCode()
+        {
+            return new Tuple<int, int, int>(base.GetHashCode(), Node.GetHashCode(), Neighbors.GetHashCode()).GetHashCode();
         }
 
         #endregion

@@ -7,11 +7,10 @@ using System.Threading.Tasks;
 
 namespace AoC.Puzzles.Common.Base.Points
 {
-    public abstract class BasePoint
+    public abstract class BasePoint 
     {
         #region Data
         private readonly int[] _coords;
-        private readonly int _dimensions;
 
         #endregion
 
@@ -19,7 +18,7 @@ namespace AoC.Puzzles.Common.Base.Points
         protected BasePoint() : this(1)
         { }
 
-        protected BasePoint(int dimension)
+        protected BasePoint(uint dimension)
         {
             if (dimension <= 0)
                 throw new ArgumentException("Point dimension cannot be less or equals zero!");

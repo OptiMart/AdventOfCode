@@ -19,7 +19,7 @@ namespace AoC.Puzzles.Common
         #endregion
 
         #region Properties
-        public UniversalMesh<BasePoint2D<bool>> Pond { get; private set; }
+        public UniversalMesh<BasePoint2D<bool>> Pond { get; private set; } = new UniversalMesh<BasePoint2D<bool>>();
 
         #endregion
 

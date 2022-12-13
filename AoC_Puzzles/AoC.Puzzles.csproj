@@ -16,7 +16,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Common\Base\links\" />
+    <Compile Remove="Common\Base\links\**" />
+    <EmbeddedResource Remove="Common\Base\links\**" />
+    <None Remove="Common\Base\links\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Common\ElvDevice\commands\" />
     <Folder Include="Puzzle\year2016\" />
     <Folder Include="Puzzle\year2017\" />

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AoC.Puzzles.Common.Base.Points
 {
-    public class BasePoint1D<TPointData> : BasePoint<TPointData>
+    public class BasePoint1D<TPointData> : BasePoint<TPointData>, IEquatable<BasePoint1D<TPointData>> where TPointData : IEquatable<TPointData>, new()
     {
         #region Data
         private const int _thisDim = 1;
@@ -14,16 +14,13 @@ namespace AoC.Puzzles.Common.Base.Points
         #endregion
 
         #region Constructor
-        public BasePoint1D() : this(default)
-        { }
-
-        public BasePoint1D(TPointData item) : this (item, 0)
+        public BasePoint1D(TPointData item) : this(item, 0)
         { }
 
         public BasePoint1D(TPointData item, int x) : this(item, x, _thisDim)
         { }
 
-        protected BasePoint1D(TPointData item, int x, int dimension) : base(item, dimension)
+        protected BasePoint1D(TPointData item, int x, uint dimension) : base(item, dimension)
         {
             X = x;
         }
@@ -38,5 +35,30 @@ namespace AoC.Puzzles.Common.Base.Points
         }
 
         #endregion
+
+        #region Methods
+        public bool Equals(BasePoint1D<TPointData>? other)
+        {
+            if (other is null)
+                return false;
+
+            return Value.Equals(other.Value);
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is null)
+                return false;
+
+            return Equals(obj as BasePoint1D<TPointData>);
+        }
+
+        public override int GetHashCode()
+        {
+            return new Tuple<int, int>(base.GetHashCode(), X).GetHashCode();
+        }
+
+        #endregion
+
     }
 }

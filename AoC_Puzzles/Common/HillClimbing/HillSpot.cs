@@ -6,11 +6,12 @@ using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace AoC.Puzzles.Common.HillClimbing
 {
     [DebuggerDisplay("{Value} - ({X}/{Y})")]
-    internal class HillSpot : BasePoint2D<char>
+    internal class HillSpot : BasePoint2D<char>, IEquatable<HillSpot>
     {
         #region Constructor
         public HillSpot(int x, int y, char value) : base(value, x, y)
@@ -26,7 +27,6 @@ namespace AoC.Puzzles.Common.HillClimbing
 
         #region Properties
         public int Height { get; private set; }
-        public int Distance { get; set; }
 
         #endregion
 
@@ -44,6 +44,26 @@ namespace AoC.Puzzles.Common.HillClimbing
             }
         }
 
+        public bool Equals(HillSpot? other)
+        {
+            if (other is null)
+                return false;
+
+            return this == other;
+        }
+
+        public override bool Equals(object? obj)
+        {
+            if (obj is null)
+                return false;
+
+            return Equals(obj as HillSpot);
+        }
+
+        public override int GetHashCode()
+        {
+            return new Tuple<int, int>(base.GetHashCode(), Height.GetHashCode()).GetHashCode();
+        }
         #endregion
     }
 }

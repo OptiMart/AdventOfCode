@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace AoC.Puzzles.Common.Base
 {
-    public class UniversalMesh<TNodeType>
+    public class UniversalMesh<TNodeType>  where TNodeType : IEquatable<TNodeType>
     {
         #region Constructor
         public UniversalMesh()
-        {
-
-        }
+        { }
 
         #endregion
 

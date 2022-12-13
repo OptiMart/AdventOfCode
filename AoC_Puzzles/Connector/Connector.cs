@@ -54,7 +54,7 @@ namespace AoC.Puzzles.Connector
             cc.Add(BaseUrl, GetSessionCookie(_session));
 
             var handler = new HttpClientHandler() { CookieContainer = cc };
-            HttpClient client = new HttpClient(handler);
+            HttpClient client = new(handler);
 
             var values = new Dictionary<string, string>()
             {
