@@ -11,10 +11,10 @@ namespace AoC.Solver
             
             ReadArgs(args, out int year, out int day, out int part);
 
-//#if DEBUG
-//            year = 2022;
-//            day = 1;
-//#endif
+#if DEBUG
+            year = 2022;
+            day = 13;
+#endif
 
             try
             {
