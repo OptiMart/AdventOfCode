@@ -10,7 +10,7 @@ namespace AoC.Puzzles.Common.Base.Points
     public abstract class BasePoint 
     {
         #region Data
-        private readonly int[] _coords;
+        private readonly long[] _coords;
 
         #endregion
 
@@ -23,7 +23,7 @@ namespace AoC.Puzzles.Common.Base.Points
             if (dimension <= 0)
                 throw new ArgumentException("Point dimension cannot be less or equals zero!");
 
-            _coords = new int[dimension];
+            _coords = new long[dimension];
         }
 
         #endregion
@@ -34,7 +34,7 @@ namespace AoC.Puzzles.Common.Base.Points
         #endregion
 
         #region Methods
-        public int? GetCoord(int dimension)
+        public long? GetCoord(int dimension)
         {
             if (DimensionIsInRange(dimension))
                 return _coords[dimension - 1];
@@ -42,7 +42,7 @@ namespace AoC.Puzzles.Common.Base.Points
             return null;
         }
 
-        public void SetCoord(int dimension, int value)
+        public void SetCoord(int dimension, long value)
         {
             if (DimensionIsInRange(dimension))
                 _coords[dimension - 1] = value;
@@ -78,9 +78,9 @@ namespace AoC.Puzzles.Common.Base.Points
             return Math.Sqrt(result);
         }
 
-        public int GetDimensionDistance(BasePoint point, int dimension)
+        public long GetDimensionDistance(BasePoint point, int dimension)
         {
-            return Math.Abs(GetCoord(dimension) ?? 0 - point.GetCoord(dimension) ?? 0);
+            return Math.Abs(GetCoord(dimension).Value - point.GetCoord(dimension).Value);
         }
 
         #endregion

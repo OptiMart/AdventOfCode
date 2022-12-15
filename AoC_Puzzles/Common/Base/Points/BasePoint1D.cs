@@ -28,7 +28,7 @@ namespace AoC.Puzzles.Common.Base.Points
         #endregion
 
         #region Properties
-        public int X
+        public long X
         {
             get => GetCoord(_thisDim) ?? 0;
             set => SetCoord(_thisDim, value);
@@ -55,7 +55,7 @@ namespace AoC.Puzzles.Common.Base.Points
 
         public override int GetHashCode()
         {
-            return new Tuple<int, int>(base.GetHashCode(), X).GetHashCode();
+            return new Tuple<int, long>(base.GetHashCode(), X).GetHashCode();
         }
 
         #endregion

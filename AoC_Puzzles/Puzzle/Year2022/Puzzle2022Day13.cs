@@ -83,7 +83,7 @@ namespace AoC.Puzzles.Puzzle.Year2022
 
     }
 
-    class Signal : IComparable<Signal>
+    internal class Signal : IComparable<Signal>
     {
         private int? _value;
         public Signal(string input)

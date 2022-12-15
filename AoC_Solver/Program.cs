@@ -1,6 +1,7 @@
 ﻿
 using AoC.Puzzles.Common.Base;
 using AoC.Puzzles.Puzzle.Base;
+using AoC2022;
 
 namespace AoC.Solver
 {
@@ -13,8 +14,10 @@ namespace AoC.Solver
 
 #if DEBUG
             year = 2022;
-            day = 13;
+            day = 15;
 #endif
+
+            new Day15();
 
             try
             {
