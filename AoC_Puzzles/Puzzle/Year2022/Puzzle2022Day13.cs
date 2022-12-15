@@ -1,6 +1,8 @@
-﻿using AoC.Puzzles.Puzzle.Base;
+﻿using AoC.Puzzles.Common.IntCodeComputer.Instructions;
+using AoC.Puzzles.Puzzle.Base;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -15,7 +17,7 @@ namespace AoC.Puzzles.Puzzle.Year2022
     public class Puzzle2022Day13 : PuzzleBase
     {
         #region Data
-        List<Tuple<Signal, Signal>> Signals = new List<Tuple<Year2022.Signal, Year2022.Signal>>();
+        List<Signal> Signals = new();
         #endregion
 
         #region Methods
@@ -23,16 +25,34 @@ namespace AoC.Puzzles.Puzzle.Year2022
         {
             base.DoPreparations();
 
-            foreach (var item in PuzzleItems.Where(l => !string.IsNullOrWhiteSpace(l)).Chunk(2))
+            foreach (var item in PuzzleItems.Where(l => !string.IsNullOrWhiteSpace(l)))
             {
-                var test = new Signal(item[0]);
-                Signals.Add(new Tuple<Signal, Signal>(new Signal(item[0]), new Signal(item[1])));
+                Signals.Add(new(item));
             }
         }
 
         protected override string SolvePuzzlePartOne()
         {
             long result = 0;
+
+            //string test1 = "[1,[2,[3,[4,[5,6,7]]]],8,9]";
+            //string test2 = "[1,[2,[3,[4,[5,6,0]]]],8,9]";
+
+            //Signal sig1 = new Signal(test1);
+            //Signal sig2 = new Signal(test2);
+
+            //var res = sig1.CompareTo(sig2);
+
+
+            for (int i = 0; i < Signals.Count / 2; i++)
+            {
+                var test = Signals[i * 2].CompareTo(Signals[i * 2 + 1]);
+
+                if (test < 0)
+                {
+                    result += i + 1;
+                }
+            }
 
             Console.WriteLine($"{result}");
             return result.ToString();
@@ -41,6 +61,19 @@ namespace AoC.Puzzles.Puzzle.Year2022
         protected override string SolvePuzzlePartTwo()
         {
             long result = 0;
+
+            Signal div1 = new("[[2]]");
+            Signal div2 = new("[[6]]");
+
+            Signals.Add(div1);
+            Signals.Add(div2);
+
+            Signals.Sort();
+
+            int res1= Signals.IndexOf(div1) + 1;
+            int res2= Signals.IndexOf(div2) + 1;
+
+            result = res1 * res2;
 
             Console.WriteLine($"{result}");
             return result.ToString();
@@ -64,7 +97,7 @@ namespace AoC.Puzzles.Puzzle.Year2022
         {
             _value = value;
         }
-        public int? Value { get => _value ?? Signals.FirstOrDefault()?.Value; }
+        public int? Value { get => _value; } // ?? Signals.FirstOrDefault()?.Value; }
         public List<Signal> Signals { get; set; } = new List<Signal>();
 
         public List<Signal> DecodeSignal(string input)
@@ -72,64 +105,110 @@ namespace AoC.Puzzles.Puzzle.Year2022
             List<Signal> result = new List<Signal>();
 
 
-            if (input[0] == '[')
+            //if (input[0] == '[')
+            //{
+            int start = 0;
+            int level = 0;
+
+            for (int i = 0; i < input.Length; i++)
             {
-                int start = 0;
-                int level = 0;
-
-                for (int i = 0; i < input.Length; i++)
+                if (input[i] == '[')
                 {
-                    if (input[i] == '[')
+                    if (level == 0)
                     {
-                        if (level == 0)
-                        {
-                            start = i;
-                        }
-                        level++;
-                    }
-
-                    if (input[i] == ',' && level == 0)
-                    {
-                        if (start < i)
-                        {
-                            result.Add(new Signal(input.Substring(start + 1, i - start - 1)));
-                        }
                         start = i;
                     }
+                    level++;
+                }
 
-                    if (input[i] == ']')
+                if (input[i] == ',' && level == 0)
+                {
+                    if (start < i)
                     {
-                        level--;
-                        if (level == 0)
-                        {
-                            result.Add(new Signal(input.Substring(start + 1, i - start - 1)));
-                            start = i + 1;
-                        }
+                        if (int.TryParse(input.Substring(start, i - start), out int val))
+                            result.Add(new Signal(val));
+                        else
+                            result.Add(new Signal(input.Substring(start, i - start)));
+                    }
+                    start = i + 1;
+                }
+
+                if (input[i] == ']')
+                {
+                    level--;
+                    if (level == 0)
+                    {
+                        result.Add(new Signal(input.Substring(start + 1, i - start - 1)));
+                        start = i + 1;
                     }
                 }
-
-                if (start < input.Length)
-                {
-                    result.Add(new Signal(input.Substring(start + 1)));
-                }
             }
-            else
+
+            if (start < input.Length)
             {
-                foreach (var item in input.Split(','))
-                {
-                    if (int.TryParse(item, out int val))
-                    {
-                        result.Add(new Signal(val));
-                    }
-                }
+                if (int.TryParse(input[start..], out int val))
+                    result.Add(new Signal(val));
+                else
+                    result.Add(new Signal(input.Substring(start)));
             }
+            //}
+            //else
+            //{
+            //    foreach (var item in input.Split(','))
+            //    {
+            //        if (int.TryParse(item, out int val))
+            //        {
+            //            result.Add(new Signal(val));
+            //        }
+            //    }
+            //}
 
             return result;
         }
 
         public int CompareTo(Signal? other)
         {
-            throw new NotImplementedException();
+            // If other is not a valid object reference, this instance is greater.
+            if (other == null)
+                return 1;
+
+            // If both are Integers compare their values
+            if (Value != null && other.Value != null)
+                return (int)Value - (int)other.Value;
+
+            // If both are Lists compare their elements
+            if (Value == null && other.Value == null)
+            {
+                for (int i = 0; i < Signals.Count; i++)
+                {
+                    if (other.Signals.Count <= i)
+                        return 1;
+
+                    if (Signals[i].CompareTo(other.Signals[i]) == 0)
+                        continue;
+
+                    return Signals[i].CompareTo(other.Signals[i]);
+                }
+
+                return Signals.Count - other.Signals.Count;
+            }
+
+            if (Value == null && other.Value != null)
+                return CompareTo(new Signal($"{other.Value}"));
+
+            if (Value != null && other.Value == null)
+                return new Signal($"[{Value}]").CompareTo(other);
+
+
+            return 0;
+        }
+
+        public override string ToString()
+        {
+            if (Value == null)
+                return $"[{String.Join(",", Signals)}]";
+
+            return Value.ToString();
         }
     }
 }
