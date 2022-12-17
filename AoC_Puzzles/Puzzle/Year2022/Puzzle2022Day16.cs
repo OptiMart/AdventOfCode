@@ -10,7 +10,7 @@ namespace AoC.Puzzles.Puzzle.Year2022
     /// <summary>
     /// Text
     /// </summary>
-    public class Puzzle2022Day00 : PuzzleBase
+    public class Puzzle2022Day16 : PuzzleBase
     {
         #region Data
 
