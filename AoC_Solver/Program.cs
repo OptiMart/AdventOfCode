@@ -14,10 +14,10 @@ namespace AoC.Solver
 
 #if DEBUG
             year = 2022;
-            day = 15;
+            day = 17;
 #endif
 
-            new Day15();
+            //new Day15();
 
             try
             {
