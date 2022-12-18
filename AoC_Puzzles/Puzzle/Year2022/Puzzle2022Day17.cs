@@ -22,8 +22,8 @@ namespace AoC.Puzzles.Puzzle.Year2022
         protected override void DoPreparations()
         {
             base.DoPreparations();
-            Chamber = new Chamber(PuzzleInput) { MaxWidth = 7 };
-            //Chamber = new Chamber(">>><<><>><<<>><>>><<<>>><<<><<<>><>><<>>") { MaxWidth = 7 };
+            //Chamber = new Chamber(PuzzleInput) { MaxWidth = 7 };
+            Chamber = new Chamber(">>><<><>><<<>><>>><<<>>><<<><<<>><>><<>>") { MaxWidth = 7 };
         }
 
         protected override string SolvePuzzlePartOne()
@@ -64,10 +64,11 @@ namespace AoC.Puzzles.Puzzle.Year2022
         #region Properties
         public int MaxWidth { get; init; } = 0;
         public int MaxHeight { get; set; } = 0;
-        public int WallHeight { get; set; } = 0;
+        public int WallHeight => Wall.Max(w => w.y);
         public List<Rock> NewRocks { get; private set; }
         public List<Rock> Rocks { get; init; } = new List<Rock>();
-        public List<(int x, int y)> Bloked { get; private set; } = new List<(int x, int y)>();
+        public List<(int x, int y)> Blocked { get; private set; } = new List<(int x, int y)>();
+        public List<(int x, int y)> Wall { get; private set; } = new List<(int x, int y)>();
         public int CountRocks => Rocks.Count;
         public Rock FallingRock { get; private set; }
         public string JetPattern { get; set; }
@@ -91,21 +92,22 @@ namespace AoC.Puzzles.Puzzle.Year2022
 
         public void BuildWalls(int height)
         {
-            if (WallHeight == 0)
+            if (!Wall.Any())
             {
                 for (int i = 0; i <= MaxWidth + 1; i++)
                 {
-                    Bloked.Add((i, 0));
+                    Wall.Add((i, 0));
+                    Blocked.Add((i, 0));
                 }
             }
 
-            for (int y = WallHeight; y < height; y++)
+            for (int y = WallHeight; y <= height; y++)
             {
-                Bloked.Add((0, y));
-                Bloked.Add((MaxWidth + 1, y));
+                Wall.Add((0, y));
+                Wall.Add((MaxWidth + 1, y));
             }
 
-            WallHeight = height;
+            //WallHeight = height;
         }
 
         public void Droprocks(int count)
@@ -117,8 +119,16 @@ namespace AoC.Puzzles.Puzzle.Year2022
                 {
                     FallingRock.StopFalling();
                     Rocks.Add(FallingRock);
-                    Bloked.AddRange(FallingRock.Blocked);
-                    MaxHeight = FallingRock.Blocked.Max(r => r.y) > MaxHeight ? FallingRock.Blocked.Max(r => r.y) : MaxHeight;
+                    Blocked.AddRange(FallingRock.Blocked);
+
+                    if (FallingRock.Blocked.Max(r => r.y) > MaxHeight)
+                    {
+                        MaxHeight = FallingRock.Blocked.Max(r => r.y);
+                    }
+                    else
+                    {
+                        int dif = FallingRock.Blocked.Max(r => r.y) - MaxHeight;
+                    }
 
                     DropNextRock();
                 }
@@ -148,6 +158,7 @@ namespace AoC.Puzzles.Puzzle.Year2022
                     break;
             }
             //JetCount %= JetPattern.Length;
+            
             return dir;
         }
 
@@ -156,13 +167,13 @@ namespace AoC.Puzzles.Puzzle.Year2022
             // First move horizontaly
             //var test = FallingRock.TryMoveRelative(0, horizontal);
 
-            if (!Bloked.ListContainsAnyItem(FallingRock.TryMoveRelative(horizontal, 0)))
+            if (!Blocked.Union(Wall).ListContainsAnyItem(FallingRock.TryMoveRelative(horizontal, 0)))
                 FallingRock.MoveRelative(horizontal, 0);
 
             Movements += 2;
 
             // Check downward movement
-            if (Bloked.ListContainsAnyItem(FallingRock.TryMoveRelative(0, -1)))
+            if (Blocked.ListContainsAnyItem(FallingRock.TryMoveRelative(0, -1)))
             {
                 return false;
             }
